@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+<title>
+  
+    树莓派空气质量检测仪-攀藤G5003ST的连接与使用
+  
+</title>
+
+<meta name="description" content="入门介绍">
+<meta name="keywords" content="树莓派">
+<meta property="og:type" content="article">
+<meta property="og:title" content="树莓派空气质量检测仪-攀藤G5003ST的连接与使用">
+<meta property="og:url" content="http://yoursite.com/2019/03/02/树莓派空气质量检测仪-攀藤G5003ST的连接与使用/index.html">
+<meta property="og:site_name" content="Liu的代码作坊">
+<meta property="og:description" content="入门介绍">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/02/kb6m5Q.jpg">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/02/kb6S4H.jpg">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/02/kb69Cd.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0xpdV85NTkxODU=,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/02/kb6ZVS.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0xpdV85NTkxODU=,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/02/kb6ivt.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0xpdV85NTkxODU=,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/02/kb6kKP.md.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0xpdV85NTkxODU=,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/02/kb6ADf.md.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0xpdV85NTkxODU=,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/02/kb6Eb8.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/02/kb6M2n.md.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0xpdV85NTkxODU=,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/02/kb6eUg.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/02/kb6uCj.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0xpdV85NTkxODU=,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/02/kb6K8s.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0xpdV85NTkxODU=,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/02/kb6YaF.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0xpdV85NTkxODU=,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/02/kb6Qvq.md.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0xpdV85NTkxODU=,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/02/kb6t54.md.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/02/kb61K0.md.png">
+<meta property="og:updated_time" content="2019-03-03T07:53:01.248Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="树莓派空气质量检测仪-攀藤G5003ST的连接与使用">
+<meta name="twitter:description" content="入门介绍">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/03/02/kb6m5Q.jpg">
+
+
+  <link rel="alternative" href="/atom.xml" title="Liu的代码作坊" type="application/atom+xml">
+
+
+
+  <link rel="icon" href="/favicon.png">
+
+
+<link rel="stylesheet" href="/perfect-scrollbar/css/perfect-scrollbar.min.css">
+<link rel="stylesheet" href="/styles/main.css">
+
+
+
+
+
+
+</head>
+<body class="monochrome">
+  <div class="mobile-header">
+  <button class="sidebar-toggle" type="button">
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+  </button>
+  <a class="title" href="/">Liu的代码作坊</a>
+</div>
+
+  <div class="main-container">
+    <div class="sidebar">
+  <div class="header">
+    <h1 class="title"><a href="/">Liu的代码作坊</a></h1>
+    
+      <p class="subtitle">
+        I shut my eyes in order to see.
+      </p>
+    
+    <div class="info">
+      <div class="content">
+        
+          <div class="description">身处寒夜，把握星光。</div>
+        
+        
+          <div class="author">Liu Guandi</div>
+        
+      </div>
+      
+        <div class="avatar">
+          
+            <a href="/about"><img src="https://secure.gravatar.com/avatar/005ff6b92a6b91a96cbec4b154fef45f.png"></a>
+          
+        </div>
+      
+    </div>
+  </div>
+  <div class="body">
+    
+      
+        <ul class="nav">
+          
+            
+              <li class="category-list-container">
+                <a href="javascript:;">Category</a>
+                <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/机器学习/">机器学习</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/树莓派/">树莓派</a><span class="category-list-count">8</span></li></ul>
+              </li>
+            
+          
+            
+              <li class="tag-list-container">
+                <a href="javascript:;">Tag</a>
+                <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Keras/">Keras</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/机器学习/">机器学习</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/树莓派/">树莓派</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/深度学习/">深度学习</a><span class="tag-list-count">1</span></li></ul>
+              </li>
+            
+          
+            
+              <li class="archive-list-container">
+                <a href="javascript:;">Archive</a>
+                <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/">2019</a><span class="archive-list-count">10</span></li></ul>
+              </li>
+            
+          
+        </ul>
+      
+        <ul class="nav">
+          
+            
+              <li>
+                <a href="/" title="Homepage">Homepage</a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="/archives" title="By Year">By Year</a>
+              </li>
+            
+          
+        </ul>
+      
+        <ul class="nav">
+          
+            
+              <li>
+                <a href="https://blog.csdn.net/Liu_959185" title="CSDN（已暂停更新）" target="_blank" rel="noopener">CSDN（已暂停更新）</a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="https://github.com/Liuguandi" title="Github" target="_blank" rel="noopener">Github</a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="/atom.xml" title="RSS">RSS</a>
+              </li>
+            
+          
+        </ul>
+      
+    
+  </div>
+</div>
+
+    <div class="main-content">
+      
+        <div style="max-width: 1000px">
+      
+          <article id="post-树莓派空气质量检测仪-攀藤G5003ST的连接与使用" class="article article-type-post">
+  
+    <h1 class="article-header">
+      树莓派空气质量检测仪-攀藤G5003ST的连接与使用
+    </h1>
+  
+  
+
+  <div class="article-info">
+    <span class="article-date">
+  2019-03-02
+</span>
+
+    
+	<span class="article-category tagcloud">
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/树莓派/">树莓派</a></li></ul>
+	</span>
+
+
+    
+	<span class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/树莓派/">树莓派</a></li></ul>
+	</span>
+
+
+  </div>
+  <div class="article-entry">
+    <h1 id="认识攀藤G5003ST"><a href="#认识攀藤G5003ST" class="headerlink" title="认识攀藤G5003ST"></a>认识攀藤G5003ST</h1><p><img src="https://s2.ax1x.com/2019/03/02/kb6m5Q.jpg" alt="正面"><img src="https://s2.ax1x.com/2019/03/02/kb6S4H.jpg" alt="侧面"><br><a id="more"></a></p>
+<h1 id="攀藤G5003ST数字接口定义"><a href="#攀藤G5003ST数字接口定义" class="headerlink" title="攀藤G5003ST数字接口定义"></a>攀藤G5003ST数字接口定义</h1><p><strong>pin1(VCC)</strong>:连接电压为3.3V/5V电压<br><strong>pin2(GND)</strong> 电源-<br><strong>pin3(SET待机位置)</strong>，设置管脚?/TTL电平@3.3V，高电平或悬空为正常工作状态，低电平为休眠状态，该引脚可悬空。<br><strong>pin4(RXD串口接收管脚)</strong> 传感器接收来自树莓派的信号数据，如果不需要可以悬空<br><strong>pin5(TXD串口发送管脚)</strong> 传感器将信号发送给树莓派<br><strong>pin6(RESET)</strong> 模块复位信号/TTL电平@3.3V，低复位，如果不需要使用可以悬空<br><strong>pin7(NC)</strong> : No internal connection. 无内部连接，不需连接。<br><strong>Pin8(NC/PWM)</strong> : PWM周期为1s，其中低电平对应大气环境下的PM2.5质量浓度数据，每1ms低电平代表1ug/m?。例如低电平时间长度为210ms，则代表此时PM2.5质量浓度值（大气环境）为210ug/m?<br><strong>（pin7和pin8为程序内部调试使用，应用电路中应该使其悬空）</strong></p>
+<p>树莓派Pi3的UART（ttyAMA0）是被蓝牙默认占用的，更改起来十分困难，在实体机上尝试多次无果后决定使用USB TO TTL转接口，直接将PMS5003ST接至树莓派的USB接口上，这样可以直接在/dev/tty中直接检索到USB0，即为传感器。<br><img src="https://s2.ax1x.com/2019/03/02/kb69Cd.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0xpdV85NTkxODU=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://s2.ax1x.com/2019/03/02/kb6ZVS.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0xpdV85NTkxODU=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://s2.ax1x.com/2019/03/02/kb6ivt.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0xpdV85NTkxODU=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h1 id="攀藤G5003ST技术指标"><a href="#攀藤G5003ST技术指标" class="headerlink" title="攀藤G5003ST技术指标"></a>攀藤G5003ST技术指标</h1><p><img src="https://s2.ax1x.com/2019/03/02/kb6kKP.md.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0xpdV85NTkxODU=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://s2.ax1x.com/2019/03/02/kb6ADf.md.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0xpdV85NTkxODU=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://s2.ax1x.com/2019/03/02/kb6Eb8.png" alt="在这里插入图片描述"><img src="https://s2.ax1x.com/2019/03/02/kb6M2n.md.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0xpdV85NTkxODU=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h1 id="攀藤G5003ST输出结果分析"><a href="#攀藤G5003ST输出结果分析" class="headerlink" title="攀藤G5003ST输出结果分析"></a>攀藤G5003ST输出结果分析</h1><p>1.颗粒物浓度：主要输出为单位体积内各浓度颗粒物质量以及个数，其中颗粒物个数的单位体积为0.1升，质量浓度单位为：微克/立方米（μg/m?）。<br>此外传感器输出分为主动输出和被动输出两种状态。<br>传感器上电后默认状态为主动输出，即传感器主动向主机发送串行数据，时间间隔为200 ~ 800ms，空气中颗粒物浓度越高，时间间隔越短。<br>主动输出又分为两种模式：平稳模式和快速模式。<br>在空气中颗粒物浓度变化较小时，传感器输出为平稳模式，即每三次输出同样的一组数值，实际数据更新周期约为2s。<br>当空气中颗粒物浓度变化较大时，传感器输出自动切换为快速模式，每次输出都是新的数值，实际数据更新周期为200~800ms。?<br>PWM输出：PMS3XXXP系列产品带有PWM输出，PWM周期为1秒，低电平时间长度代表PM2.5浓度（大气环境下），每1ms低电平代表1ug/m?。<br>例如：低电平时间长度为210ms，则代表此时PM2.5质量浓度值（大气环境）为210ug/m??<br>2.甲醛浓度输出：单位体积内甲醛质量浓度，单位为毫克/立方米?<br>3.温湿度输出：输出吸入传感器内部的采样空气温度及湿度。</p>
+<h1 id="攀藤G5003ST对外输出格式"><a href="#攀藤G5003ST对外输出格式" class="headerlink" title="攀藤G5003ST对外输出格式"></a>攀藤G5003ST对外输出格式</h1><p><img src="https://s2.ax1x.com/2019/03/02/kb6eUg.png" alt="在这里插入图片描述"><br><img src="https://s2.ax1x.com/2019/03/02/kb6uCj.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0xpdV85NTkxODU=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://s2.ax1x.com/2019/03/02/kb6K8s.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0xpdV85NTkxODU=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://s2.ax1x.com/2019/03/02/kb6YaF.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0xpdV85NTkxODU=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h1 id="python程序实现"><a href="#python程序实现" class="headerlink" title="python程序实现"></a>python程序实现</h1><p>读取数据：<br><img src="https://s2.ax1x.com/2019/03/02/kb6Qvq.md.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0xpdV85NTkxODU=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>分析数据：<br><img src="https://s2.ax1x.com/2019/03/02/kb6t54.md.png" alt="在这里插入图片描述"><br>得出数据结论：<br><img src="https://s2.ax1x.com/2019/03/02/kb61K0.md.png" alt="在这里插入图片描述"></p>
+
+  </div>
+  <footer class="article-footer">
+    
+  <div class="cc">
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/deed.z" target="_blank" title="Attribution-ShareAlike">
+      <img src="/images/cc/cc.png">
+      
+          <img src="/images/cc/by.png">
+        
+          <img src="/images/cc/sa.png">
+      
+      <span>
+        This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.
+      </span>
+    </a>
+  </div>
+
+
+    
+
+  </footer>
+</article>
+
+
+
+
+
+
+
+          <div class="main-footer">
+  
+    © 2019 Liu的代码作坊 - Powered by <a href="http://hexo.io" target="_blank">Hexo</a> - Theme <a href="https://github.com/denjones/hexo-theme-chan" target="_blank">Chan</a>
+  
+</div>
+
+      
+        </div>
+      
+    </div>
+  </div>
+  <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+
+  <link rel="stylesheet" href="/PhotoSwipe/photoswipe.css">
+  <link rel="stylesheet" href="/PhotoSwipe/default-skin/default-skin.css">
+
+  <!-- Root element of PhotoSwipe. Must have class pswp. -->
+  <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe.
+             It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+      <!-- Container that holds slides.
+                PhotoSwipe keeps only 3 of them in the DOM to save memory.
+                Don't modify these 3 pswp__item elements, data is added later on. -->
+      <div class="pswp__container">
+        <div class="pswp__item"></div>
+        <div class="pswp__item"></div>
+        <div class="pswp__item"></div>
+      </div>
+
+      <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+      <div class="pswp__ui pswp__ui--hidden">
+
+        <div class="pswp__top-bar">
+
+          <!--  Controls are self-explanatory. Order can be changed. -->
+
+          <div class="pswp__counter"></div>
+
+          <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+          <button class="pswp__button pswp__button--share" title="Share"></button>
+
+          <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+          <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+          <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+          <!-- element will get class pswp__preloader--active when preloader is running -->
+          <div class="pswp__preloader">
+            <div class="pswp__preloader__icn">
+              <div class="pswp__preloader__cut">
+                <div class="pswp__preloader__donut"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+          <div class="pswp__share-tooltip"></div>
+        </div>
+
+        <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+
+        <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+
+        <div class="pswp__caption">
+          <div class="pswp__caption__center"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/PhotoSwipe/photoswipe.js"></script>
+  <script src="/PhotoSwipe/photoswipe-ui-default.js"></script>
+
+
+<script src="/perfect-scrollbar/js/min/perfect-scrollbar.min.js"></script>
+<script src="/scripts/main.js"></script>
+
+</body>
+</html>

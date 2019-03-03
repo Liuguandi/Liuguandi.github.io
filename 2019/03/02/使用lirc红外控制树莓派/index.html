@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+<title>
+  
+    使用lirc红外控制树莓派
+  
+</title>
+
+<meta name="description" content="入门介绍">
+<meta name="keywords" content="树莓派">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用lirc红外控制树莓派">
+<meta property="og:url" content="http://yoursite.com/2019/03/02/使用lirc红外控制树莓派/index.html">
+<meta property="og:site_name" content="Liu的代码作坊">
+<meta property="og:description" content="入门介绍">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2019012509370399.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0xpdV85NTkxODU=,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/02/kbybg1.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/02/kbyOu6.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/02/kbyxED.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/02/kb6PgI.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/02/kb6C8A.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0xpdV85NTkxODU=,size_16,color_FFFFFF,t_70">
+<meta property="og:updated_time" content="2019-03-03T07:53:09.595Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用lirc红外控制树莓派">
+<meta name="twitter:description" content="入门介绍">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/2019012509370399.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0xpdV85NTkxODU=,size_16,color_FFFFFF,t_70">
+
+
+  <link rel="alternative" href="/atom.xml" title="Liu的代码作坊" type="application/atom+xml">
+
+
+
+  <link rel="icon" href="/favicon.png">
+
+
+<link rel="stylesheet" href="/perfect-scrollbar/css/perfect-scrollbar.min.css">
+<link rel="stylesheet" href="/styles/main.css">
+
+
+
+
+
+
+</head>
+<body class="monochrome">
+  <div class="mobile-header">
+  <button class="sidebar-toggle" type="button">
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+  </button>
+  <a class="title" href="/">Liu的代码作坊</a>
+</div>
+
+  <div class="main-container">
+    <div class="sidebar">
+  <div class="header">
+    <h1 class="title"><a href="/">Liu的代码作坊</a></h1>
+    
+      <p class="subtitle">
+        I shut my eyes in order to see.
+      </p>
+    
+    <div class="info">
+      <div class="content">
+        
+          <div class="description">身处寒夜，把握星光。</div>
+        
+        
+          <div class="author">Liu Guandi</div>
+        
+      </div>
+      
+        <div class="avatar">
+          
+            <a href="/about"><img src="https://secure.gravatar.com/avatar/005ff6b92a6b91a96cbec4b154fef45f.png"></a>
+          
+        </div>
+      
+    </div>
+  </div>
+  <div class="body">
+    
+      
+        <ul class="nav">
+          
+            
+              <li class="category-list-container">
+                <a href="javascript:;">Category</a>
+                <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/机器学习/">机器学习</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/树莓派/">树莓派</a><span class="category-list-count">8</span></li></ul>
+              </li>
+            
+          
+            
+              <li class="tag-list-container">
+                <a href="javascript:;">Tag</a>
+                <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Keras/">Keras</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/机器学习/">机器学习</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/树莓派/">树莓派</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/深度学习/">深度学习</a><span class="tag-list-count">1</span></li></ul>
+              </li>
+            
+          
+            
+              <li class="archive-list-container">
+                <a href="javascript:;">Archive</a>
+                <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/">2019</a><span class="archive-list-count">10</span></li></ul>
+              </li>
+            
+          
+        </ul>
+      
+        <ul class="nav">
+          
+            
+              <li>
+                <a href="/" title="Homepage">Homepage</a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="/archives" title="By Year">By Year</a>
+              </li>
+            
+          
+        </ul>
+      
+        <ul class="nav">
+          
+            
+              <li>
+                <a href="https://blog.csdn.net/Liu_959185" title="CSDN（已暂停更新）" target="_blank" rel="noopener">CSDN（已暂停更新）</a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="https://github.com/Liuguandi" title="Github" target="_blank" rel="noopener">Github</a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="/atom.xml" title="RSS">RSS</a>
+              </li>
+            
+          
+        </ul>
+      
+    
+  </div>
+</div>
+
+    <div class="main-content">
+      
+        <div style="max-width: 1000px">
+      
+          <article id="post-使用lirc红外控制树莓派" class="article article-type-post">
+  
+    <h1 class="article-header">
+      使用lirc红外控制树莓派
+    </h1>
+  
+  
+
+  <div class="article-info">
+    <span class="article-date">
+  2019-03-02
+</span>
+
+    
+	<span class="article-category tagcloud">
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/树莓派/">树莓派</a></li></ul>
+	</span>
+
+
+    
+	<span class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/树莓派/">树莓派</a></li></ul>
+	</span>
+
+
+  </div>
+  <div class="article-entry">
+    <h1 id="认识红外传感器"><a href="#认识红外传感器" class="headerlink" title="认识红外传感器"></a>认识红外传感器</h1><p><img src="https://img-blog.csdnimg.cn/2019012509370399.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0xpdV85NTkxODU=,size_16,color_FFFFFF,t_70" alt="红外传感器"><br>红外传感器<br>引脚从上到下分别为<br>IO GND VCC<br><a id="more"></a></p>
+<h1 id="lirc的安装与使用"><a href="#lirc的安装与使用" class="headerlink" title="lirc的安装与使用"></a>lirc的安装与使用</h1><p>使用红外，首先需要安装树莓派的lirc模块<br>LIRC (Linux Infrared remote control)是一个linux系统下开源的软件包。这个软件可以让Linux系统接收及发送红外线信号。<br>注意事项：<br><strong>安装：</strong><br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-<span class="built_in">get</span> install lirc</span><br></pre></td></tr></table></figure></p>
+<p>修改以下几处：<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo leafpad /etc/lirc/hardware.<span class="keyword">conf</span></span><br><span class="line">LIRCD_ATGS=<span class="string">""</span></span><br><span class="line">DRIVER=<span class="string">"default"</span></span><br><span class="line">DEVICE=<span class="string">"/dev/lirc0"</span></span><br><span class="line">MODULES=<span class="comment">"lirc-rpi</span></span><br></pre></td></tr></table></figure></p>
+<p>终端执行<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo leafpad /etc/modules</span><br></pre></td></tr></table></figure></p>
+<p>添加下面两行到模块配置文件：<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">lirc-dev</span><br><span class="line"><span class="comment">#红外接收模块的OUT接口接到了树莓派的GPIO18</span></span><br><span class="line"><span class="comment">#因为本例中未用到红外发射模块，所以后面的gpio_out_pin可以不写</span></span><br><span class="line">lirc-rpi gpio_in_pin=<span class="number">18</span> gpio_out_pin=<span class="number">17</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>如测试时报错-ERROR: could not insert ‘lirc_rpi’: No&amp;nbs</strong><br>解决办法：<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="keyword">vi</span> /boot/config.txt</span><br></pre></td></tr></table></figure></p>
+<p>找到：<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#dtoverlay=lirc-rpi</span><br></pre></td></tr></table></figure></p>
+<p>把前面的“#”号去掉， 然后重启系统即可</p>
+<p><strong>测试红外线接收功能</strong><br>首先关闭lirc软件，然后执行如下命令：<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo /etc/init.d/lirc <span class="keyword">stop</span></span><br><span class="line">mode2 -d /dev/lirc0</span><br></pre></td></tr></table></figure></p>
+<p>这时候提示<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">no</span> such <span class="keyword">file</span> <span class="built_in">or</span> directory</span><br></pre></td></tr></table></figure></p>
+<p>经过查看发现 /dev 下面没有 lirc0 这个module，发现在/boot/config.txt里面dtoverlay=lirc-rpi<br>取消注释，然后reboot，问题解决。</p>
+<p>再次执行<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mode2 -d /dev/lirc0</span><br></pre></td></tr></table></figure></p>
+<p>如果弹出<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Partial <span class="keyword">read</span> <span class="number">8</span> bytes <span class="keyword">on</span> /dev/lirc0pi@raspberrypi:~ $</span><br></pre></td></tr></table></figure></p>
+<p>发生错误，解决方案：<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">changed the following two lines in </span><br><span class="line">	/etc/lirc/lirc_options.<span class="keyword">conf</span></span><br><span class="line">driver = default</span><br></pre></td></tr></table></figure></p>
+<p>（尝试过程中第一次仍然无效，但是第二次重装系统后正常，目前未知原理）<br>如果显示下面内容<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">pulse <span class="number">629</span></span><br><span class="line">space <span class="number">518</span></span><br><span class="line">pulse <span class="number">627</span></span><br><span class="line">space <span class="number">523</span></span><br><span class="line">pulse <span class="number">628</span></span><br><span class="line">space <span class="number">523</span></span><br><span class="line">pulse <span class="number">631</span></span><br><span class="line">space <span class="number">517</span></span><br><span class="line">pulse <span class="number">629</span></span><br></pre></td></tr></table></figure></p>
+<p>则说明接收正常.</p>
+<p>#协议<br>采用脉宽调制的串行码，以脉宽为0.565ms、间隔0.56ms、周期为1.125ms的组合表示二进制的”0”；以脉宽为0.565ms、间隔1.685ms、周期为2.25ms的组合表示二进制的”1 <img src="https://s2.ax1x.com/2019/03/02/kbybg1.png" alt=" "><br>协议：<br>上述“0”和“1”组成的32位二进制码经38kHz的载频进行二次调制以提高发射效率，达到降低电源功耗的目的。然后再通过红外发射二极管产生红外线向空间发射，如下图。<br> <img src="https://s2.ax1x.com/2019/03/02/kbyOu6.png" alt="在这里插入图片描述"><br>|    引导码    |  用户识别码   |用户识别码反码 |   操作码    |  操作码反码   |<br>一个命令只发送一次，即使遥控器上的按键一直按着。但是会每110mS发送一次代码，直到遥控器按键释放。</p>
+<p>重复码比较简单：一个9mS的AGC脉冲、2.25mS间隔、560uS脉冲。<br><img src="https://s2.ax1x.com/2019/03/02/kbyxED.png" alt="在这里插入图片描述"><br> <img src="https://s2.ax1x.com/2019/03/02/kb6PgI.png" alt></p>
+<h1 id="读取并校验接收、对应到的红外信号"><a href="#读取并校验接收、对应到的红外信号" class="headerlink" title="读取并校验接收、对应到的红外信号"></a>读取并校验接收、对应到的红外信号</h1><p><img src="https://s2.ax1x.com/2019/03/02/kb6C8A.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0xpdV85NTkxODU=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+
+  </div>
+  <footer class="article-footer">
+    
+  <div class="cc">
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/deed.z" target="_blank" title="Attribution-ShareAlike">
+      <img src="/images/cc/cc.png">
+      
+          <img src="/images/cc/by.png">
+        
+          <img src="/images/cc/sa.png">
+      
+      <span>
+        This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.
+      </span>
+    </a>
+  </div>
+
+
+    
+
+  </footer>
+</article>
+
+
+
+
+
+
+
+          <div class="main-footer">
+  
+    © 2019 Liu的代码作坊 - Powered by <a href="http://hexo.io" target="_blank">Hexo</a> - Theme <a href="https://github.com/denjones/hexo-theme-chan" target="_blank">Chan</a>
+  
+</div>
+
+      
+        </div>
+      
+    </div>
+  </div>
+  <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+
+  <link rel="stylesheet" href="/PhotoSwipe/photoswipe.css">
+  <link rel="stylesheet" href="/PhotoSwipe/default-skin/default-skin.css">
+
+  <!-- Root element of PhotoSwipe. Must have class pswp. -->
+  <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe.
+             It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+      <!-- Container that holds slides.
+                PhotoSwipe keeps only 3 of them in the DOM to save memory.
+                Don't modify these 3 pswp__item elements, data is added later on. -->
+      <div class="pswp__container">
+        <div class="pswp__item"></div>
+        <div class="pswp__item"></div>
+        <div class="pswp__item"></div>
+      </div>
+
+      <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+      <div class="pswp__ui pswp__ui--hidden">
+
+        <div class="pswp__top-bar">
+
+          <!--  Controls are self-explanatory. Order can be changed. -->
+
+          <div class="pswp__counter"></div>
+
+          <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+          <button class="pswp__button pswp__button--share" title="Share"></button>
+
+          <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+          <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+          <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+          <!-- element will get class pswp__preloader--active when preloader is running -->
+          <div class="pswp__preloader">
+            <div class="pswp__preloader__icn">
+              <div class="pswp__preloader__cut">
+                <div class="pswp__preloader__donut"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+          <div class="pswp__share-tooltip"></div>
+        </div>
+
+        <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+
+        <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+
+        <div class="pswp__caption">
+          <div class="pswp__caption__center"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/PhotoSwipe/photoswipe.js"></script>
+  <script src="/PhotoSwipe/photoswipe-ui-default.js"></script>
+
+
+<script src="/perfect-scrollbar/js/min/perfect-scrollbar.min.js"></script>
+<script src="/scripts/main.js"></script>
+
+</body>
+</html>

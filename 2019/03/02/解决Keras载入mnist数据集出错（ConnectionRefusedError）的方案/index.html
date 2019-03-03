@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+<title>
+  
+    解决Keras载入mnist数据集出错（ConnectionRefusedError）的方案
+  
+</title>
+
+<meta name="description" content="keras.datasets下载数据集时，由于文件是存储在亚马逊的服务器上，运行代码时常报如下错误：12345Downloading data from https://s3.amazonaws.com/img-datasets/mnist.npz---------------------------------------------------------------------------C">
+<meta name="keywords" content="机器学习,深度学习,Keras">
+<meta property="og:type" content="article">
+<meta property="og:title" content="解决Keras载入mnist数据集出错（ConnectionRefusedError）的方案">
+<meta property="og:url" content="http://yoursite.com/2019/03/02/解决Keras载入mnist数据集出错（ConnectionRefusedError）的方案/index.html">
+<meta property="og:site_name" content="Liu的代码作坊">
+<meta property="og:description" content="keras.datasets下载数据集时，由于文件是存储在亚马逊的服务器上，运行代码时常报如下错误：12345Downloading data from https://s3.amazonaws.com/img-datasets/mnist.npz---------------------------------------------------------------------------C">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-03-03T08:14:36.822Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="解决Keras载入mnist数据集出错（ConnectionRefusedError）的方案">
+<meta name="twitter:description" content="keras.datasets下载数据集时，由于文件是存储在亚马逊的服务器上，运行代码时常报如下错误：12345Downloading data from https://s3.amazonaws.com/img-datasets/mnist.npz---------------------------------------------------------------------------C">
+
+
+  <link rel="alternative" href="/atom.xml" title="Liu的代码作坊" type="application/atom+xml">
+
+
+
+  <link rel="icon" href="/favicon.png">
+
+
+<link rel="stylesheet" href="/perfect-scrollbar/css/perfect-scrollbar.min.css">
+<link rel="stylesheet" href="/styles/main.css">
+
+
+
+
+
+
+</head>
+<body class="monochrome">
+  <div class="mobile-header">
+  <button class="sidebar-toggle" type="button">
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+  </button>
+  <a class="title" href="/">Liu的代码作坊</a>
+</div>
+
+  <div class="main-container">
+    <div class="sidebar">
+  <div class="header">
+    <h1 class="title"><a href="/">Liu的代码作坊</a></h1>
+    
+      <p class="subtitle">
+        I shut my eyes in order to see.
+      </p>
+    
+    <div class="info">
+      <div class="content">
+        
+          <div class="description">身处寒夜，把握星光。</div>
+        
+        
+          <div class="author">Liu Guandi</div>
+        
+      </div>
+      
+        <div class="avatar">
+          
+            <a href="/about"><img src="https://secure.gravatar.com/avatar/005ff6b92a6b91a96cbec4b154fef45f.png"></a>
+          
+        </div>
+      
+    </div>
+  </div>
+  <div class="body">
+    
+      
+        <ul class="nav">
+          
+            
+              <li class="category-list-container">
+                <a href="javascript:;">Category</a>
+                <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/机器学习/">机器学习</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/树莓派/">树莓派</a><span class="category-list-count">8</span></li></ul>
+              </li>
+            
+          
+            
+              <li class="tag-list-container">
+                <a href="javascript:;">Tag</a>
+                <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Keras/">Keras</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/机器学习/">机器学习</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/树莓派/">树莓派</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/深度学习/">深度学习</a><span class="tag-list-count">1</span></li></ul>
+              </li>
+            
+          
+            
+              <li class="archive-list-container">
+                <a href="javascript:;">Archive</a>
+                <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/">2019</a><span class="archive-list-count">10</span></li></ul>
+              </li>
+            
+          
+        </ul>
+      
+        <ul class="nav">
+          
+            
+              <li>
+                <a href="/" title="Homepage">Homepage</a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="/archives" title="By Year">By Year</a>
+              </li>
+            
+          
+        </ul>
+      
+        <ul class="nav">
+          
+            
+              <li>
+                <a href="https://blog.csdn.net/Liu_959185" title="CSDN（已暂停更新）" target="_blank" rel="noopener">CSDN（已暂停更新）</a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="https://github.com/Liuguandi" title="Github" target="_blank" rel="noopener">Github</a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="/atom.xml" title="RSS">RSS</a>
+              </li>
+            
+          
+        </ul>
+      
+    
+  </div>
+</div>
+
+    <div class="main-content">
+      
+        <div style="max-width: 1000px">
+      
+          <article id="post-解决Keras载入mnist数据集出错（ConnectionRefusedError）的方案" class="article article-type-post">
+  
+    <h1 class="article-header">
+      解决Keras载入mnist数据集出错（ConnectionRefusedError）的方案
+    </h1>
+  
+  
+
+  <div class="article-info">
+    <span class="article-date">
+  2019-03-02
+</span>
+
+    
+	<span class="article-category tagcloud">
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/机器学习/">机器学习</a></li></ul>
+	</span>
+
+
+    
+	<span class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Keras/">Keras</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/机器学习/">机器学习</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/深度学习/">深度学习</a></li></ul>
+	</span>
+
+
+  </div>
+  <div class="article-entry">
+    <p>keras.datasets下载数据集时，由于文件是存储在亚马逊的服务器上，运行代码时常报如下错误：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Downloading data from https://s3.amazonaws.com/img-datasets/mnist.npz</span><br><span class="line">---------------------------------------------------------------------------</span><br><span class="line">ConnectionRefusedError                    Traceback (most recent call last)</span><br><span class="line">...</span><br><span class="line">Exception: URL fetch failure on https://s3.amazonaws.com/img-datasets/mnist.npz: None -- [Errno 111] Connection refused</span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<p><strong>原因</strong>：<br>1.服务器在国内下载不稳定<br>2.服务器不定时被墙，不用梯子没法下载。</p>
+<h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><p><strong>1.</strong> 找到本地keras目录下的mnist.py文件<br>通常在<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">...\Python\Python37\Lib\site-packages\keras\datasets</span><br></pre></td></tr></table></figure></p>
+<p><strong>2.</strong> 下载mnist.npz文件到本地<br><a href="https://pan.baidu.com/s/1C3c2Vn-_616GqeEn7hQQ2Q" target="_blank" rel="noopener">https://pan.baidu.com/s/1C3c2Vn-_616GqeEn7hQQ2Q</a><br>(如链接崩了可自行网上搜索)<br><strong>3.</strong> 修改mnist.py文件（修改内容为path变量）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&quot;&quot;&quot;MNIST handwritten digits dataset.</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">from __future__ import absolute_import</span><br><span class="line">from __future__ import division</span><br><span class="line">from __future__ import print_function</span><br><span class="line"></span><br><span class="line">from ..utils.data_utils import get_file</span><br><span class="line">import numpy as np</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def load_data(path=&apos;mnist.npz&apos;):</span><br><span class="line">    &quot;&quot;&quot;Loads the MNIST dataset.</span><br><span class="line"></span><br><span class="line">    # Arguments</span><br><span class="line">        path: path where to cache the dataset locally</span><br><span class="line">            (relative to ~/.keras/datasets).</span><br><span class="line"></span><br><span class="line">    # Returns</span><br><span class="line">        Tuple of Numpy arrays: `(x_train, y_train), (x_test, y_test)`.</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">#修改内容为path，改为下载的mnist.npz的本地路径。注意斜杠&quot;\&quot;与&quot;/&quot;</span><br><span class="line">    path = &apos;C:/Users/Angelo/AppData/Local/Programs/Python/Python37/Lib/site-packages/keras/datasets/mnist.npz&apos;</span><br><span class="line">    f = np.load(path)</span><br><span class="line">    x_train, y_train = f[&apos;x_train&apos;], f[&apos;y_train&apos;]</span><br><span class="line">    x_test, y_test = f[&apos;x_test&apos;], f[&apos;y_test&apos;]</span><br><span class="line">    f.close()</span><br><span class="line">    return (x_train, y_train), (x_test, y_test)</span><br></pre></td></tr></table></figure></p>
+<p>再次尝试即可<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">from keras.datasets import mnist</span><br><span class="line">(train_images, train_labels), (test_images, test_labels) = mnist.load_data()</span><br></pre></td></tr></table></figure></p>
+
+  </div>
+  <footer class="article-footer">
+    
+  <div class="cc">
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/deed.z" target="_blank" title="Attribution-ShareAlike">
+      <img src="/images/cc/cc.png">
+      
+          <img src="/images/cc/by.png">
+        
+          <img src="/images/cc/sa.png">
+      
+      <span>
+        This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.
+      </span>
+    </a>
+  </div>
+
+
+    
+
+  </footer>
+</article>
+
+
+
+
+
+
+
+          <div class="main-footer">
+  
+    © 2019 Liu的代码作坊 - Powered by <a href="http://hexo.io" target="_blank">Hexo</a> - Theme <a href="https://github.com/denjones/hexo-theme-chan" target="_blank">Chan</a>
+  
+</div>
+
+      
+        </div>
+      
+    </div>
+  </div>
+  <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+
+  <link rel="stylesheet" href="/PhotoSwipe/photoswipe.css">
+  <link rel="stylesheet" href="/PhotoSwipe/default-skin/default-skin.css">
+
+  <!-- Root element of PhotoSwipe. Must have class pswp. -->
+  <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe.
+             It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+      <!-- Container that holds slides.
+                PhotoSwipe keeps only 3 of them in the DOM to save memory.
+                Don't modify these 3 pswp__item elements, data is added later on. -->
+      <div class="pswp__container">
+        <div class="pswp__item"></div>
+        <div class="pswp__item"></div>
+        <div class="pswp__item"></div>
+      </div>
+
+      <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+      <div class="pswp__ui pswp__ui--hidden">
+
+        <div class="pswp__top-bar">
+
+          <!--  Controls are self-explanatory. Order can be changed. -->
+
+          <div class="pswp__counter"></div>
+
+          <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+          <button class="pswp__button pswp__button--share" title="Share"></button>
+
+          <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+          <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+          <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+          <!-- element will get class pswp__preloader--active when preloader is running -->
+          <div class="pswp__preloader">
+            <div class="pswp__preloader__icn">
+              <div class="pswp__preloader__cut">
+                <div class="pswp__preloader__donut"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+          <div class="pswp__share-tooltip"></div>
+        </div>
+
+        <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+
+        <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+
+        <div class="pswp__caption">
+          <div class="pswp__caption__center"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/PhotoSwipe/photoswipe.js"></script>
+  <script src="/PhotoSwipe/photoswipe-ui-default.js"></script>
+
+
+<script src="/perfect-scrollbar/js/min/perfect-scrollbar.min.js"></script>
+<script src="/scripts/main.js"></script>
+
+</body>
+</html>
