@@ -8,7 +8,7 @@
 
 <title>
   
-    Archive
+    彙整
   
 </title>
 
@@ -85,22 +85,22 @@
           
             
               <li class="category-list-container">
-                <a href="javascript:;">Category</a>
-                <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Ubuntu/">Ubuntu</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/机器学习/">机器学习</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/树莓派/">树莓派</a><span class="category-list-count">8</span></li></ul>
+                <a href="javascript:;">類別</a>
+                <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Ubuntu/">Ubuntu</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/机器学习/">机器学习</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/树莓派/">树莓派</a><span class="category-list-count">9</span></li></ul>
               </li>
             
           
             
               <li class="tag-list-container">
-                <a href="javascript:;">Tag</a>
-                <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Keras/">Keras</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu/">Ubuntu</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/机器学习/">机器学习</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/树莓派/">树莓派</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/深度学习/">深度学习</a><span class="tag-list-count">1</span></li></ul>
+                <a href="javascript:;">標籤</a>
+                <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Keras/">Keras</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu/">Ubuntu</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/机器学习/">机器学习</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/树莓派/">树莓派</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/深度学习/">深度学习</a><span class="tag-list-count">1</span></li></ul>
               </li>
             
           
             
               <li class="archive-list-container">
-                <a href="javascript:;">Archive</a>
-                <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/">2019</a><span class="archive-list-count">11</span></li></ul>
+                <a href="javascript:;">彙整</a>
+                <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/">2019</a><span class="archive-list-count">12</span></li></ul>
               </li>
             
           
@@ -169,6 +169,54 @@
 
     <div class="post-list-item article">
       <h3 class="article-header">
+        <a href="/2019/03/02/树莓派引脚介绍与GPIO的初步认识与应用/">
+  树莓派引脚介绍与GPIO的初步认识与应用
+</a>
+
+      </h3>
+      
+
+      <div class="article-info">
+        <a href="/2019/03/02/树莓派引脚介绍与GPIO的初步认识与应用/"><span class="article-date">
+  2019-03-02
+</span>
+</a>
+        
+	<span class="article-category tagcloud">
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/树莓派/">树莓派</a></li></ul>
+	</span>
+
+
+        
+	<span class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/树莓派/">树莓派</a></li></ul>
+	</span>
+
+
+      </div>
+      <div class="article-entry">
+        
+          <h1 id="一．认识GPIO"><a href="#一．认识GPIO" class="headerlink" title="一．认识GPIO"></a>一．认识GPIO</h1><p>所谓GPIO，就是“通用输入/输出”接口，树莓派系统中已经编译自带了GPIO的驱动。<img src="https://s2.ax1x.com/2019/03/02/kbyjHO.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0xpdV85NTkxODU=,size_16,color_FFFFFF,t_70" alt="树莓派的基本外观，最上面的引脚处左下角为1号引脚"></p>
+<p><strong>树莓派GPIO的编号方式：</strong><br><img src="https://s2.ax1x.com/2019/03/02/kbyqjx.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0xpdV85NTkxODU=,size_16,color_FFFFFF,t_70" alt><br><strong>1.    功能物理引脚（physical）：</strong><br>从左到右，从上到下。左边为奇数，右边为偶数。共计40个引脚，计数为1-40。<br><strong>2.    BCM：</strong><br>编号侧重于CPU寄存器，根据BCM2835的GPIO寄存器编号。具体编号参照上图中BCM一栏。<br><strong>3.wiringPi</strong><br>编号侧重实现逻辑，把GPIO端口从0开始编号，这种编号方便编程，参考上图wPi一栏。</p>
+<p>三种编号的方式均指代的对象相同，只是编码方式不同。<br></p>
+          <p>
+            <a href="/2019/03/02/树莓派引脚介绍与GPIO的初步认识与应用/">
+              閱讀全文
+            </a>
+          </p>
+        
+      </div>
+    </div>
+
+  
+
+  
+  
+    
+  
+
+    <div class="post-list-item article">
+      <h3 class="article-header">
         <a href="/2019/03/01/hello-world/">
   Hello World
 </a>
@@ -207,7 +255,7 @@
 
 
   <div class="pagination">
-    <a class="extend prev" rel="prev" href="/archives/">Prev</a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" href="/archives/">上一頁</a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span>
   </div>
 
 
