@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-04-20T11:50:17.290Z</updated>
+  <updated>2019-10-31T10:33:35.191Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>&#39;stm32开发板学习入门前知识&#39;</title>
+    <link href="http://yoursite.com/2019/10/31/stm32%E5%BC%80%E5%8F%91%E6%9D%BF%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8%E5%89%8D%E7%9F%A5%E8%AF%86/"/>
+    <id>http://yoursite.com/2019/10/31/stm32开发板学习入门前知识/</id>
+    <published>2019-10-31T10:33:10.000Z</published>
+    <updated>2019-10-31T10:33:35.191Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="hello-world"><a href="#hello-world" class="headerlink" title="hello world!"></a>hello world!</h1>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;hello-world&quot;&gt;&lt;a href=&quot;#hello-world&quot; class=&quot;headerlink&quot; title=&quot;hello world!&quot;&gt;&lt;/a&gt;hello world!&lt;/h1&gt;
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>树莓派有密码的网络联网失败的问题与解决</title>
