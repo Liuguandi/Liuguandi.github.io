@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-11-01T12:26:09.126Z</updated>
+  <updated>2019-11-01T12:27:55.272Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://yoursite.com/2019/11/01/STM32%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95/"/>
     <id>http://yoursite.com/2019/11/01/STM32学习方法/</id>
     <published>2019-11-01T11:29:20.000Z</published>
-    <updated>2019-11-01T12:26:09.126Z</updated>
+    <updated>2019-11-01T12:27:55.272Z</updated>
     
     <content type="html"><![CDATA[<h1 id="STM32学习方法"><a href="#STM32学习方法" class="headerlink" title="STM32学习方法"></a>STM32学习方法</h1><p>——————————学习方法<br>|<br>——— 1. 网络学习资源介绍<br>|<br>———————— 2.开发板要参考哪些资料？<br>|<br>——————————— 3.要掌握那些基本技能？<br><a id="more"></a></p><h2 id="网络资源推荐"><a href="#网络资源推荐" class="headerlink" title="网络资源推荐"></a>网络资源推荐</h2><ol><li><a href="http://www.openedv.com" target="_blank" rel="noopener">www.openedv.com</a> 开源电子网</li><li><a href="http://www.stmcu.org" target="_blank" rel="noopener">www.stmcu.org</a> ST中国官方技术网站，ST官方文档发布网站。</li></ol><h2 id="开发板参考哪些资料"><a href="#开发板参考哪些资料" class="headerlink" title="开发板参考哪些资料"></a>开发板参考哪些资料</h2><ul><li>最底层（了解）：CM3权威指南/CM4权威指南（ARM提供）</li><li>芯片参考手册（芯片功能寄存器描述特性等，详细）（了解）<br>STM32F10x中文参考手册/STM32F4xx中文参考手册（ST提供）</li><li>芯片数据手册（datasheet,ds）（了解）<br>STM32F103xCDE_DS_CH_V5.pdf （芯片电气参数，引脚说明等）</li><li>官方其他资源和教程（了解）<br>固件库包（含参考源码），一些官方培训PPT<br>ST官方资料下载地址 <a href="http://www.stmcu.org" target="_blank" rel="noopener">www.stmcu.org</a></li><li>特定开发板学习教程（手册，视频，源码）（理解）<br>针对开发板的源码，教程，视频等。</li></ul><h2 id="掌握哪些基本技能"><a href="#掌握哪些基本技能" class="headerlink" title="掌握哪些基本技能"></a>掌握哪些基本技能</h2><ul><li>熟练掌握 C</li><li>熟练掌握一种开发环境  <ul><li>掌握一种开发环境 MDK : Keil For ARM</li><li>掌握一个调试工具 : JTAG 必备<ul><li>多使用JTAG调试代码，深入理解代码执行流程。</li></ul></li><li>库函数和寄存器的对比学习<ul><li>项目中大多用库函数。</li><li>但是学习，如果只会看几个函数的话，根本没有学懂。必要了解一下寄存器配置原理，加深理解。</li><li>掌握库函数的基本配置方法。了解寄存器底层配置过程，以便深入了解STM32芯片本质。</li><li>了解寄存器配置，加深对STM32本质理解。</li></ul></li></ul></li><li>深入学习基本外设，选择性学习高级功能<ul><li>基本外设：<ul><li>GPIO输入输出，外部中断，定时器，串口。</li><li>深入了解这四个外设，基本入门一款MCU。</li></ul></li><li>基本外设接口：<ul><li>SPI,IIC,WDG,FSMC,ADC/DAC,SDIO等</li><li>这些外设接口功能原理对每个芯片几乎都是一样，对芯片而言就是加减法而已。</li></ul></li><li>高级功能<ul><li>-UCOS,FATFS,EMWIN等。以及一些应用。</li></ul></li></ul></li></ul>]]></content>
     
@@ -31,6 +31,29 @@
     
     </summary>
     
+    
+      <category term="stm32" scheme="http://yoursite.com/tags/stm32/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>stm32开发板学习入门前知识</title>
+    <link href="http://yoursite.com/2019/10/31/stm32%E5%BC%80%E5%8F%91%E6%9D%BF%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8%E5%89%8D%E7%9F%A5%E8%AF%86/"/>
+    <id>http://yoursite.com/2019/10/31/stm32开发板学习入门前知识/</id>
+    <published>2019-10-31T10:33:10.000Z</published>
+    <updated>2019-11-01T12:27:56.227Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="stm32开发板学习入门前知识"><a href="#stm32开发板学习入门前知识" class="headerlink" title="stm32开发板学习入门前知识"></a>stm32开发板学习入门前知识</h1><h2 id="5v设备接stm32的IO脚注意"><a href="#5v设备接stm32的IO脚注意" class="headerlink" title="5v设备接stm32的IO脚注意"></a>5v设备接stm32的IO脚注意</h2><p>stm32的IO口，绝大部分都是兼容5V的。<br>具体可以参考stm32芯片的数据手册。<br>里面的引脚描述表(pin definitions)有详细的标注。<br>凡是带FT标志的IO口，都兼容5V。</p><p><strong>技巧</strong>：从原理图上看，凡是有ADC字样的IO，都不兼容5V。反之，则都兼容5V。</p><a id="more"></a><h2 id="如何选择外设的IO口"><a href="#如何选择外设的IO口" class="headerlink" title="如何选择外设的IO口"></a>如何选择外设的IO口</h2><p>如（ADC/SPI/PWM等）</p><p>开发板的原理图基本都提供了详细的IO功能标注，每个IO口的复用功能，都基本会体现在原理图上（重映射除外）。<br>所以，可以根据原理图方便的找到某个外设所用的IO口。</p><p><em>重映射</em>：重映射部分仅对F103有效，F4无此设置。重映射关系可以查看数据手册的引脚描述表。也可查看参考手册的复用功能。</p><p>eg.<br>选用ADC输入的外设，需要在原理图上看到ADC标志。有标志才可以做。但是开发板外部还连了一些其他的外设，不一定有ADC的输入都合适，需要区分哪些可以，哪些不行。<br>做ADC输入一般要求可以完全浮空输入的效果。就要求IO口可以完全独立，可以不接外设，包括上下拉电阻。<br>PA0 : ADC123_IN0 : 表示芯片内部有1 2 3 三个ADC，三个ADC的通道0都映射到PA0上。也就是 1 2 3 三个ADC的通道0都可以在PA0上进行采集。<br>PA1 : ADC123_IN1 : 1 2 3 三个ADC的通道1都映射到PA1上。</p><p>*PWN:一般是原理图上带有TIMX_CHY  X在1~8 Y在1~4</p><p>复用功能选择寄存器AF 可以通过它选择使用PE9还是PA8做TIM1_CH1</p><p>重映射 查手册 remap可以映射输出</p><h2 id="有哪些空闲IO口"><a href="#有哪些空闲IO口" class="headerlink" title="有哪些空闲IO口"></a>有哪些空闲IO口</h2><p>需要根据IO口的特性选择。可能有两种情况。</p><ol><li>要完全独立的IO（即不能有任何外设连接的IO）<pre><code>eg.做ADC采集</code></pre></li><li>允许IO口挂其他外设，但是必须可以单独做输入\输出使用。<br>第二种情况，可以使用的IO会很多。如果只能用第一种情况，可供使用的IO，会少一些。<br>例 4X4的键盘 要用8个IO口 只要输入输出就可 不需要完全独立 即用第二种就可以。</li></ol><h1 id="使用注意事项"><a href="#使用注意事项" class="headerlink" title="使用注意事项"></a>使用注意事项</h1><ol><li><p>供电注意事项<br> i. DC005接口，供电范围是6~24V，不要违规供电（mini板没有）<br> ii.VOUT2(2X3排针) 可以做5V输出，也可以做5V输入。<br> iii.当开发板外接的负载较重（电流大时），请提供足够电源。<br> iiii.开发板不支持J-LINK等仿真供电，请不要尝试。<br> iiiii.正常供电后，蓝色电源指示灯，必须亮，才可以使用开发板。</p></li><li><p>例程测试注意事项<br> i. 选择正确例程<br> ii. 先读readme.txt<br> iii.例程都有教程(开发指南/不完全手册等)，根据教程测试。<br> iiii.例程测试时，请确保开发板B0,B1都接在GND。</p></li><li>IO使用注意事项<br> i. IO口一定不要接超过5V的电压<br> ii. 不要用IO口直接驱动感性负载（电机/电磁阀/继电器等）(断电时反电动势烧坏)<br> iii. 外界其他外设时，请先做好IO选型，选择合适的IO口。<br> iiii.注意防静电（尤其是冬天）</li></ol>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;stm32开发板学习入门前知识&quot;&gt;&lt;a href=&quot;#stm32开发板学习入门前知识&quot; class=&quot;headerlink&quot; title=&quot;stm32开发板学习入门前知识&quot;&gt;&lt;/a&gt;stm32开发板学习入门前知识&lt;/h1&gt;&lt;h2 id=&quot;5v设备接stm32的IO脚注意&quot;&gt;&lt;a href=&quot;#5v设备接stm32的IO脚注意&quot; class=&quot;headerlink&quot; title=&quot;5v设备接stm32的IO脚注意&quot;&gt;&lt;/a&gt;5v设备接stm32的IO脚注意&lt;/h2&gt;&lt;p&gt;stm32的IO口，绝大部分都是兼容5V的。&lt;br&gt;具体可以参考stm32芯片的数据手册。&lt;br&gt;里面的引脚描述表(pin definitions)有详细的标注。&lt;br&gt;凡是带FT标志的IO口，都兼容5V。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;技巧&lt;/strong&gt;：从原理图上看，凡是有ADC字样的IO，都不兼容5V。反之，则都兼容5V。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="stm32" scheme="http://yoursite.com/tags/stm32/"/>
     
   </entry>
   
