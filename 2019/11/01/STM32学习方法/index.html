@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+<title>
+  
+    STM32学习方法
+  
+</title>
+
+<meta name="description" content="STM32学习方法——————————学习方法|——— 1. 网络学习资源介绍|———————— 2.开发板要参考哪些资料？|——————————— 3.要掌握那些基本技能？">
+<meta name="keywords" content="技术">
+<meta property="og:type" content="article">
+<meta property="og:title" content="STM32学习方法">
+<meta property="og:url" content="http://yoursite.com/2019/11/01/STM32学习方法/index.html">
+<meta property="og:site_name" content="Liu的代码作坊">
+<meta property="og:description" content="STM32学习方法——————————学习方法|——— 1. 网络学习资源介绍|———————— 2.开发板要参考哪些资料？|——————————— 3.要掌握那些基本技能？">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-11-01T12:26:09.126Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="STM32学习方法">
+<meta name="twitter:description" content="STM32学习方法——————————学习方法|——— 1. 网络学习资源介绍|———————— 2.开发板要参考哪些资料？|——————————— 3.要掌握那些基本技能？">
+
+
+  <link rel="alternative" href="/atom.xml" title="Liu的代码作坊" type="application/atom+xml">
+
+
+
+  <link rel="icon" href="/favicon.png">
+
+
+<link rel="stylesheet" href="/perfect-scrollbar/css/perfect-scrollbar.min.css">
+<link rel="stylesheet" href="/styles/main.css">
+
+
+
+
+
+
+</head>
+<body class="monochrome">
+  <div class="mobile-header">
+  <button class="sidebar-toggle" type="button">
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+  </button>
+  <a class="title" href="/">Liu的代码作坊</a>
+</div>
+
+  <div class="main-container">
+    <div class="sidebar">
+  <div class="header">
+    <h1 class="title"><a href="/">Liu的代码作坊</a></h1>
+    
+      <p class="subtitle">
+        I shut my eyes in order to see.
+      </p>
+    
+    <div class="info">
+      <div class="content">
+        
+          <div class="description">身处寒夜，把握星光。</div>
+        
+        
+          <div class="author">Liu Guandi</div>
+        
+      </div>
+      
+        <div class="avatar">
+          
+            <a href="/about"><img src="https://secure.gravatar.com/avatar/005ff6b92a6b91a96cbec4b154fef45f.png"></a>
+          
+        </div>
+      
+    </div>
+  </div>
+  <div class="body">
+    
+      
+        <ul class="nav">
+          
+            
+              <li class="category-list-container">
+                <a href="javascript:;">Category</a>
+                <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Ubuntu/">Ubuntu</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/机器学习/">机器学习</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/树莓派/">树莓派</a><span class="category-list-count">9</span></li></ul>
+              </li>
+            
+          
+            
+              <li class="tag-list-container">
+                <a href="javascript:;">Tag</a>
+                <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Keras/">Keras</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu/">Ubuntu</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/机器学习/">机器学习</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/树莓派/">树莓派</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/深度学习/">深度学习</a><span class="tag-list-count">1</span></li></ul>
+              </li>
+            
+          
+            
+              <li class="archive-list-container">
+                <a href="javascript:;">Archive</a>
+                <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/">2019</a><span class="archive-list-count">13</span></li></ul>
+              </li>
+            
+          
+        </ul>
+      
+        <ul class="nav">
+          
+            
+              <li>
+                <a href="/" title="Homepage">Homepage</a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="/archives" title="By Year">By Year</a>
+              </li>
+            
+          
+        </ul>
+      
+        <ul class="nav">
+          
+            
+              <li>
+                <a href="https://blog.csdn.net/Liu_959185" title="CSDN（已暂停更新）" target="_blank" rel="noopener">CSDN（已暂停更新）</a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="https://github.com/Liuguandi" title="Github" target="_blank" rel="noopener">Github</a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="/atom.xml" title="RSS">RSS</a>
+              </li>
+            
+          
+        </ul>
+      
+    
+  </div>
+</div>
+
+    <div class="main-content">
+      
+        <div style="max-width: 1000px">
+      
+          <article id="post-STM32学习方法" class="article article-type-post">
+  
+    <h1 class="article-header">
+      STM32学习方法
+    </h1>
+  
+  
+
+  <div class="article-info">
+    <span class="article-date">
+  2019-11-01
+</span>
+
+    
+
+    
+
+  </div>
+  <div class="article-entry">
+    <h1 id="STM32学习方法"><a href="#STM32学习方法" class="headerlink" title="STM32学习方法"></a>STM32学习方法</h1><p>——————————学习方法<br>|<br>——— 1. 网络学习资源介绍<br>|<br>———————— 2.开发板要参考哪些资料？<br>|<br>——————————— 3.要掌握那些基本技能？<br><a id="more"></a></p>
+<h2 id="网络资源推荐"><a href="#网络资源推荐" class="headerlink" title="网络资源推荐"></a>网络资源推荐</h2><ol>
+<li><a href="http://www.openedv.com" target="_blank" rel="noopener">www.openedv.com</a> 开源电子网</li>
+<li><a href="http://www.stmcu.org" target="_blank" rel="noopener">www.stmcu.org</a> ST中国官方技术网站，ST官方文档发布网站。</li>
+</ol>
+<h2 id="开发板参考哪些资料"><a href="#开发板参考哪些资料" class="headerlink" title="开发板参考哪些资料"></a>开发板参考哪些资料</h2><ul>
+<li>最底层（了解）：CM3权威指南/CM4权威指南（ARM提供）</li>
+<li>芯片参考手册（芯片功能寄存器描述特性等，详细）（了解）<br>STM32F10x中文参考手册/STM32F4xx中文参考手册（ST提供）</li>
+<li>芯片数据手册（datasheet,ds）（了解）<br>STM32F103xCDE_DS_CH_V5.pdf （芯片电气参数，引脚说明等）</li>
+<li>官方其他资源和教程（了解）<br>固件库包（含参考源码），一些官方培训PPT<br>ST官方资料下载地址 <a href="http://www.stmcu.org" target="_blank" rel="noopener">www.stmcu.org</a></li>
+<li>特定开发板学习教程（手册，视频，源码）（理解）<br>针对开发板的源码，教程，视频等。</li>
+</ul>
+<h2 id="掌握哪些基本技能"><a href="#掌握哪些基本技能" class="headerlink" title="掌握哪些基本技能"></a>掌握哪些基本技能</h2><ul>
+<li>熟练掌握 C</li>
+<li>熟练掌握一种开发环境  <ul>
+<li>掌握一种开发环境 MDK : Keil For ARM</li>
+<li>掌握一个调试工具 : JTAG 必备<ul>
+<li>多使用JTAG调试代码，深入理解代码执行流程。</li>
+</ul>
+</li>
+<li>库函数和寄存器的对比学习<ul>
+<li>项目中大多用库函数。</li>
+<li>但是学习，如果只会看几个函数的话，根本没有学懂。必要了解一下寄存器配置原理，加深理解。</li>
+<li>掌握库函数的基本配置方法。了解寄存器底层配置过程，以便深入了解STM32芯片本质。</li>
+<li>了解寄存器配置，加深对STM32本质理解。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>深入学习基本外设，选择性学习高级功能<ul>
+<li>基本外设：<ul>
+<li>GPIO输入输出，外部中断，定时器，串口。</li>
+<li>深入了解这四个外设，基本入门一款MCU。</li>
+</ul>
+</li>
+<li>基本外设接口：<ul>
+<li>SPI,IIC,WDG,FSMC,ADC/DAC,SDIO等</li>
+<li>这些外设接口功能原理对每个芯片几乎都是一样，对芯片而言就是加减法而已。</li>
+</ul>
+</li>
+<li>高级功能<ul>
+<li>-UCOS,FATFS,EMWIN等。以及一些应用。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <footer class="article-footer">
+    
+  <div class="cc">
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/deed.z" target="_blank" title="Attribution-ShareAlike">
+      <img src="/images/cc/cc.png">
+      
+          <img src="/images/cc/by.png">
+        
+          <img src="/images/cc/sa.png">
+      
+      <span>
+        This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.
+      </span>
+    </a>
+  </div>
+
+
+    
+
+  </footer>
+</article>
+
+
+
+
+
+
+
+          <div class="main-footer">
+  
+    © 2019 Liu的代码作坊 - Powered by <a href="http://hexo.io" target="_blank">Hexo</a> - Theme <a href="https://github.com/denjones/hexo-theme-chan" target="_blank">Chan</a>
+  
+</div>
+
+      
+        </div>
+      
+    </div>
+  </div>
+  <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+
+  <link rel="stylesheet" href="/PhotoSwipe/photoswipe.css">
+  <link rel="stylesheet" href="/PhotoSwipe/default-skin/default-skin.css">
+
+  <!-- Root element of PhotoSwipe. Must have class pswp. -->
+  <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe.
+             It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+      <!-- Container that holds slides.
+                PhotoSwipe keeps only 3 of them in the DOM to save memory.
+                Don't modify these 3 pswp__item elements, data is added later on. -->
+      <div class="pswp__container">
+        <div class="pswp__item"></div>
+        <div class="pswp__item"></div>
+        <div class="pswp__item"></div>
+      </div>
+
+      <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+      <div class="pswp__ui pswp__ui--hidden">
+
+        <div class="pswp__top-bar">
+
+          <!--  Controls are self-explanatory. Order can be changed. -->
+
+          <div class="pswp__counter"></div>
+
+          <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+          <button class="pswp__button pswp__button--share" title="Share"></button>
+
+          <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+          <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+          <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+          <!-- element will get class pswp__preloader--active when preloader is running -->
+          <div class="pswp__preloader">
+            <div class="pswp__preloader__icn">
+              <div class="pswp__preloader__cut">
+                <div class="pswp__preloader__donut"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+          <div class="pswp__share-tooltip"></div>
+        </div>
+
+        <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+
+        <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+
+        <div class="pswp__caption">
+          <div class="pswp__caption__center"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/PhotoSwipe/photoswipe.js"></script>
+  <script src="/PhotoSwipe/photoswipe-ui-default.js"></script>
+
+
+<script src="/perfect-scrollbar/js/min/perfect-scrollbar.min.js"></script>
+<script src="/scripts/main.js"></script>
+
+</body>
+</html>

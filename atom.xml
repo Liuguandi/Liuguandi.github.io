@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-10-31T10:33:35.191Z</updated>
+  <updated>2019-11-01T12:26:09.126Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,20 +17,17 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>&#39;stm32开发板学习入门前知识&#39;</title>
-    <link href="http://yoursite.com/2019/10/31/stm32%E5%BC%80%E5%8F%91%E6%9D%BF%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8%E5%89%8D%E7%9F%A5%E8%AF%86/"/>
-    <id>http://yoursite.com/2019/10/31/stm32开发板学习入门前知识/</id>
-    <published>2019-10-31T10:33:10.000Z</published>
-    <updated>2019-10-31T10:33:35.191Z</updated>
+    <title>STM32学习方法</title>
+    <link href="http://yoursite.com/2019/11/01/STM32%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95/"/>
+    <id>http://yoursite.com/2019/11/01/STM32学习方法/</id>
+    <published>2019-11-01T11:29:20.000Z</published>
+    <updated>2019-11-01T12:26:09.126Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="hello-world"><a href="#hello-world" class="headerlink" title="hello world!"></a>hello world!</h1>]]></content>
+    <content type="html"><![CDATA[<h1 id="STM32学习方法"><a href="#STM32学习方法" class="headerlink" title="STM32学习方法"></a>STM32学习方法</h1><p>——————————学习方法<br>|<br>——— 1. 网络学习资源介绍<br>|<br>———————— 2.开发板要参考哪些资料？<br>|<br>——————————— 3.要掌握那些基本技能？<br><a id="more"></a></p><h2 id="网络资源推荐"><a href="#网络资源推荐" class="headerlink" title="网络资源推荐"></a>网络资源推荐</h2><ol><li><a href="http://www.openedv.com" target="_blank" rel="noopener">www.openedv.com</a> 开源电子网</li><li><a href="http://www.stmcu.org" target="_blank" rel="noopener">www.stmcu.org</a> ST中国官方技术网站，ST官方文档发布网站。</li></ol><h2 id="开发板参考哪些资料"><a href="#开发板参考哪些资料" class="headerlink" title="开发板参考哪些资料"></a>开发板参考哪些资料</h2><ul><li>最底层（了解）：CM3权威指南/CM4权威指南（ARM提供）</li><li>芯片参考手册（芯片功能寄存器描述特性等，详细）（了解）<br>STM32F10x中文参考手册/STM32F4xx中文参考手册（ST提供）</li><li>芯片数据手册（datasheet,ds）（了解）<br>STM32F103xCDE_DS_CH_V5.pdf （芯片电气参数，引脚说明等）</li><li>官方其他资源和教程（了解）<br>固件库包（含参考源码），一些官方培训PPT<br>ST官方资料下载地址 <a href="http://www.stmcu.org" target="_blank" rel="noopener">www.stmcu.org</a></li><li>特定开发板学习教程（手册，视频，源码）（理解）<br>针对开发板的源码，教程，视频等。</li></ul><h2 id="掌握哪些基本技能"><a href="#掌握哪些基本技能" class="headerlink" title="掌握哪些基本技能"></a>掌握哪些基本技能</h2><ul><li>熟练掌握 C</li><li>熟练掌握一种开发环境  <ul><li>掌握一种开发环境 MDK : Keil For ARM</li><li>掌握一个调试工具 : JTAG 必备<ul><li>多使用JTAG调试代码，深入理解代码执行流程。</li></ul></li><li>库函数和寄存器的对比学习<ul><li>项目中大多用库函数。</li><li>但是学习，如果只会看几个函数的话，根本没有学懂。必要了解一下寄存器配置原理，加深理解。</li><li>掌握库函数的基本配置方法。了解寄存器底层配置过程，以便深入了解STM32芯片本质。</li><li>了解寄存器配置，加深对STM32本质理解。</li></ul></li></ul></li><li>深入学习基本外设，选择性学习高级功能<ul><li>基本外设：<ul><li>GPIO输入输出，外部中断，定时器，串口。</li><li>深入了解这四个外设，基本入门一款MCU。</li></ul></li><li>基本外设接口：<ul><li>SPI,IIC,WDG,FSMC,ADC/DAC,SDIO等</li><li>这些外设接口功能原理对每个芯片几乎都是一样，对芯片而言就是加减法而已。</li></ul></li><li>高级功能<ul><li>-UCOS,FATFS,EMWIN等。以及一些应用。</li></ul></li></ul></li></ul>]]></content>
     
     <summary type="html">
     
-      
-      
-        &lt;h1 id=&quot;hello-world&quot;&gt;&lt;a href=&quot;#hello-world&quot; class=&quot;headerlink&quot; title=&quot;hello world!&quot;&gt;&lt;/a&gt;hello world!&lt;/h1&gt;
-      
+      &lt;h1 id=&quot;STM32学习方法&quot;&gt;&lt;a href=&quot;#STM32学习方法&quot; class=&quot;headerlink&quot; title=&quot;STM32学习方法&quot;&gt;&lt;/a&gt;STM32学习方法&lt;/h1&gt;&lt;p&gt;——————————学习方法&lt;br&gt;|&lt;br&gt;——— 1. 网络学习资源介绍&lt;br&gt;|&lt;br&gt;———————— 2.开发板要参考哪些资料？&lt;br&gt;|&lt;br&gt;——————————— 3.要掌握那些基本技能？&lt;br&gt;&lt;/p&gt;
     
     </summary>
     
