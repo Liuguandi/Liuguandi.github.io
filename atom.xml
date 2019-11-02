@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-11-01T12:27:55.272Z</updated>
+  <updated>2019-11-02T12:46:26.774Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,43 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>stm32初探</title>
+    <link href="http://yoursite.com/2019/11/02/stm32%E5%88%9D%E6%8E%A2/"/>
+    <id>http://yoursite.com/2019/11/02/stm32初探/</id>
+    <published>2019-11-02T09:19:28.000Z</published>
+    <updated>2019-11-02T12:46:26.774Z</updated>
+    
+    <content type="html"><![CDATA[<ul><li>为什么选择STM32<ul><li>什么是STM32</li><li>Cortex内核</li><li>STM32 VS ARM7</li></ul></li><li>STM32概述<ul><li>CM3芯片结构</li><li>STM32F10x的2个产品线介绍</li><li>STM32F10x各芯片之间的关联</li><li>STM32命名规则</li></ul></li><li>总结<ul><li>STM32应用场景</li><li>STM32优势总结</li></ul></li></ul><a id="more"></a><h1 id="1-为什么选择STM32"><a href="#1-为什么选择STM32" class="headerlink" title="1. 为什么选择STM32"></a>1. 为什么选择STM32</h1><h2 id="1-1-什么是STM32"><a href="#1-1-什么是STM32" class="headerlink" title="1.1 什么是STM32"></a>1.1 什么是STM32</h2><ul><li>是新的基于<strong>ARM内核</strong>的<strong>32位</strong>的MCU系列<br>内核为ARM公司为要求高性能、低成本、低功耗的嵌入式应用专门设计的Cortex-M的内核</li><li>超前的体系结构<ul><li>高性能</li><li>低电压</li><li>低功耗</li><li>创新的内核以及外设</li></ul></li><li>简单易用、自由、低风险</li></ul><h2 id="1-2-Cortex内核"><a href="#1-2-Cortex内核" class="headerlink" title="1.2 Cortex内核"></a>1.2 Cortex内核</h2><p>Coretex-M3系列属于ARMv7架构</p><p>ARMv7架构定义了三大分工明确的系列：<br>A系列：面向尖端的虚拟内存操作系统和用户应用 （eg. android）<br>R系列：针对实时系统<br>M系列：对微控制器</p><p>STM32F1属于Cortex-M系列中的Cortex-M3内核，采用ARMv7-M架构。STM32F4采用ARMv7-ME架构。Cortex-A5/A8采用ARMv7-A架构。<br>传统的ARM7系列采用的是ARMv4T架构。</p><p>STM32也属于ARM，但是是新架构。</p><h2 id="1-3-CM3内核优点"><a href="#1-3-CM3内核优点" class="headerlink" title="1.3 CM3内核优点"></a>1.3 CM3内核优点</h2><ol><li>高性能Cortex-M内核</li></ol><ul><li>采用ARM公司流行的标准内核Cortex-M3</li><li>地动态功耗上实现的高性能</li></ul><ol start="2"><li>最佳的代码密度</li></ol><ul><li>Thumb-2指令集以16位指令的密度实现32位指令性能（与ARM7TDMI的ARM模式比减少了30%-45%的代码量）</li></ul><ol start="3"><li>可预见的运行时间</li></ol><ul><li>中断控制器嵌再内核值中，中断之间的间隔最少可达6个CPU周期。</li><li>从低功耗模式唤醒只需要6个CPU周期。</li></ul><ol start="4"><li>改进的调试功能</li></ol><ul><li>串行单步调试和JTAG调试</li></ul><h1 id="2-STM32概述"><a href="#2-STM32概述" class="headerlink" title="2.STM32概述"></a>2.STM32概述</h1><h2 id="2-1-CM3芯片结构"><a href="#2-1-CM3芯片结构" class="headerlink" title="2.1 CM3芯片结构"></a>2.1 CM3芯片结构</h2><p>Cortex-M3内核、调试系统：ARM设计<br>内部总线、外设、存储器、时钟和复位、I/O：由芯片制造商设计开发。</p><h2 id="2-2-STM32F103系列"><a href="#2-2-STM32F103系列" class="headerlink" title="2.2 STM32F103系列"></a>2.2 STM32F103系列</h2><ul><li>2V-3.6V供电电压</li><li>5V I//Os电压容限</li><li>出色的时钟安全模式</li><li>带有唤醒功能的低功耗模式</li><li>内部RC</li><li>嵌入的RESET</li><li>-40~+85℃（工业级）</li></ul><p>一般区分芯片方式：闪存容量和引脚数目</p><h2 id="2-3-STM32F1各芯片关联"><a href="#2-3-STM32F1各芯片关联" class="headerlink" title="2.3 STM32F1各芯片关联"></a>2.3 STM32F1各芯片关联</h2><p>强大的固件库支持 -&gt; 各系列产品全面兼容<br>优点</p><ul><li>可升级的体系结构</li><li>使用所有应用</li><li>给用户相同的“外观和感受”</li><li>统一的软件和开发投入</li></ul><h2 id="2-4-STM32命名规则"><a href="#2-4-STM32命名规则" class="headerlink" title="2.4 STM32命名规则"></a>2.4 STM32命名规则</h2><p>实例： STMF103C8T6<br>STM32 F 103 C 8 T 6</p><ul><li>STM32 : 产品系列。 <ul><li>STM32 = 基于ARM的32位微控制器</li></ul></li><li>F : 产品类型。 <ul><li>F = 通用类型</li></ul></li><li>103 : 产品子系列。 <ul><li>101 = 基本型；</li><li>102 = USB基本型，USB 2.0全速设备；</li><li>103 = 增强型；</li><li>105或107 = 互联型</li></ul></li><li>C : 引脚数目。 <ul><li>T = 36脚；</li><li>C = 48脚；</li><li>R = 64脚；</li><li>V = 100脚；</li><li>Z = 144脚</li></ul></li><li>8 : 闪存存储器容量<ul><li>4 = 16K字节的闪存存储器；</li><li>6 = 32K字节的闪存存储器；</li><li>8 = 64K字节的闪存存储器；</li><li>B = 128K字节的闪存存储器；</li><li>C = 256K字节的闪存存储器；</li><li>D = 384K字节的闪存存储器；</li><li>E = 512K字节的闪存存储器</li></ul></li><li>T : 封装<ul><li>H = BGA</li><li>T = LQFP</li><li>U = VFQFPN</li><li>Y = WLCSP64</li></ul></li><li>6 : 温度范围<ul><li>6 = 工业级温度范围 -40~85℃</li><li>7 = 工业级温度范围 -40~105℃</li></ul></li></ul><h1 id="3-总结"><a href="#3-总结" class="headerlink" title="3.总结"></a>3.总结</h1><h2 id="STM32应用场景"><a href="#STM32应用场景" class="headerlink" title="STM32应用场景"></a>STM32应用场景</h2><ul><li>销售节点机</li><li>USB设备</li><li>工业自动化</li><li>建筑安防、消防</li><li>低功耗</li><li>家电</li><li>…<br>本质就是高性能控制器</li></ul><h2 id="STM32最具竞争力的优势"><a href="#STM32最具竞争力的优势" class="headerlink" title="STM32最具竞争力的优势"></a>STM32最具竞争力的优势</h2><ul><li>极高的性能：主流Cortex内核</li><li>丰富合理外设、合理功耗和价格</li><li>强大软件支持：丰富的软件包</li><li>丰富的技术文档</li><li>芯片型号种类多，覆盖面广</li><li>强大用户基础</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;ul&gt;
+&lt;li&gt;为什么选择STM32&lt;ul&gt;
+&lt;li&gt;什么是STM32&lt;/li&gt;
+&lt;li&gt;Cortex内核&lt;/li&gt;
+&lt;li&gt;STM32 VS ARM7&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;STM32概述&lt;ul&gt;
+&lt;li&gt;CM3芯片结构&lt;/li&gt;
+&lt;li&gt;STM32F10x的2个产品线介绍&lt;/li&gt;
+&lt;li&gt;STM32F10x各芯片之间的关联&lt;/li&gt;
+&lt;li&gt;STM32命名规则&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;总结&lt;ul&gt;
+&lt;li&gt;STM32应用场景&lt;/li&gt;
+&lt;li&gt;STM32优势总结&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>STM32学习方法</title>
@@ -250,7 +287,7 @@
     <link href="http://yoursite.com/2019/03/02/%E4%BD%BF%E7%94%A8lirc%E7%BA%A2%E5%A4%96%E6%8E%A7%E5%88%B6%E6%A0%91%E8%8E%93%E6%B4%BE/"/>
     <id>http://yoursite.com/2019/03/02/使用lirc红外控制树莓派/</id>
     <published>2019-03-02T01:20:33.000Z</published>
-    <updated>2019-03-05T03:30:31.812Z</updated>
+    <updated>2019-11-01T12:27:57.218Z</updated>
     
     <content type="html"><![CDATA[<h1 id="认识红外传感器"><a href="#认识红外传感器" class="headerlink" title="认识红外传感器"></a>认识红外传感器</h1><p><img src="https://s2.ax1x.com/2019/03/02/kbyzUe.png" alt="红外传感器"><br>红外传感器<br>引脚从上到下分别为<br>IO GND VCC<br><a id="more"></a></p><h1 id="lirc的安装与使用"><a href="#lirc的安装与使用" class="headerlink" title="lirc的安装与使用"></a>lirc的安装与使用</h1><p>使用红外，首先需要安装树莓派的lirc模块<br>LIRC (Linux Infrared remote control)是一个linux系统下开源的软件包。这个软件可以让Linux系统接收及发送红外线信号。<br>注意事项：<br><strong>安装：</strong><br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-<span class="built_in">get</span> install lirc</span><br></pre></td></tr></table></figure></p><p>修改以下几处：<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo leafpad /etc/lirc/hardware.<span class="keyword">conf</span></span><br><span class="line">LIRCD_ATGS=<span class="string">""</span></span><br><span class="line">DRIVER=<span class="string">"default"</span></span><br><span class="line">DEVICE=<span class="string">"/dev/lirc0"</span></span><br><span class="line">MODULES=<span class="comment">"lirc-rpi</span></span><br></pre></td></tr></table></figure></p><p>终端执行<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo leafpad /etc/modules</span><br></pre></td></tr></table></figure></p><p>添加下面两行到模块配置文件：<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">lirc-dev</span><br><span class="line"><span class="comment">#红外接收模块的OUT接口接到了树莓派的GPIO18</span></span><br><span class="line"><span class="comment">#因为本例中未用到红外发射模块，所以后面的gpio_out_pin可以不写</span></span><br><span class="line">lirc-rpi gpio_in_pin=<span class="number">18</span> gpio_out_pin=<span class="number">17</span></span><br></pre></td></tr></table></figure></p><p><strong>如测试时报错-ERROR: could not insert ‘lirc_rpi’: No&amp;nbs</strong><br>解决办法：<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="keyword">vi</span> /boot/config.txt</span><br></pre></td></tr></table></figure></p><p>找到：<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#dtoverlay=lirc-rpi</span><br></pre></td></tr></table></figure></p><p>把前面的“#”号去掉， 然后重启系统即可</p><p><strong>测试红外线接收功能</strong><br>首先关闭lirc软件，然后执行如下命令：<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo /etc/init.d/lirc <span class="keyword">stop</span></span><br><span class="line">mode2 -d /dev/lirc0</span><br></pre></td></tr></table></figure></p><p>这时候提示<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">no</span> such <span class="keyword">file</span> <span class="built_in">or</span> directory</span><br></pre></td></tr></table></figure></p><p>经过查看发现 /dev 下面没有 lirc0 这个module，发现在/boot/config.txt里面dtoverlay=lirc-rpi<br>取消注释，然后reboot，问题解决。</p><p>再次执行<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mode2 -d /dev/lirc0</span><br></pre></td></tr></table></figure></p><p>如果弹出<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Partial <span class="keyword">read</span> <span class="number">8</span> bytes <span class="keyword">on</span> /dev/lirc0pi@raspberrypi:~ $</span><br></pre></td></tr></table></figure></p><p>发生错误，解决方案：<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">changed the following two lines in </span><br><span class="line">/etc/lirc/lirc_options.<span class="keyword">conf</span></span><br><span class="line">driver = default</span><br></pre></td></tr></table></figure></p><p>（尝试过程中第一次仍然无效，但是第二次重装系统后正常，目前未知原理）<br>如果显示下面内容<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">pulse <span class="number">629</span></span><br><span class="line">space <span class="number">518</span></span><br><span class="line">pulse <span class="number">627</span></span><br><span class="line">space <span class="number">523</span></span><br><span class="line">pulse <span class="number">628</span></span><br><span class="line">space <span class="number">523</span></span><br><span class="line">pulse <span class="number">631</span></span><br><span class="line">space <span class="number">517</span></span><br><span class="line">pulse <span class="number">629</span></span><br></pre></td></tr></table></figure></p><p>则说明接收正常.</p><p>#协议<br>采用脉宽调制的串行码，以脉宽为0.565ms、间隔0.56ms、周期为1.125ms的组合表示二进制的”0”；以脉宽为0.565ms、间隔1.685ms、周期为2.25ms的组合表示二进制的”1 <img src="https://s2.ax1x.com/2019/03/02/kbybg1.png" alt=" "><br>协议：<br>上述“0”和“1”组成的32位二进制码经38kHz的载频进行二次调制以提高发射效率，达到降低电源功耗的目的。然后再通过红外发射二极管产生红外线向空间发射，如下图。<br> <img src="https://s2.ax1x.com/2019/03/02/kbyOu6.png" alt="在这里插入图片描述"><br>|    引导码    |  用户识别码   |用户识别码反码 |   操作码    |  操作码反码   |<br>一个命令只发送一次，即使遥控器上的按键一直按着。但是会每110mS发送一次代码，直到遥控器按键释放。</p><p>重复码比较简单：一个9mS的AGC脉冲、2.25mS间隔、560uS脉冲。<br><img src="https://s2.ax1x.com/2019/03/02/kbyxED.png" alt="在这里插入图片描述"><br> <img src="https://s2.ax1x.com/2019/03/02/kb6PgI.png" alt></p><h1 id="读取并校验接收、对应到的红外信号"><a href="#读取并校验接收、对应到的红外信号" class="headerlink" title="读取并校验接收、对应到的红外信号"></a>读取并校验接收、对应到的红外信号</h1><p><img src="https://s2.ax1x.com/2019/03/02/kb6C8A.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0xpdV85NTkxODU=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>]]></content>
     

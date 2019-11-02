@@ -8,21 +8,22 @@
 
 <title>
   
-    Category: Ubuntu
+    stm32初探
   
 </title>
 
-<meta name="description" content="身处寒夜，把握星光。">
+<meta name="description" content="为什么选择STM32 什么是STM32 Cortex内核 STM32 VS ARM7   STM32概述 CM3芯片结构 STM32F10x的2个产品线介绍 STM32F10x各芯片之间的关联 STM32命名规则   总结 STM32应用场景 STM32优势总结">
 <meta name="keywords" content="技术">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Liu的代码作坊">
-<meta property="og:url" content="http://yoursite.com/categories/Ubuntu/index.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="stm32初探">
+<meta property="og:url" content="http://yoursite.com/2019/11/02/stm32初探/index.html">
 <meta property="og:site_name" content="Liu的代码作坊">
-<meta property="og:description" content="身处寒夜，把握星光。">
+<meta property="og:description" content="为什么选择STM32 什么是STM32 Cortex内核 STM32 VS ARM7   STM32概述 CM3芯片结构 STM32F10x的2个产品线介绍 STM32F10x各芯片之间的关联 STM32命名规则   总结 STM32应用场景 STM32优势总结">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-11-02T12:46:26.774Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Liu的代码作坊">
-<meta name="twitter:description" content="身处寒夜，把握星光。">
+<meta name="twitter:title" content="stm32初探">
+<meta name="twitter:description" content="为什么选择STM32 什么是STM32 Cortex内核 STM32 VS ARM7   STM32概述 CM3芯片结构 STM32F10x的2个产品线介绍 STM32F10x各芯片之间的关联 STM32命名规则   总结 STM32应用场景 STM32优势总结">
 
 
   <link rel="alternative" href="/atom.xml" title="Liu的代码作坊" type="application/atom+xml">
@@ -152,56 +153,194 @@
       
         <div style="max-width: 1000px">
       
-          <h1>Ubuntu</h1>
-
-
+          <article id="post-stm32初探" class="article article-type-post">
+  
+    <h1 class="article-header">
+      stm32初探
+    </h1>
   
   
-    <div class="post-list">
-  
 
-    <div class="post-list-item article">
-      <h3 class="article-header">
-        <a href="/2019/03/05/通过Xrdp实现Windows远程访问Ubuntu-16-04/">
-  通过Xrdp实现Windows远程访问Ubuntu 16.04
-</a>
-
-      </h3>
-      
-
-      <div class="article-info">
-        <a href="/2019/03/05/通过Xrdp实现Windows远程访问Ubuntu-16-04/"><span class="article-date">
-  2019-03-05
+  <div class="article-info">
+    <span class="article-date">
+  2019-11-02
 </span>
-</a>
+
+    
+
+    
+
+  </div>
+  <div class="article-entry">
+    <ul>
+<li>为什么选择STM32<ul>
+<li>什么是STM32</li>
+<li>Cortex内核</li>
+<li>STM32 VS ARM7</li>
+</ul>
+</li>
+<li>STM32概述<ul>
+<li>CM3芯片结构</li>
+<li>STM32F10x的2个产品线介绍</li>
+<li>STM32F10x各芯片之间的关联</li>
+<li>STM32命名规则</li>
+</ul>
+</li>
+<li>总结<ul>
+<li>STM32应用场景</li>
+<li>STM32优势总结</li>
+</ul>
+</li>
+</ul>
+<a id="more"></a>
+<h1 id="1-为什么选择STM32"><a href="#1-为什么选择STM32" class="headerlink" title="1. 为什么选择STM32"></a>1. 为什么选择STM32</h1><h2 id="1-1-什么是STM32"><a href="#1-1-什么是STM32" class="headerlink" title="1.1 什么是STM32"></a>1.1 什么是STM32</h2><ul>
+<li>是新的基于<strong>ARM内核</strong>的<strong>32位</strong>的MCU系列<br>内核为ARM公司为要求高性能、低成本、低功耗的嵌入式应用专门设计的Cortex-M的内核</li>
+<li>超前的体系结构<ul>
+<li>高性能</li>
+<li>低电压</li>
+<li>低功耗</li>
+<li>创新的内核以及外设</li>
+</ul>
+</li>
+<li>简单易用、自由、低风险</li>
+</ul>
+<h2 id="1-2-Cortex内核"><a href="#1-2-Cortex内核" class="headerlink" title="1.2 Cortex内核"></a>1.2 Cortex内核</h2><p>Coretex-M3系列属于ARMv7架构</p>
+<p>ARMv7架构定义了三大分工明确的系列：<br>A系列：面向尖端的虚拟内存操作系统和用户应用 （eg. android）<br>R系列：针对实时系统<br>M系列：对微控制器</p>
+<p>STM32F1属于Cortex-M系列中的Cortex-M3内核，采用ARMv7-M架构。STM32F4采用ARMv7-ME架构。Cortex-A5/A8采用ARMv7-A架构。<br>传统的ARM7系列采用的是ARMv4T架构。</p>
+<p>STM32也属于ARM，但是是新架构。</p>
+<h2 id="1-3-CM3内核优点"><a href="#1-3-CM3内核优点" class="headerlink" title="1.3 CM3内核优点"></a>1.3 CM3内核优点</h2><ol>
+<li>高性能Cortex-M内核</li>
+</ol>
+<ul>
+<li>采用ARM公司流行的标准内核Cortex-M3</li>
+<li>地动态功耗上实现的高性能</li>
+</ul>
+<ol start="2">
+<li>最佳的代码密度</li>
+</ol>
+<ul>
+<li>Thumb-2指令集以16位指令的密度实现32位指令性能（与ARM7TDMI的ARM模式比减少了30%-45%的代码量）</li>
+</ul>
+<ol start="3">
+<li>可预见的运行时间</li>
+</ol>
+<ul>
+<li>中断控制器嵌再内核值中，中断之间的间隔最少可达6个CPU周期。</li>
+<li>从低功耗模式唤醒只需要6个CPU周期。</li>
+</ul>
+<ol start="4">
+<li>改进的调试功能</li>
+</ol>
+<ul>
+<li>串行单步调试和JTAG调试</li>
+</ul>
+<h1 id="2-STM32概述"><a href="#2-STM32概述" class="headerlink" title="2.STM32概述"></a>2.STM32概述</h1><h2 id="2-1-CM3芯片结构"><a href="#2-1-CM3芯片结构" class="headerlink" title="2.1 CM3芯片结构"></a>2.1 CM3芯片结构</h2><p>Cortex-M3内核、调试系统：ARM设计<br>内部总线、外设、存储器、时钟和复位、I/O：由芯片制造商设计开发。</p>
+<h2 id="2-2-STM32F103系列"><a href="#2-2-STM32F103系列" class="headerlink" title="2.2 STM32F103系列"></a>2.2 STM32F103系列</h2><ul>
+<li>2V-3.6V供电电压</li>
+<li>5V I//Os电压容限</li>
+<li>出色的时钟安全模式</li>
+<li>带有唤醒功能的低功耗模式</li>
+<li>内部RC</li>
+<li>嵌入的RESET</li>
+<li>-40~+85℃（工业级）</li>
+</ul>
+<p>一般区分芯片方式：闪存容量和引脚数目</p>
+<h2 id="2-3-STM32F1各芯片关联"><a href="#2-3-STM32F1各芯片关联" class="headerlink" title="2.3 STM32F1各芯片关联"></a>2.3 STM32F1各芯片关联</h2><p>强大的固件库支持 -&gt; 各系列产品全面兼容<br>优点</p>
+<ul>
+<li>可升级的体系结构</li>
+<li>使用所有应用</li>
+<li>给用户相同的“外观和感受”</li>
+<li>统一的软件和开发投入</li>
+</ul>
+<h2 id="2-4-STM32命名规则"><a href="#2-4-STM32命名规则" class="headerlink" title="2.4 STM32命名规则"></a>2.4 STM32命名规则</h2><p>实例： STMF103C8T6<br>STM32 F 103 C 8 T 6</p>
+<ul>
+<li>STM32 : 产品系列。 <ul>
+<li>STM32 = 基于ARM的32位微控制器</li>
+</ul>
+</li>
+<li>F : 产品类型。 <ul>
+<li>F = 通用类型</li>
+</ul>
+</li>
+<li>103 : 产品子系列。 <ul>
+<li>101 = 基本型；</li>
+<li>102 = USB基本型，USB 2.0全速设备；</li>
+<li>103 = 增强型；</li>
+<li>105或107 = 互联型</li>
+</ul>
+</li>
+<li>C : 引脚数目。 <ul>
+<li>T = 36脚；</li>
+<li>C = 48脚；</li>
+<li>R = 64脚；</li>
+<li>V = 100脚；</li>
+<li>Z = 144脚</li>
+</ul>
+</li>
+<li>8 : 闪存存储器容量<ul>
+<li>4 = 16K字节的闪存存储器；</li>
+<li>6 = 32K字节的闪存存储器；</li>
+<li>8 = 64K字节的闪存存储器；</li>
+<li>B = 128K字节的闪存存储器；</li>
+<li>C = 256K字节的闪存存储器；</li>
+<li>D = 384K字节的闪存存储器；</li>
+<li>E = 512K字节的闪存存储器</li>
+</ul>
+</li>
+<li>T : 封装<ul>
+<li>H = BGA</li>
+<li>T = LQFP</li>
+<li>U = VFQFPN</li>
+<li>Y = WLCSP64</li>
+</ul>
+</li>
+<li>6 : 温度范围<ul>
+<li>6 = 工业级温度范围 -40~85℃</li>
+<li>7 = 工业级温度范围 -40~105℃</li>
+</ul>
+</li>
+</ul>
+<h1 id="3-总结"><a href="#3-总结" class="headerlink" title="3.总结"></a>3.总结</h1><h2 id="STM32应用场景"><a href="#STM32应用场景" class="headerlink" title="STM32应用场景"></a>STM32应用场景</h2><ul>
+<li>销售节点机</li>
+<li>USB设备</li>
+<li>工业自动化</li>
+<li>建筑安防、消防</li>
+<li>低功耗</li>
+<li>家电</li>
+<li>…<br>本质就是高性能控制器</li>
+</ul>
+<h2 id="STM32最具竞争力的优势"><a href="#STM32最具竞争力的优势" class="headerlink" title="STM32最具竞争力的优势"></a>STM32最具竞争力的优势</h2><ul>
+<li>极高的性能：主流Cortex内核</li>
+<li>丰富合理外设、合理功耗和价格</li>
+<li>强大软件支持：丰富的软件包</li>
+<li>丰富的技术文档</li>
+<li>芯片型号种类多，覆盖面广</li>
+<li>强大用户基础</li>
+</ul>
+
+  </div>
+  <footer class="article-footer">
+    
+  <div class="cc">
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/deed.z" target="_blank" title="Attribution-ShareAlike">
+      <img src="/images/cc/cc.png">
+      
+          <img src="/images/cc/by.png">
         
-	<span class="article-category tagcloud">
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Ubuntu/">Ubuntu</a></li></ul>
-	</span>
+          <img src="/images/cc/sa.png">
+      
+      <span>
+        This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.
+      </span>
+    </a>
+  </div>
 
 
-        
-	<span class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ubuntu/">Ubuntu</a></li></ul>
-	</span>
+    
 
+  </footer>
+</article>
 
-      </div>
-      <div class="article-entry">
-        
-          <p>目前网上的大量教程都是需要安装xfac4或者xubuntu桌面系统才能实现远程连接。因为xrdp支持在13.10之后版本就已经不支持的Gnome了和原生Unity桌面，所以网上很多方法都是安装能够被xdrp支持的第三方xfac4或者xubuntu桌面系统间接达到远程控制Ubuntu。<br>本文提供如何使用Xrdp访问原生Ubuntu桌面。<br></p>
-          <p>
-            <a href="/2019/03/05/通过Xrdp实现Windows远程访问Ubuntu-16-04/">
-              Read More
-            </a>
-          </p>
-        
-      </div>
-    </div>
-
-  
-    </div>
-  
 
 
 
