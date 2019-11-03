@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-11-02T12:46:26.774Z</updated>
+  <updated>2019-11-03T10:34:14.616Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,75 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>STM32程序下载方法</title>
+    <link href="http://yoursite.com/2019/11/03/STM32%E7%A8%8B%E5%BA%8F%E4%B8%8B%E8%BD%BD%E6%96%B9%E6%B3%95/"/>
+    <id>http://yoursite.com/2019/11/03/STM32程序下载方法/</id>
+    <published>2019-11-03T10:21:26.000Z</published>
+    <updated>2019-11-03T10:34:14.616Z</updated>
+    
+    <content type="html"><![CDATA[<ul><li>ISP串口下载</li></ul><a id="more"></a><h1 id="ISP串口下载"><a href="#ISP串口下载" class="headerlink" title="ISP串口下载"></a>ISP串口下载</h1><h2 id="1-1-硬件连接"><a href="#1-1-硬件连接" class="headerlink" title="1.1 硬件连接"></a>1.1 硬件连接</h2><p>电脑 <--------------> USB/串口转换电路 <---------------->MCU串口RX/TX脚<br>↓                           ↓                               ↓<br>1.USB串口驱动安装          1.常见转换芯片                   还需配STM32的复位电路<br>–虚拟一个COM口             CH340/PL2303                   模式选择电路进行串口下载<br>2.下载软件MCUSIP           2.实现USB信号和串口信号互换<br>        /FLYMCU</----------------></--------------></p><p>特别注意：<br>STM32的ISP下载，只能使用串口1，也就是对应串口发送接受引脚PA9/PA10，不能使用其他串口。（例如PA2，PA3）用来ISP下载。</p><h2 id="2-1-一键下载"><a href="#2-1-一键下载" class="headerlink" title="2.1 一键下载"></a>2.1 一键下载</h2><p>环境准备：CH340驱动安装</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;ul&gt;
+&lt;li&gt;ISP串口下载&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>STM32开发环境的搭建</title>
+    <link href="http://yoursite.com/2019/11/03/STM32%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E7%9A%84%E6%90%AD%E5%BB%BA/"/>
+    <id>http://yoursite.com/2019/11/03/STM32开发环境的搭建/</id>
+    <published>2019-11-03T09:25:53.000Z</published>
+    <updated>2019-11-03T10:03:42.415Z</updated>
+    
+    <content type="html"><![CDATA[<ul><li>MDK软件安装</li><li>USB串口驱动安装</li><li>JLINK驱动安装</li></ul><a id="more"></a><h1 id="1-MDK安装（编程环境）"><a href="#1-MDK安装（编程环境）" class="headerlink" title="1. MDK安装（编程环境）"></a>1. MDK安装（编程环境）</h1><p>MDK是什么？<br>RealView MDK是Keil公司开发的，为基于Cortex、ARM7、ARM9等处理器设备提供一个完整的开发环境</p><h1 id="2-USB串口驱动安装"><a href="#2-USB串口驱动安装" class="headerlink" title="2. USB串口驱动安装"></a>2. USB串口驱动安装</h1><p>USB串口作用：</p><ol><li>可以当串口使用。</li><li>如果USB串口连接到STM32的串口1（STM32的ISP下载只能是串口1）的话，那么可以用串口来下载程序。</li><li>因为要连接到USB，所以可以通过USB供电。</li></ol><h1 id="3-JLINK驱动安装"><a href="#3-JLINK驱动安装" class="headerlink" title="3. JLINK驱动安装"></a>3. JLINK驱动安装</h1><p>JLINK驱动作用：<br>安装了驱动之后，可以在windows下配合MDK进行程序的下载和调试。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;ul&gt;
+&lt;li&gt;MDK软件安装&lt;/li&gt;
+&lt;li&gt;USB串口驱动安装&lt;/li&gt;
+&lt;li&gt;JLINK驱动安装&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+      <category term="stm32" scheme="http://yoursite.com/tags/stm32/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>stm32芯片解读</title>
+    <link href="http://yoursite.com/2019/11/03/stm32%E8%8A%AF%E7%89%87%E8%A7%A3%E8%AF%BB/"/>
+    <id>http://yoursite.com/2019/11/03/stm32芯片解读/</id>
+    <published>2019-11-03T07:40:40.000Z</published>
+    <updated>2019-11-03T09:27:15.601Z</updated>
+    
+    <content type="html"><![CDATA[<ul><li>芯片有哪些资源？</li><li>芯片内部结构怎样？</li><li>芯片引脚和功能怎么对应？</li><li>STM32最小系统设计</li></ul><a id="more"></a><h1 id="1-1-芯片内部资源"><a href="#1-1-芯片内部资源" class="headerlink" title="1.1 芯片内部资源"></a>1.1 芯片内部资源</h1><p>例如,拿到芯片STM32F103RCT6<br>首先应该打开选型手册<br>在手册中找到该芯片，就会有对应详细的数据。</p><p>内核：</p><ul><li>32位 高性能ARM Cortex-M3处理器</li><li>时钟：高达72M，实际还可以超频一点</li><li>单周期乘法和硬件除法</li></ul><p>IO口：</p><ul><li>STM32F103ZET6 ：144引脚 112个IO</li><li>STM32F103RCT5 : 64引脚 51个IO</li><li>大部分IO口都耐5V （模拟通道除外）</li><li>支持调试：SWD和JTAG，SWD只要2根数据线</li></ul><p>存储器容量：</p><ul><li>STM32F103ZET6 ：512K FLASH,64K SRAM</li><li>STM32F103RCT6 : 256K FLASH,48K SRAM</li></ul><p>时钟，复位和电源管理：</p><ol><li>2.0~3.6V电源和IO电压</li><li>上电复位，掉电复位和可编程的电压监控</li><li>强大的时钟系统<ul><li>-4~16M的外部告诉晶振 （8M）</li><li>内部8MHz的高速RC振荡器</li><li>内部40KHz低速RC振荡器，看门狗时钟</li><li>内部锁相环（PLL，倍频），一般系统时钟都是外部或者内部告诉时钟经过PLL倍频后得到</li><li>外部低速32.768K的晶振，主要做RTC时钟源</li></ul></li><li>低功耗<ul><li>睡眠，停止和待机三种低功耗模式</li><li>可用电池位RTC和备份寄存器供电</li></ul></li><li>AD:（模拟信号转换为数字信号）<ul><li>3个12位AD【多达21个外部测量通道】</li><li>转换范围：0~3.6（电源电压）</li><li>内部通道可以用于内部温度测量</li><li>内置参考电压</li></ul></li><li>DA：（数字转换为模拟量）<ul><li>2个12位DA</li></ul></li><li>DMA:（为CPU减负，高速数据采集时用到）<ul><li>12个DMA通道（7+5；7通道DMA1，5通道DMA2）</li><li>支持外设：定时器，ADC,DAC,SDIO,I2S,SPI,I2C,USART</li></ul></li><li>定时器：多达11个定时器<ul><li>4个通用定时器</li><li>2个基本定时器</li><li>2个高级定时器</li><li>1个系统定时器</li><li>2个看门狗定时器</li></ul></li><li>通信接口：多达13个通信结构<ul><li>2个I2C接口</li><li>5个串口</li><li>3个SPI接口</li><li>1个CAN2.0</li><li>1个USB FS</li><li>1个SDIO</li></ul></li></ol><h1 id="2-芯片内部结构怎样？"><a href="#2-芯片内部结构怎样？" class="headerlink" title="2.芯片内部结构怎样？"></a>2.芯片内部结构怎样？</h1><p>见数据手册。</p><h1 id="3-芯片的引脚和功能怎么对应？"><a href="#3-芯片的引脚和功能怎么对应？" class="headerlink" title="3.芯片的引脚和功能怎么对应？"></a>3.芯片的引脚和功能怎么对应？</h1><p>先打开芯片的数据手册<br>其中的Pin definitions 即引脚定义<br>例如如要使用PA9引脚，直接搜索PA9，<br>在DEFAULT中找到 可以作为USART1_TX（串口1的发送引脚） TIM1_CH2（定时器1的通道2引脚）<br>还可以是I/O口，怎么使用在后面会介绍。</p><p>哪些引脚容忍5V？<br>IO level 标注了FT的IO口都可以容忍5V</p><h1 id="STM32最小系统-看原理图"><a href="#STM32最小系统-看原理图" class="headerlink" title="STM32最小系统-看原理图"></a>STM32最小系统-看原理图</h1><ul><li>供电</li><li>复位</li><li>时钟：外部晶振（2个）</li><li>BOOT启动模式选择</li><li>下载电路（串口/JTAG/SWD）</li><li>后备电池</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;ul&gt;
+&lt;li&gt;芯片有哪些资源？&lt;/li&gt;
+&lt;li&gt;芯片内部结构怎样？&lt;/li&gt;
+&lt;li&gt;芯片引脚和功能怎么对应？&lt;/li&gt;
+&lt;li&gt;STM32最小系统设计&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+      <category term="stm32" scheme="http://yoursite.com/tags/stm32/"/>
+    
+  </entry>
   
   <entry>
     <title>stm32初探</title>

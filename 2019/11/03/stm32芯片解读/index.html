@@ -8,21 +8,22 @@
 
 <title>
   
-    归档: 2019/11
+    stm32芯片解读
   
 </title>
 
-<meta name="description" content="身处寒夜，把握星光。">
-<meta name="keywords" content="技术">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Liu的代码作坊">
-<meta property="og:url" content="http://yoursite.com/archives/2019/11/index.html">
+<meta name="description" content="芯片有哪些资源？ 芯片内部结构怎样？ 芯片引脚和功能怎么对应？ STM32最小系统设计">
+<meta name="keywords" content="stm32">
+<meta property="og:type" content="article">
+<meta property="og:title" content="stm32芯片解读">
+<meta property="og:url" content="http://yoursite.com/2019/11/03/stm32芯片解读/index.html">
 <meta property="og:site_name" content="Liu的代码作坊">
-<meta property="og:description" content="身处寒夜，把握星光。">
+<meta property="og:description" content="芯片有哪些资源？ 芯片内部结构怎样？ 芯片引脚和功能怎么对应？ STM32最小系统设计">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-11-03T09:27:15.601Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Liu的代码作坊">
-<meta name="twitter:description" content="身处寒夜，把握星光。">
+<meta name="twitter:title" content="stm32芯片解读">
+<meta name="twitter:description" content="芯片有哪些资源？ 芯片内部结构怎样？ 芯片引脚和功能怎么对应？ STM32最小系统设计">
 
 
   <link rel="alternative" href="/atom.xml" title="Liu的代码作坊" type="application/atom+xml">
@@ -152,252 +153,146 @@
       
         <div style="max-width: 1000px">
       
-          
-
+          <article id="post-stm32芯片解读" class="article article-type-post">
+  
+    <h1 class="article-header">
+      stm32芯片解读
+    </h1>
   
   
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <h1><a href="/archives/2019" class="archive-year">2019</a></h1>
-        </div>
-        <div class="post-list">
-    
-  
 
-    <div class="post-list-item article">
-      <h3 class="article-header">
-        <a href="/2019/11/03/STM32程序下载方法/">
-  STM32程序下载方法
-</a>
-
-      </h3>
-      
-
-      <div class="article-info">
-        <a href="/2019/11/03/STM32程序下载方法/"><span class="article-date">
+  <div class="article-info">
+    <span class="article-date">
   2019-11-03
 </span>
-</a>
-        
 
-        
-
-      </div>
-      <div class="article-entry">
-        
-          <ul>
-<li>ISP串口下载</li>
-</ul>
-          <p>
-            <a href="/2019/11/03/STM32程序下载方法/">
-              阅读全文
-            </a>
-          </p>
-        
-      </div>
-    </div>
-
-  
-
-  
-  
     
-  
 
-    <div class="post-list-item article">
-      <h3 class="article-header">
-        <a href="/2019/11/03/STM32开发环境的搭建/">
-  STM32开发环境的搭建
-</a>
-
-      </h3>
-      
-
-      <div class="article-info">
-        <a href="/2019/11/03/STM32开发环境的搭建/"><span class="article-date">
-  2019-11-03
-</span>
-</a>
-        
-
-        
+    
 	<span class="article-tag tagcloud">
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/stm32/">stm32</a></li></ul>
 	</span>
 
 
-      </div>
-      <div class="article-entry">
-        
-          <ul>
-<li>MDK软件安装</li>
-<li>USB串口驱动安装</li>
-<li>JLINK驱动安装</li>
-</ul>
-          <p>
-            <a href="/2019/11/03/STM32开发环境的搭建/">
-              阅读全文
-            </a>
-          </p>
-        
-      </div>
-    </div>
-
-  
-
-  
-  
-    
-  
-
-    <div class="post-list-item article">
-      <h3 class="article-header">
-        <a href="/2019/11/03/stm32芯片解读/">
-  stm32芯片解读
-</a>
-
-      </h3>
-      
-
-      <div class="article-info">
-        <a href="/2019/11/03/stm32芯片解读/"><span class="article-date">
-  2019-11-03
-</span>
-</a>
-        
-
-        
-	<span class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/stm32/">stm32</a></li></ul>
-	</span>
-
-
-      </div>
-      <div class="article-entry">
-        
-          <ul>
+  </div>
+  <div class="article-entry">
+    <ul>
 <li>芯片有哪些资源？</li>
 <li>芯片内部结构怎样？</li>
 <li>芯片引脚和功能怎么对应？</li>
 <li>STM32最小系统设计</li>
 </ul>
-          <p>
-            <a href="/2019/11/03/stm32芯片解读/">
-              阅读全文
-            </a>
-          </p>
-        
-      </div>
-    </div>
+<a id="more"></a>
+<h1 id="1-1-芯片内部资源"><a href="#1-1-芯片内部资源" class="headerlink" title="1.1 芯片内部资源"></a>1.1 芯片内部资源</h1><p>例如,拿到芯片STM32F103RCT6<br>首先应该打开选型手册<br>在手册中找到该芯片，就会有对应详细的数据。</p>
+<p>内核：</p>
+<ul>
+<li>32位 高性能ARM Cortex-M3处理器</li>
+<li>时钟：高达72M，实际还可以超频一点</li>
+<li>单周期乘法和硬件除法</li>
+</ul>
+<p>IO口：</p>
+<ul>
+<li>STM32F103ZET6 ：144引脚 112个IO</li>
+<li>STM32F103RCT5 : 64引脚 51个IO</li>
+<li>大部分IO口都耐5V （模拟通道除外）</li>
+<li>支持调试：SWD和JTAG，SWD只要2根数据线</li>
+</ul>
+<p>存储器容量：</p>
+<ul>
+<li>STM32F103ZET6 ：512K FLASH,64K SRAM</li>
+<li>STM32F103RCT6 : 256K FLASH,48K SRAM</li>
+</ul>
+<p>时钟，复位和电源管理：</p>
+<ol>
+<li>2.0~3.6V电源和IO电压</li>
+<li>上电复位，掉电复位和可编程的电压监控</li>
+<li>强大的时钟系统<ul>
+<li>-4~16M的外部告诉晶振 （8M）</li>
+<li>内部8MHz的高速RC振荡器</li>
+<li>内部40KHz低速RC振荡器，看门狗时钟</li>
+<li>内部锁相环（PLL，倍频），一般系统时钟都是外部或者内部告诉时钟经过PLL倍频后得到</li>
+<li>外部低速32.768K的晶振，主要做RTC时钟源</li>
+</ul>
+</li>
+<li>低功耗<ul>
+<li>睡眠，停止和待机三种低功耗模式</li>
+<li>可用电池位RTC和备份寄存器供电</li>
+</ul>
+</li>
+<li>AD:（模拟信号转换为数字信号）<ul>
+<li>3个12位AD【多达21个外部测量通道】</li>
+<li>转换范围：0~3.6（电源电压）</li>
+<li>内部通道可以用于内部温度测量</li>
+<li>内置参考电压</li>
+</ul>
+</li>
+<li>DA：（数字转换为模拟量）<ul>
+<li>2个12位DA</li>
+</ul>
+</li>
+<li>DMA:（为CPU减负，高速数据采集时用到）<ul>
+<li>12个DMA通道（7+5；7通道DMA1，5通道DMA2）</li>
+<li>支持外设：定时器，ADC,DAC,SDIO,I2S,SPI,I2C,USART</li>
+</ul>
+</li>
+<li>定时器：多达11个定时器<ul>
+<li>4个通用定时器</li>
+<li>2个基本定时器</li>
+<li>2个高级定时器</li>
+<li>1个系统定时器</li>
+<li>2个看门狗定时器</li>
+</ul>
+</li>
+<li>通信接口：多达13个通信结构<ul>
+<li>2个I2C接口</li>
+<li>5个串口</li>
+<li>3个SPI接口</li>
+<li>1个CAN2.0</li>
+<li>1个USB FS</li>
+<li>1个SDIO</li>
+</ul>
+</li>
+</ol>
+<h1 id="2-芯片内部结构怎样？"><a href="#2-芯片内部结构怎样？" class="headerlink" title="2.芯片内部结构怎样？"></a>2.芯片内部结构怎样？</h1><p>见数据手册。</p>
+<h1 id="3-芯片的引脚和功能怎么对应？"><a href="#3-芯片的引脚和功能怎么对应？" class="headerlink" title="3.芯片的引脚和功能怎么对应？"></a>3.芯片的引脚和功能怎么对应？</h1><p>先打开芯片的数据手册<br>其中的Pin definitions 即引脚定义<br>例如如要使用PA9引脚，直接搜索PA9，<br>在DEFAULT中找到 可以作为USART1_TX（串口1的发送引脚） TIM1_CH2（定时器1的通道2引脚）<br>还可以是I/O口，怎么使用在后面会介绍。</p>
+<p>哪些引脚容忍5V？<br>IO level 标注了FT的IO口都可以容忍5V</p>
+<h1 id="STM32最小系统-看原理图"><a href="#STM32最小系统-看原理图" class="headerlink" title="STM32最小系统-看原理图"></a>STM32最小系统-看原理图</h1><ul>
+<li>供电</li>
+<li>复位</li>
+<li>时钟：外部晶振（2个）</li>
+<li>BOOT启动模式选择</li>
+<li>下载电路（串口/JTAG/SWD）</li>
+<li>后备电池</li>
+</ul>
 
-  
-
-  
-  
+  </div>
+  <footer class="article-footer">
     
-  
-
-    <div class="post-list-item article">
-      <h3 class="article-header">
-        <a href="/2019/11/02/stm32初探/">
-  stm32初探
-</a>
-
-      </h3>
+  <div class="cc">
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/deed.z" target="_blank" title="署名-相同方式共享">
+      <img src="/images/cc/cc.png">
       
-
-      <div class="article-info">
-        <a href="/2019/11/02/stm32初探/"><span class="article-date">
-  2019-11-02
-</span>
-</a>
+          <img src="/images/cc/by.png">
         
+          <img src="/images/cc/sa.png">
+      
+      <span>
+        本作品采用知识共享 署名-相同方式共享 4.0 国际许可协议进行许可。
+      </span>
+    </a>
+  </div>
 
-        
 
-      </div>
-      <div class="article-entry">
-        
-          <ul>
-<li>为什么选择STM32<ul>
-<li>什么是STM32</li>
-<li>Cortex内核</li>
-<li>STM32 VS ARM7</li>
-</ul>
-</li>
-<li>STM32概述<ul>
-<li>CM3芯片结构</li>
-<li>STM32F10x的2个产品线介绍</li>
-<li>STM32F10x各芯片之间的关联</li>
-<li>STM32命名规则</li>
-</ul>
-</li>
-<li>总结<ul>
-<li>STM32应用场景</li>
-<li>STM32优势总结</li>
-</ul>
-</li>
-</ul>
-          <p>
-            <a href="/2019/11/02/stm32初探/">
-              阅读全文
-            </a>
-          </p>
-        
-      </div>
-    </div>
-
-  
-
-  
-  
     
-  
 
-    <div class="post-list-item article">
-      <h3 class="article-header">
-        <a href="/2019/11/01/STM32学习方法/">
-  STM32学习方法
-</a>
-
-      </h3>
-      
-
-      <div class="article-info">
-        <a href="/2019/11/01/STM32学习方法/"><span class="article-date">
-  2019-11-01
-</span>
-</a>
-        
-
-        
-	<span class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/stm32/">stm32</a></li></ul>
-	</span>
-
-
-      </div>
-      <div class="article-entry">
-        
-          <h1 id="STM32学习方法"><a href="#STM32学习方法" class="headerlink" title="STM32学习方法"></a>STM32学习方法</h1><p>——————————学习方法<br>|<br>——— 1. 网络学习资源介绍<br>|<br>———————— 2.开发板要参考哪些资料？<br>|<br>——————————— 3.要掌握那些基本技能？<br></p>
-          <p>
-            <a href="/2019/11/01/STM32学习方法/">
-              阅读全文
-            </a>
-          </p>
-        
-      </div>
-    </div>
-
-  
+  </footer>
+</article>
 
 
 
 
-</div></section>
+
+
 
           <div class="main-footer">
   

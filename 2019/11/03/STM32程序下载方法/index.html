@@ -8,21 +8,22 @@
 
 <title>
   
-    归档: 2019/11
+    STM32程序下载方法
   
 </title>
 
-<meta name="description" content="身处寒夜，把握星光。">
+<meta name="description" content="ISP串口下载">
 <meta name="keywords" content="技术">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Liu的代码作坊">
-<meta property="og:url" content="http://yoursite.com/archives/2019/11/index.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="STM32程序下载方法">
+<meta property="og:url" content="http://yoursite.com/2019/11/03/STM32程序下载方法/index.html">
 <meta property="og:site_name" content="Liu的代码作坊">
-<meta property="og:description" content="身处寒夜，把握星光。">
+<meta property="og:description" content="ISP串口下载">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-11-03T10:34:14.616Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Liu的代码作坊">
-<meta name="twitter:description" content="身处寒夜，把握星光。">
+<meta name="twitter:title" content="STM32程序下载方法">
+<meta name="twitter:description" content="ISP串口下载">
 
 
   <link rel="alternative" href="/atom.xml" title="Liu的代码作坊" type="application/atom+xml">
@@ -152,252 +153,61 @@
       
         <div style="max-width: 1000px">
       
-          
-
+          <article id="post-STM32程序下载方法" class="article article-type-post">
+  
+    <h1 class="article-header">
+      STM32程序下载方法
+    </h1>
   
   
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <h1><a href="/archives/2019" class="archive-year">2019</a></h1>
-        </div>
-        <div class="post-list">
-    
-  
 
-    <div class="post-list-item article">
-      <h3 class="article-header">
-        <a href="/2019/11/03/STM32程序下载方法/">
-  STM32程序下载方法
-</a>
-
-      </h3>
-      
-
-      <div class="article-info">
-        <a href="/2019/11/03/STM32程序下载方法/"><span class="article-date">
+  <div class="article-info">
+    <span class="article-date">
   2019-11-03
 </span>
-</a>
-        
 
-        
+    
 
-      </div>
-      <div class="article-entry">
-        
-          <ul>
+    
+
+  </div>
+  <div class="article-entry">
+    <ul>
 <li>ISP串口下载</li>
 </ul>
-          <p>
-            <a href="/2019/11/03/STM32程序下载方法/">
-              阅读全文
-            </a>
-          </p>
-        
-      </div>
-    </div>
+<a id="more"></a>
+<h1 id="ISP串口下载"><a href="#ISP串口下载" class="headerlink" title="ISP串口下载"></a>ISP串口下载</h1><h2 id="1-1-硬件连接"><a href="#1-1-硬件连接" class="headerlink" title="1.1 硬件连接"></a>1.1 硬件连接</h2><p>电脑 <--------------> USB/串口转换电路 <---------------->MCU串口RX/TX脚<br>↓                           ↓                               ↓<br>1.USB串口驱动安装          1.常见转换芯片                   还需配STM32的复位电路<br>–虚拟一个COM口             CH340/PL2303                   模式选择电路进行串口下载<br>2.下载软件MCUSIP           2.实现USB信号和串口信号互换<br>        /FLYMCU</----------------></--------------></p>
+<p>特别注意：<br>STM32的ISP下载，只能使用串口1，也就是对应串口发送接受引脚PA9/PA10，不能使用其他串口。（例如PA2，PA3）用来ISP下载。</p>
+<h2 id="2-1-一键下载"><a href="#2-1-一键下载" class="headerlink" title="2.1 一键下载"></a>2.1 一键下载</h2><p>环境准备：CH340驱动安装</p>
 
-  
-
-  
-  
+  </div>
+  <footer class="article-footer">
     
-  
-
-    <div class="post-list-item article">
-      <h3 class="article-header">
-        <a href="/2019/11/03/STM32开发环境的搭建/">
-  STM32开发环境的搭建
-</a>
-
-      </h3>
+  <div class="cc">
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/deed.z" target="_blank" title="署名-相同方式共享">
+      <img src="/images/cc/cc.png">
       
-
-      <div class="article-info">
-        <a href="/2019/11/03/STM32开发环境的搭建/"><span class="article-date">
-  2019-11-03
-</span>
-</a>
+          <img src="/images/cc/by.png">
         
+          <img src="/images/cc/sa.png">
+      
+      <span>
+        本作品采用知识共享 署名-相同方式共享 4.0 国际许可协议进行许可。
+      </span>
+    </a>
+  </div>
 
-        
-	<span class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/stm32/">stm32</a></li></ul>
-	</span>
 
-
-      </div>
-      <div class="article-entry">
-        
-          <ul>
-<li>MDK软件安装</li>
-<li>USB串口驱动安装</li>
-<li>JLINK驱动安装</li>
-</ul>
-          <p>
-            <a href="/2019/11/03/STM32开发环境的搭建/">
-              阅读全文
-            </a>
-          </p>
-        
-      </div>
-    </div>
-
-  
-
-  
-  
     
-  
 
-    <div class="post-list-item article">
-      <h3 class="article-header">
-        <a href="/2019/11/03/stm32芯片解读/">
-  stm32芯片解读
-</a>
-
-      </h3>
-      
-
-      <div class="article-info">
-        <a href="/2019/11/03/stm32芯片解读/"><span class="article-date">
-  2019-11-03
-</span>
-</a>
-        
-
-        
-	<span class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/stm32/">stm32</a></li></ul>
-	</span>
-
-
-      </div>
-      <div class="article-entry">
-        
-          <ul>
-<li>芯片有哪些资源？</li>
-<li>芯片内部结构怎样？</li>
-<li>芯片引脚和功能怎么对应？</li>
-<li>STM32最小系统设计</li>
-</ul>
-          <p>
-            <a href="/2019/11/03/stm32芯片解读/">
-              阅读全文
-            </a>
-          </p>
-        
-      </div>
-    </div>
-
-  
-
-  
-  
-    
-  
-
-    <div class="post-list-item article">
-      <h3 class="article-header">
-        <a href="/2019/11/02/stm32初探/">
-  stm32初探
-</a>
-
-      </h3>
-      
-
-      <div class="article-info">
-        <a href="/2019/11/02/stm32初探/"><span class="article-date">
-  2019-11-02
-</span>
-</a>
-        
-
-        
-
-      </div>
-      <div class="article-entry">
-        
-          <ul>
-<li>为什么选择STM32<ul>
-<li>什么是STM32</li>
-<li>Cortex内核</li>
-<li>STM32 VS ARM7</li>
-</ul>
-</li>
-<li>STM32概述<ul>
-<li>CM3芯片结构</li>
-<li>STM32F10x的2个产品线介绍</li>
-<li>STM32F10x各芯片之间的关联</li>
-<li>STM32命名规则</li>
-</ul>
-</li>
-<li>总结<ul>
-<li>STM32应用场景</li>
-<li>STM32优势总结</li>
-</ul>
-</li>
-</ul>
-          <p>
-            <a href="/2019/11/02/stm32初探/">
-              阅读全文
-            </a>
-          </p>
-        
-      </div>
-    </div>
-
-  
-
-  
-  
-    
-  
-
-    <div class="post-list-item article">
-      <h3 class="article-header">
-        <a href="/2019/11/01/STM32学习方法/">
-  STM32学习方法
-</a>
-
-      </h3>
-      
-
-      <div class="article-info">
-        <a href="/2019/11/01/STM32学习方法/"><span class="article-date">
-  2019-11-01
-</span>
-</a>
-        
-
-        
-	<span class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/stm32/">stm32</a></li></ul>
-	</span>
-
-
-      </div>
-      <div class="article-entry">
-        
-          <h1 id="STM32学习方法"><a href="#STM32学习方法" class="headerlink" title="STM32学习方法"></a>STM32学习方法</h1><p>——————————学习方法<br>|<br>——— 1. 网络学习资源介绍<br>|<br>———————— 2.开发板要参考哪些资料？<br>|<br>——————————— 3.要掌握那些基本技能？<br></p>
-          <p>
-            <a href="/2019/11/01/STM32学习方法/">
-              阅读全文
-            </a>
-          </p>
-        
-      </div>
-    </div>
-
-  
+  </footer>
+</article>
 
 
 
 
-</div></section>
+
+
 
           <div class="main-footer">
   
