@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>树莓派引脚介绍与GPIO的初步认识与应用 | Angelo的代码工坊</title>
+    <meta name="description" content="A minimal hexo theme."/>
+    <meta name="keywords" content="hexo,theme,otakism,otaku"/>
+    <meta name="HandheldFriendly" content="True"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="google-site-verification" content=""/>
+    <meta name="baidu-site-verification" content=""/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="入门介绍">
+<meta property="og:type" content="article">
+<meta property="og:title" content="树莓派引脚介绍与GPIO的初步认识与应用">
+<meta property="og:url" content="http://example.com/2019/03/02/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%BC%95%E8%84%9A%E4%BB%8B%E7%BB%8D%E4%B8%8EGPIO%E7%9A%84%E5%88%9D%E6%AD%A5%E8%AE%A4%E8%AF%86%E4%B8%8E%E5%BA%94%E7%94%A8/index.html">
+<meta property="og:site_name" content="Angelo的代码工坊">
+<meta property="og:description" content="入门介绍">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/02/kbyjHO.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0xpdV85NTkxODU=,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/02/kbyqjx.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0xpdV85NTkxODU=,size_16,color_FFFFFF,t_70">
+<meta property="article:published_time" content="2019-03-02T01:03:20.000Z">
+<meta property="article:modified_time" content="2019-03-03T08:25:53.575Z">
+<meta property="article:author" content="Angelo">
+<meta property="article:tag" content="树莓派">
+<meta property="article:tag" content="Python">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/03/02/kbyjHO.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0xpdV85NTkxODU=,size_16,color_FFFFFF,t_70">
+    
+
+    <!-- Favicon -->
+    
+
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata|Roboto:300,400,700" rel="stylesheet">
+
+    
+<link rel="stylesheet" href="/style.css">
+
+    <script>
+      function setLoadingBarProgress(num) {
+        document.getElementById('loading-bar').style.width = num + "%";
+      }
+    </script>
+
+    
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+
+<div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+
+<script>setLoadingBarProgress(20)</script>
+
+<div id="site-wrapper">
+
+    <header id="header">
+    <div id="header-wrapper" class="clearfix">
+        <a id="logo" href="/">
+            <img src="/img/logo.png"/>
+            <span id="site-desc">
+                I shut my eyes in order to see.
+            </span>
+        </a>
+        <button id="site-nav-switch">
+            <span class="icon icon-menu"></span>
+        </button>
+    </div>
+</header>
+    <script>setLoadingBarProgress(40);</script>
+
+    <main id="main" role="main">
+        <article id="post-树莓派引脚介绍与GPIO的初步认识与应用"
+         class="post article white-box article-type-post"
+         itemscope itemprop="blogPost">
+    <h2 class="title">
+        <a href="/2019/03/02/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%BC%95%E8%84%9A%E4%BB%8B%E7%BB%8D%E4%B8%8EGPIO%E7%9A%84%E5%88%9D%E6%AD%A5%E8%AE%A4%E8%AF%86%E4%B8%8E%E5%BA%94%E7%94%A8/">
+            树莓派引脚介绍与GPIO的初步认识与应用
+        </a>
+    </h2>
+    <time>
+        3月 2, 2019
+    </time>
+    <section class="content">
+        <div class="article-entry" itemprop="articleBody">
+            <h1><span id="一认识gpio">一．认识GPIO</span></h1><p>所谓GPIO，就是“通用输入&#x2F;输出”接口，树莓派系统中已经编译自带了GPIO的驱动。<img src="https://s2.ax1x.com/2019/03/02/kbyjHO.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0xpdV85NTkxODU=,size_16,color_FFFFFF,t_70" alt="树莓派的基本外观，最上面的引脚处左下角为1号引脚"></p>
+<p><strong>树莓派GPIO的编号方式：</strong><br><img src="https://s2.ax1x.com/2019/03/02/kbyqjx.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0xpdV85NTkxODU=,size_16,color_FFFFFF,t_70"><br><strong>1.	功能物理引脚（physical）：</strong><br>从左到右，从上到下。左边为奇数，右边为偶数。共计40个引脚，计数为1-40。<br><strong>2.	BCM：</strong><br>编号侧重于CPU寄存器，根据BCM2835的GPIO寄存器编号。具体编号参照上图中BCM一栏。<br><strong>3.wiringPi</strong><br>编号侧重实现逻辑，把GPIO端口从0开始编号，这种编号方便编程，参考上图wPi一栏。</p>
+<p>三种编号的方式均指代的对象相同，只是编码方式不同。</p>
+<span id="more"></span>
+
+
+<p><strong>其中</strong><br>GPIO.**: 通用输入输出接口，GPIO端口，可通过软件分别配置成输入或输出。<br>3.3V&#x2F;5.0V(VCC):提供3.3V&#x2F;5.0V的固定电压<br>0V（GND）：接地<br>SDA<em>：SDA 是I2C 数据传输口。<br>SCL：I2C时钟信号。<br>RXD：接收数据的引脚。<br>TXD：发送数据的引脚。<br>MOSI：为主输出从输入。<br>MISO：为主输入从输出。<br>SCLK: 系统时钟,指晶振频率。<br>CE</em>：片选（芯片有效）-表示低电平有效</p>
+<h1><span id="二python-gpio">二．Python GPIO</span></h1><p>默认的python GPIO均已集成入raspbian系统，不需要另外安装。<br>如果需要安装，请按以下顺序：<br>1、先安装python-dev，输入以下指令。<br>      sudo apt-get install python-dev<br>2、安装RPi.GPIO，依次输入以下指令。<br>1)下载：wget <a target="_blank" rel="noopener" href="http://raspberry-gpio-python.googlecode.com/files/RPi.GPIO-0.5.3a.tar.gz">http://raspberry-gpio-python.googlecode.com/files/RPi.GPIO-0.5.3a.tar.gz</a><br>2)解压缩：tar xvzf RPi.GPIO-0.5.3a.tar.gz<br>3)进入解压之后的目录： cd RPi.GPIO-0.5.3a<br>4)启动安装 ： sudo python setup.py install</p>
+<h1><span id="三应用">三．应用</span></h1><p><strong>导入模块</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import RPi.GPIO as GPIO</span><br></pre></td></tr></table></figure>
+<p><strong>设置引脚引用模式：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">GPIO.setmode(GPIO.BOARD)</span><br><span class="line">#or</span><br><span class="line">GPIO.setmode(GPIO.BCM)</span><br></pre></td></tr></table></figure>
+<p><strong>检测使用的哪种模式可以使用：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mode=GPIO.getmode()</span><br><span class="line">#mode的取值有GPIO.BOARD, GPIO.BCM, None</span><br></pre></td></tr></table></figure>
+
+
+<p>以下代码如无特殊说明，均使用GPIO.BOARD引脚映射模式。</p>
+<p><strong>设置引脚方向（输入，输出）:</strong></p>
+<p>如 设置40号引脚为输入方向：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pin = <span class="number">40</span></span><br><span class="line">GPIO.setup(pin,GPIO.IN)</span><br></pre></td></tr></table></figure>
+<p>输出同理：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">GPIO.setup(pin,GPIO.OUT)</span><br><span class="line"><span class="comment">#输出还可以加初始电平：</span></span><br><span class="line">GPIO.setup(pin,GPIO.OUT,initial=GPIO.HIGH)</span><br><span class="line">如果要同时设置多个引脚：</span><br><span class="line"><span class="built_in">list</span>=[<span class="number">11</span>,<span class="number">12</span>]</span><br><span class="line">GPIO.setup(<span class="built_in">list</span>,GPIO.OUT)</span><br></pre></td></tr></table></figure>
+<p>如果要同时设置多个引脚：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">list</span>=[<span class="number">11</span>,<span class="number">12</span>]</span><br><span class="line">GPIO.setup(<span class="built_in">list</span>,GPIO.OUT)</span><br></pre></td></tr></table></figure>
+
+<p><strong>释放</strong><br>一般来说，程序到达最后都需要释放资源，这个好习惯可以避免偶然损坏树莓派。释放脚本中的使用的引脚：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GPIO.cleanup()</span><br></pre></td></tr></table></figure>
+<p><strong>警告</strong><br>如果RPi.GRIO检测到一个引脚已经被设置成了非默认值，那么你将看到一个警告信息。你可以通过下列代码禁用警告：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GPIO.setwarnings(<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+<p>注意，GPIO.cleanup()只会释放掉脚本中使用的GPIO引脚，并会清除设置的引脚编号规则。</p>
+<p><strong>读取</strong><br>我们也常常需要读取引脚的输入状态，获取引脚输入状态如下代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">GPIO.input(channel)</span><br><span class="line">#低电平返回0 / GPIO.LOW / False，高电平返回1 / GPIO.HIGH / True。</span><br></pre></td></tr></table></figure>
+<p>如果输入引脚处于悬空状态，引脚的值将是漂动的。<br>换句话说，读取到的值是未知的，因为它并没有被连接到任何的信号上，直到按下一个按钮或开关。<br>由于干扰的影响，输入的值可能会反复的变化。<br>使用如下代码可以解决问题：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">GPIO.setup(channel, GPIO.IN, pull_up_down=GPIO.PUD_UP)  </span><br><span class="line"><span class="comment"># or</span></span><br><span class="line">GPIO.setup(channel, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)</span><br><span class="line"><span class="comment">#需要注意的是，上面的读取代码只是获取当前一瞬间的引脚输入信号。</span></span><br></pre></td></tr></table></figure>
+<p>如果需要实时监控引脚的状态变化，可以有两种办法。<br>最简单原始的方式是每隔一段时间检查输入的信号值，这种方式被称为轮询。<br>如果你的程序读取的时机错误，则很可能会丢失输入信号。<br>轮询是在循环中执行的，这种方式比较占用处理器资源。<br><strong>轮询方式</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">while GPIO.input(channel) == GPIO.LOW:</span><br><span class="line">    time.sleep(0.01)  # wait 10 ms to give CPU chance to do other things</span><br></pre></td></tr></table></figure>
+<p>另一种响应GPIO输入的方式是使用中断（边缘检测），这里的边缘是指信号从高到低的变换（下降沿）或从低到高的变换（上升沿）。<br><strong>边缘检测</strong><br>边缘是指信号状态的改变，从低到高（上升沿）或从高到低（下降沿）。通常情况下，我们更关心于输入状态的该边而不是输入信号的值。这种状态的该边被称为事件。</p>
+<p>wait_for_edge() 函数<br>wait_for_edge()被用于阻止程序的继续执行，直到检测到一个边缘。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">channel = GPIO.wait_for_edge(channel, GPIO_RISING, timeout=<span class="number">5000</span>)</span><br></pre></td></tr></table></figure>
+
+<p>add_event_detect() 函数<br>该函数对一个引脚进行监听，一旦引脚输入状态发生了改变，调用event_detected()函数会返回true，</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">GPIO.add_event_detect(channel, GPIO.RISING)</span><br><span class="line"><span class="keyword">if</span> GPIO.event_detected(channel):</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&#x27;Button pressed&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p><strong>RPI.GPIO 模块的脉宽调制（PWM）功能</strong><br>脉宽调制(PWM)是指用微处理器的数字输出来对模拟电路进行控制，是一种对模拟信号电平进行数字编码的方法。在树莓派上，可以通过对GPIO的编程来实现PWM。<br>创建一个 PWM 实例：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">p = GPIO.PWM(channel, frequency)</span><br></pre></td></tr></table></figure>
+<p>启用 PWM：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">p.start(dc)   # dc 代表占空比（范围：0.0 &lt;= dc &lt;= 100.0）</span><br></pre></td></tr></table></figure>
+<p>更改频率：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">p.ChangeFrequency(freq)   <span class="comment"># freq 为设置的新频率，单位为 Hz</span></span><br></pre></td></tr></table></figure>
+<p>更改占空比：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">p.ChangeDutyCycle(dc)  <span class="comment"># 范围：0.0 &lt;= dc &gt;= 100.0</span></span><br></pre></td></tr></table></figure>
+<p>停止 PWM：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">p.stop()</span><br><span class="line"><span class="comment">#注意，如果实例中的变量“p”超出范围，也会导致 PWM 停止。</span></span><br></pre></td></tr></table></figure>
+        </div>
+        <div class="article-tags tags">
+            
+                <a class="tag-none-link" href="/tags/Python/" rel="tag">Python</a><a class="tag-none-link" href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/" rel="tag">树莓派</a>
+            
+        </div>
+    </section>
+</article>
+
+
+
+
+
+        <script>setLoadingBarProgress(60);</script>
+    </main>
+
+    <footer id="footer" class="clearfix">
+
+    
+
+    <div class="social-wrapper">
+        
+            
+                <a href="liuguandi@126.com" class="social email"
+                   target="_blank" rel="external">
+                    <span class="icon icon-email"></span>
+                </a>
+            
+                <a href="https://github.com/Liuguandi" class="social github"
+                   target="_blank" rel="external">
+                    <span class="icon icon-github"></span>
+                </a>
+            
+                <a href="/atom.xml" class="social rss"
+                   target="_blank" rel="external">
+                    <span class="icon icon-rss"></span>
+                </a>
+            
+        
+    </div>
+
+    <div class="theme-by">Theme <span class="codename">Memory</span> designed by <a href="https://artifact.me/"
+                                                                                    target="_blank">Art Chen</a>, modified by <a href="https://values.keys.moe/"
+                                                                                    target="_blank">Angelo</a>.
+    </div>
+    <div>&copy; <a href="/">Angelo的代码工坊</a></div>
+
+</footer>
+
+
+    <script>setLoadingBarProgress(80);</script>
+    <div class="overlay"></div>
+</div>
+
+<div class="site-sidebar" id="site-sidebar">
+
+    
+
+    <div class="sidebar-switch clearfix "
+         style="display: none">
+        <a class="dark-btn active" data-toggle="toc">
+            <span class="icon icon-list"></span>
+            <span class="text">Index</span>
+        </a>
+        <a class="dark-btn" data-toggle="bio">
+            <span class="icon icon-person"></span>
+            <span class="text">Bio</span>
+        </a>
+    </div>
+
+    <div class="site-toc "
+         style="display: none">
+        
+            <div class="no-index">No Index</div>
+        
+    </div>
+
+    <div class="site-bio show"
+         style="display: block">
+
+        <div class="about-me clearfix">
+
+            <div class="title"><a href="/">Angelo的代码工坊</a></div>
+            
+            <p class="subtitle">
+                I shut my eyes in order to see.
+            </p>
+            
+
+            <div class="info">
+                <!-- <a class="name dark-btn" href="/about"> -->
+                    <!-- Angelo -->
+                <!-- </a> -->
+                <div class="item desc" style="padding-right:20px">
+                    <div class="description">
+                        身处寒夜，把握星光。
+                    </div>
+                    <div class="author">
+                        Angelo
+                    </div>
+                </div>
+
+                <div class="avatar">
+                    <a href="/about">
+                        <img src="/img/avatar.png"/>
+                    </a>
+                </div>
+            </div>
+                
+
+            
+    
+        </div>
+
+        <!-- <div class="menu section">
+            <ul class="clearfix">
+                
+                    <li class="left">
+                        <a href="/about"
+                           onfocus="this.blur();"
+                           class="nav-about dark-btn block">
+                            About
+                        </a>
+                    </li>
+                
+                    <li class="right">
+                        <a href="/archives"
+                           onfocus="this.blur();"
+                           class="nav-archives dark-btn block">
+                            Archives
+                        </a>
+                    </li>
+                
+            </ul>
+        </div> -->
+
+
+        <div class="body">
+            
+              
+                <ul class="nav">
+                  
+                    
+                      <li class="category-list-container">
+                        <a href="javascript:;">Category</a>
+                        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%A0%91%E8%8E%93%E6%B4%BE/">树莓派</a><span class="category-list-count">1</span></li></ul>
+                      </li>
+                    
+                  
+                    
+                      <li class="tag-list-container">
+                        <a href="javascript:;">Tag</a>
+                        <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/" rel="tag">树莓派</a><span class="tag-list-count">1</span></li></ul>
+                      </li>
+                    
+                  
+                    
+                      <li class="archive-list-container">
+                        <a href="javascript:;">Archive</a>
+                        <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/">2019</a><span class="archive-list-count">1</span></li></ul>
+                      </li>
+                    
+                  
+                </ul>
+              
+                <ul class="nav">
+                  
+                    
+                      <li>
+                        <a href="/" title="Homepage" external="false">Homepage</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="/archives" title="By Year" external="false">By Year</a>
+                      </li>
+                    
+                  
+                </ul>
+              
+                <ul class="nav">
+                  
+                    
+                      <li>
+                        <a href="https://blog.csdn.net/Liu_959185" title="CSDN（已暂停更新）" target="_blank" rel="noopener">CSDN（已暂停更新）</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="https://github.com/Liuguandi" title="Github" target="_blank" rel="noopener">Github</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="/atom.xml" title="RSS" external="false">RSS</a>
+                      </li>
+                    
+                  
+                </ul>
+              
+            
+          </div>
+
+    </div>
+
+    <div class="shortcuts">
+        <a href="#header" class="top window-nav dark-btn" id="go-top">
+            <span class="icon icon-chevron-thin-up"></span>
+        </a>
+        <a class="close dark-btn" id="sidebar-close">
+            <span class="icon icon-close"></span>
+        </a>
+        <a href="#footer" class="top window-nav dark-btn" id="go-bottom">
+            <span class="icon icon-chevron-thin-down"></span>
+        </a>
+    </div>
+
+</div>
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script>window.jQuery || document.write('<script src="/js/jquery.min.js"><\/script>')</script>
+
+
+<script src="/js/jquery.fitvids.js"></script>
+
+<script>
+  var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+  var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+  var ALGOLIA_API_KEY = "";
+  var ALGOLIA_APP_ID = "";
+  var ALGOLIA_INDEX_NAME = "";
+  var AZURE_SERVICE_NAME = "";
+  var AZURE_INDEX_NAME = "";
+  var AZURE_QUERY_KEY = "";
+  var SEARCH_SERVICE = "";
+  var universalSearchConfig = {};
+  if (SEARCH_SERVICE === 'google') {
+    universalSearchConfig = {
+      searchService: SEARCH_SERVICE,
+      apiKey: GOOGLE_CUSTOM_SEARCH_API_KEY,
+      engineId: GOOGLE_CUSTOM_SEARCH_ENGINE_ID,
+      imagePath: "/img/"
+    };
+  } else if (SEARCH_SERVICE === 'algolia') {
+    universalSearchConfig = {
+      searchService: SEARCH_SERVICE,
+      apiKey: ALGOLIA_API_KEY,
+      appId: ALGOLIA_APP_ID,
+      indexName: ALGOLIA_INDEX_NAME,
+      imagePath: "/img/"
+    };
+  } else if (SEARCH_SERVICE === 'azure') {
+    universalSearchConfig = {
+      searchService: SEARCH_SERVICE,
+      serviceName: AZURE_SERVICE_NAME,
+      indexName: AZURE_INDEX_NAME,
+      apiKey: AZURE_QUERY_KEY,
+      imagePath: "/img/"
+    };
+  }
+</script>
+
+<script src="/js/app.js"></script>
+
+
+<script src="/js/search.js"></script>
+
+
+
+
+
+<script src="/scripts/main.js"></script>
+
+<script>setLoadingBarProgress(100);</script>
+
+</body>
+</html>
