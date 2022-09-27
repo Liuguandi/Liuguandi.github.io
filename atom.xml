@@ -3,11 +3,11 @@
   <title>Angelo的代码工坊</title>
   
   <subtitle>I shut my eyes in order to see.</subtitle>
-  <link href="http://example.com/atom.xml" rel="self"/>
+  <link href="http://values.keys.moe/atom.xml" rel="self"/>
   
-  <link href="http://example.com/"/>
+  <link href="http://values.keys.moe/"/>
   <updated>2022-09-27T13:23:30.538Z</updated>
-  <id>http://example.com/</id>
+  <id>http://values.keys.moe/</id>
   
   <author>
     <name>Angelo</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>Hello World !</title>
-    <link href="http://example.com/2022/09/26/hello-world/"/>
-    <id>http://example.com/2022/09/26/hello-world/</id>
+    <link href="http://values.keys.moe/2022/09/26/hello-world/"/>
+    <id>http://values.keys.moe/2022/09/26/hello-world/</id>
     <published>2022-09-26T14:28:42.065Z</published>
     <updated>2022-09-27T13:23:30.538Z</updated>
     
@@ -38,8 +38,8 @@
   
   <entry>
     <title>树莓派引脚介绍与GPIO的初步认识与应用</title>
-    <link href="http://example.com/2019/03/02/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%BC%95%E8%84%9A%E4%BB%8B%E7%BB%8D%E4%B8%8EGPIO%E7%9A%84%E5%88%9D%E6%AD%A5%E8%AE%A4%E8%AF%86%E4%B8%8E%E5%BA%94%E7%94%A8/"/>
-    <id>http://example.com/2019/03/02/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%BC%95%E8%84%9A%E4%BB%8B%E7%BB%8D%E4%B8%8EGPIO%E7%9A%84%E5%88%9D%E6%AD%A5%E8%AE%A4%E8%AF%86%E4%B8%8E%E5%BA%94%E7%94%A8/</id>
+    <link href="http://values.keys.moe/2019/03/02/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%BC%95%E8%84%9A%E4%BB%8B%E7%BB%8D%E4%B8%8EGPIO%E7%9A%84%E5%88%9D%E6%AD%A5%E8%AE%A4%E8%AF%86%E4%B8%8E%E5%BA%94%E7%94%A8/"/>
+    <id>http://values.keys.moe/2019/03/02/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%BC%95%E8%84%9A%E4%BB%8B%E7%BB%8D%E4%B8%8EGPIO%E7%9A%84%E5%88%9D%E6%AD%A5%E8%AE%A4%E8%AF%86%E4%B8%8E%E5%BA%94%E7%94%A8/</id>
     <published>2019-03-02T01:03:20.000Z</published>
     <updated>2019-03-03T08:25:53.575Z</updated>
     
@@ -50,12 +50,12 @@
     
     
     
-    <category term="树莓派" scheme="http://example.com/categories/%E6%A0%91%E8%8E%93%E6%B4%BE/"/>
+    <category term="树莓派" scheme="http://values.keys.moe/categories/%E6%A0%91%E8%8E%93%E6%B4%BE/"/>
     
     
-    <category term="树莓派" scheme="http://example.com/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/"/>
+    <category term="树莓派" scheme="http://values.keys.moe/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/"/>
     
-    <category term="Python" scheme="http://example.com/tags/Python/"/>
+    <category term="Python" scheme="http://values.keys.moe/tags/Python/"/>
     
   </entry>
   
