@@ -185,29 +185,12 @@
         3月 2, 2019
     </time>
     <section class="content">
-        <span id="more"></span>
+        <p>又是老问题？（笑</p>
 
-<h1><span id="树莓派有密码的网络联网失败的问题与解决">树莓派有密码的网络联网失败的问题与解决</span></h1><p><strong>在保证系统无任何修改的情况下：</strong><br>树莓派出现无法连接有密码的网络，而可以连接无密码网络的情况。<br>问题出现原因：<strong>电池电源电流供应不足</strong>。<br>解决方案：给树莓派micrioUSB处通以<strong>正常电源</strong>，问题得以解决。</p>
-<h1><span id="修改树莓派热点的名称和密码">修改树莓派热点的名称和密码</span></h1><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/hostapd/hostapd.<span class="keyword">conf</span> </span><br></pre></td></tr></table></figure>
-
-<p>其中ssid为热点的名称、wpa_passphrase为热点的密码<br><img src="/2019/03/02/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E4%B8%8E%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/修改树莓派热点的名称和密码.jpg" alt></p>
-<h1><span id="树莓派更换国内可用镜像源">树莓派更换国内可用镜像源</span></h1><p>***最新系统不用折腾换源了，亲测官方源可以使用。</p>
-<p><strong>查看树莓派的镜像列表</strong><br><a target="_blank" rel="noopener" href="http://www.raspbian.org/RaspbianMirrors">http://www.raspbian.org/RaspbianMirrors</a><br>操作</p>
-<h2><span id="1-编辑sourceslist">1. 编辑sources.list</span></h2><p>打开终端 输入</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/apt/sources.<span class="keyword">list</span></span><br></pre></td></tr></table></figure>
-
-<p>用#注释或直接删除原有的内容，新增两条：</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">deb</span> http://mirrors.tuna.tsinghua.edu.<span class="keyword">cn</span>/raspbian/raspbian/ stretch main contrib non-free rpi</span><br><span class="line">#deb-src http://mirrors.tuna.tsinghua.edu.<span class="keyword">cn</span>/raspbian/raspbian/ stretch main contrib non-free rpi</span><br></pre></td></tr></table></figure>
-
-<p>ctrl+x 保存并退出。</p>
-<h2><span id="2-编辑raspilist">2. 编辑raspi.list</span></h2><p>sudo nano &#x2F;etc&#x2F;apt&#x2F;sources.list.d&#x2F;raspi.list<br>用#注释或直接删除原有的内容，新增两条：</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">deb</span> http://mirror.tuna.tsinghua.edu.<span class="keyword">cn</span>/raspberrypi/ stretch main ui</span><br><span class="line">#deb-src http://mirror.tuna.tsinghua.edu.<span class="keyword">cn</span>/raspberrypi/ stretch main ui</span><br></pre></td></tr></table></figure>
-
-<p>ctrl+x 保存并退出。</p>
-<h2><span id="3-更新软件源列表">3. 更新软件源列表</span></h2><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-<span class="built_in">get</span> <span class="keyword">update</span></span><br></pre></td></tr></table></figure>
-
-
-
+        
+            <div class="readmore">
+                <a href="/2019/03/02/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E4%B8%8E%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">Read More</a>
+            </div>
         
 
         
