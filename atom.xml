@@ -6,7 +6,7 @@
   <link href="https://values.keys.moe/atom.xml" rel="self"/>
   
   <link href="https://values.keys.moe/"/>
-  <updated>2022-09-28T06:24:41.208Z</updated>
+  <updated>2022-09-28T06:55:23.539Z</updated>
   <id>https://values.keys.moe/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>新的故事与旧的回忆 —— 2017~2021 我的本科四年</title>
+    <link href="https://values.keys.moe/2021/06/21/%E6%96%B0%E7%9A%84%E6%95%85%E4%BA%8B%E4%B8%8E%E6%97%A7%E7%9A%84%E5%9B%9E%E5%BF%86%20%E2%80%94%E2%80%94%202017~2021%20%E6%88%91%E7%9A%84%E6%9C%AC%E7%A7%91%E5%9B%9B%E5%B9%B4/"/>
+    <id>https://values.keys.moe/2021/06/21/%E6%96%B0%E7%9A%84%E6%95%85%E4%BA%8B%E4%B8%8E%E6%97%A7%E7%9A%84%E5%9B%9E%E5%BF%86%20%E2%80%94%E2%80%94%202017~2021%20%E6%88%91%E7%9A%84%E6%9C%AC%E7%A7%91%E5%9B%9B%E5%B9%B4/</id>
+    <published>2021-06-20T16:54:45.000Z</published>
+    <updated>2022-09-28T06:55:23.539Z</updated>
+    
+    <content type="html"><![CDATA[<img src="/2021/06/21/%E6%96%B0%E7%9A%84%E6%95%85%E4%BA%8B%E4%B8%8E%E6%97%A7%E7%9A%84%E5%9B%9E%E5%BF%86%20%E2%80%94%E2%80%94%202017~2021%20%E6%88%91%E7%9A%84%E6%9C%AC%E7%A7%91%E5%9B%9B%E5%B9%B4/新的故事与旧的回忆.jpg" alt><span id="more"></span>]]></content>
+    
+    
+    <summary type="html">&lt;img src=&quot;/2021/06/21/%E6%96%B0%E7%9A%84%E6%95%85%E4%BA%8B%E4%B8%8E%E6%97%A7%E7%9A%84%E5%9B%9E%E5%BF%86%20%E2%80%94%E2%80%94%202017~2021%20%E6%88%91%E7%9A%84%E6%9C%AC%E7%A7%91%E5%9B%9B%E5%B9%B4/新的故事与旧的回忆.jpg&quot; alt&gt;</summary>
+    
+    
+    
+    <category term="杂谈" scheme="https://values.keys.moe/categories/%E6%9D%82%E8%B0%88/"/>
+    
+    
+    <category term="杂谈" scheme="https://values.keys.moe/tags/%E6%9D%82%E8%B0%88/"/>
+    
+  </entry>
   
   <entry>
     <title>通过Xrdp实现Windows远程访问Ubuntu 16.04</title>
