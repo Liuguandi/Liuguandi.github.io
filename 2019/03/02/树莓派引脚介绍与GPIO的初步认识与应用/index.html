@@ -144,7 +144,7 @@
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">channel = GPIO.wait_for_edge(channel, GPIO_RISING, timeout=<span class="number">5000</span>)</span><br></pre></td></tr></table></figure>
 
 <p>add_event_detect() 函数<br>该函数对一个引脚进行监听，一旦引脚输入状态发生了改变，调用event_detected()函数会返回true，</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">GPIO.add_event_detect(channel, GPIO.RISING)</span><br><span class="line"><span class="keyword">if</span> GPIO.event_detected(channel):</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&#x27;Button pressed&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">GPIO.add_event_detect(channel, GPIO.RISING)</span><br><span class="line"><span class="keyword">if</span> GPIO.event_detected(channel):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Button pressed&#x27;</span>)</span><br></pre></td></tr></table></figure>
 
 <p><strong>RPI.GPIO 模块的脉宽调制（PWM）功能</strong><br>脉宽调制(PWM)是指用微处理器的数字输出来对模拟电路进行控制，是一种对模拟信号电平进行数字编码的方法。在树莓派上，可以通过对GPIO的编程来实现PWM。<br>创建一个 PWM 实例：</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">p = GPIO.PWM(channel, frequency)</span><br></pre></td></tr></table></figure>
