@@ -4,9 +4,6 @@
   line-height: 1.75em;
   padding: 0 30px;
 }
-.content figure {
-  display: inline;
-}
 @media (prefers-color-scheme: dark) {
   .content {
     color: #bfbfbf;
@@ -67,6 +64,9 @@
   max-width: 100%;
   margin: 0;
   box-shadow: none;
+}
+.content figure {
+  display: inline;
 }
 .content p {
   margin: 20px 0;
