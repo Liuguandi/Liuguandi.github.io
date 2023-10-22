@@ -1,12 +1,11 @@
-figure {
-  display: inline;
-}
-
 .content {
   color: #464646;
   font-size: 14px;
   line-height: 1.75em;
   padding: 0 30px;
+}
+.content figure {
+  display: inline;
 }
 @media (prefers-color-scheme: dark) {
   .content {
