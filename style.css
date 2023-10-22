@@ -1349,11 +1349,14 @@ pre code {
   margin: 0;
   box-shadow: none;
 }
-.content img.small-img {
+.content img.small-img-inline {
   width: auto;
   max-width: 100%;
   margin: 0;
   box-shadow: none;
+  display: inline;
+}
+.content span figcaption {
   display: inline;
 }
 .content figure {
