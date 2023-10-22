@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     
-    <title>Category: 论文阅读 | Angelo的代码工坊</title>
+    <title>Practical Accuracy Estimation for Efficient Deep Neural | Angelo的代码工坊</title>
     <meta name="description" content="Angelo's blog."/>
     <meta name="keywords" content="hexo,theme,otakism,otaku"/>
     <meta name="HandheldFriendly" content="True"/>
@@ -12,15 +12,31 @@
     <meta name="google-site-verification" content=""/>
     <meta name="baidu-site-verification" content=""/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="身处寒夜，把握星光。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Angelo的代码工坊">
-<meta property="og:url" content="https://values.keys.moe/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/index.html">
+    <meta name="description" content="高效深度神经网络测试的实用准确度估计摘要​	深度神经网络 (Deep neural network, DNN) 愈发流行，DNN的测试对DNN的正确性（即DNN在指定工作中的准确度）至关重要。然而，DNN 测试存在严重的效率问题，即，标注每个测试输入以了解DNN在测试集上的准确度的成本很高，因为需要大量的人（甚至他们还需要特定领域知识）来对测试数据进行手工标注，而测试集本身又是大规模的。为缓解">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Practical Accuracy Estimation for Efficient Deep Neural">
+<meta property="og:url" content="https://values.keys.moe/2021/12/26/Practical%20Accuracy%20Estimation%20for%20Efficient%20Deep%20Neural/index.html">
 <meta property="og:site_name" content="Angelo的代码工坊">
-<meta property="og:description" content="身处寒夜，把握星光。">
+<meta property="og:description" content="高效深度神经网络测试的实用准确度估计摘要​	深度神经网络 (Deep neural network, DNN) 愈发流行，DNN的测试对DNN的正确性（即DNN在指定工作中的准确度）至关重要。然而，DNN 测试存在严重的效率问题，即，标注每个测试输入以了解DNN在测试集上的准确度的成本很高，因为需要大量的人（甚至他们还需要特定领域知识）来对测试数据进行手工标注，而测试集本身又是大规模的。为缓解">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://values.keys.moe/2021/12/26/Practical%20Accuracy%20Estimation%20for%20Efficient%20Deep%20Neural/pic1.jpg">
+<meta property="og:image" content="https://values.keys.moe/2021/12/26/Practical%20Accuracy%20Estimation%20for%20Efficient%20Deep%20Neural/pic2.png">
+<meta property="og:image" content="https://values.keys.moe/2021/12/26/Practical%20Accuracy%20Estimation%20for%20Efficient%20Deep%20Neural/pic3.png">
+<meta property="og:image" content="https://values.keys.moe/2021/12/26/Practical%20Accuracy%20Estimation%20for%20Efficient%20Deep%20Neural/formula1.png">
+<meta property="og:image" content="https://values.keys.moe/2021/12/26/Practical%20Accuracy%20Estimation%20for%20Efficient%20Deep%20Neural/pic4.png">
+<meta property="og:image" content="https://values.keys.moe/2021/12/26/Practical%20Accuracy%20Estimation%20for%20Efficient%20Deep%20Neural/formula2.png">
+<meta property="og:image" content="https://values.keys.moe/2021/12/26/Practical%20Accuracy%20Estimation%20for%20Efficient%20Deep%20Neural/formula3.png">
+<meta property="og:image" content="https://values.keys.moe/2021/12/26/Practical%20Accuracy%20Estimation%20for%20Efficient%20Deep%20Neural/formula4.png">
+<meta property="og:image" content="https://values.keys.moe/2021/12/26/Practical%20Accuracy%20Estimation%20for%20Efficient%20Deep%20Neural/formula5.png">
+<meta property="og:image" content="https://values.keys.moe/2021/12/26/Practical%20Accuracy%20Estimation%20for%20Efficient%20Deep%20Neural/formula5.1.png">
+<meta property="og:image" content="https://values.keys.moe/2021/12/26/Practical%20Accuracy%20Estimation%20for%20Efficient%20Deep%20Neural/formula5.2.png">
+<meta property="og:image" content="https://values.keys.moe/2021/12/26/Practical%20Accuracy%20Estimation%20for%20Efficient%20Deep%20Neural/algo1.png">
+<meta property="article:published_time" content="2021-12-25T23:04:01.000Z">
+<meta property="article:modified_time" content="2023-10-22T09:25:50.752Z">
 <meta property="article:author" content="Angelo">
+<meta property="article:tag" content="论文阅读">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://values.keys.moe/2021/12/26/Practical%20Accuracy%20Estimation%20for%20Efficient%20Deep%20Neural/pic1.jpg">
     
         <link rel="alternative" href="/atom.xml" title="Angelo的代码工坊" type="application/atom+xml">
     
@@ -69,32 +85,20 @@
     <script>setLoadingBarProgress(40);</script>
 
     <main id="main" role="main">
-        
-
-
-
-
-  <section class="page-header category">
-    <h1>- <span>论文阅读</span> -</h1>
-  </section>
-
-
-<section class="post-list">
-  
-    <article class="post ">
-
-    
-        <h2 class="title">
-            <a href="/2021/12/26/Practical%20Accuracy%20Estimation%20for%20Efficient%20Deep%20Neural/">
-                Practical Accuracy Estimation for Efficient Deep Neural
-            </a>
-        </h2>
-    
+        <article id="post-Practical Accuracy Estimation for Efficient Deep Neural"
+         class="post article white-box article-type-post"
+         itemscope itemprop="blogPost">
+    <h2 class="title">
+        <a href="/2021/12/26/Practical%20Accuracy%20Estimation%20for%20Efficient%20Deep%20Neural/">
+            Practical Accuracy Estimation for Efficient Deep Neural
+        </a>
+    </h2>
     <time>
         12月 26, 2021
     </time>
     <section class="content">
-        <img src="/2021/12/26/Practical%20Accuracy%20Estimation%20for%20Efficient%20Deep%20Neural/pic1.jpg" alt>
+        <div class="article-entry" itemprop="articleBody">
+            <img src="/2021/12/26/Practical%20Accuracy%20Estimation%20for%20Efficient%20Deep%20Neural/pic1.jpg" alt>
 
 <h1><span id="高效深度神经网络测试的实用准确度估计">高效深度神经网络测试的实用准确度估计</span></h1><h2><span id="摘要">摘要</span></h2><p>​	深度神经网络 (Deep neural network, DNN) 愈发流行，DNN的测试对DNN的正确性（即DNN在指定工作中的准确度）至关重要。然而，DNN 测试存在严重的效率问题，即，标注每个测试输入以了解DNN在测试集上的准确度的成本很高，因为需要大量的人（甚至他们还需要特定领域知识）来对测试数据进行手工标注，而测试集本身又是大规模的。为缓解此问题，本文提出了一种叫PACE新颖手法（Practical ACcuracy Estimation的缩写），其选择一小部分测试输入，可以精确地估计整个测试集的准确性。这样一来，只需对这小部分选定样本进行标注即可，这很大程度上降低了标注成本。除了实现精确的准确性估计外，为使PACE更加实用，其还被要求应该是可解释的、确定的，并尽可能地高效的。因此，PACE首先结合聚类，将具有不同测试能力（即测试DNN模型不同功能）的测试输入划分为不同的组。然后，PACE利用MMD-critic算法（一种最先进的基于样例的解释算法，根据组的大小，从每组中选择原型，即选择最具代表性的测试输入）来可以减少聚类带来的噪音影响。同时，PACE还使用了自适应随机测试的思想，从少数空间（即没有聚成任何一组的测试输入）中选择测试输入，以保证在所需的测试输入数量下实现极大的多样性。两个平行的选择过程（即同时从组和少数空间中进行选择）组建了最终的一小部分被选中的测试输入集合。结果表明，PACE能够精确估计整个测试集的准确性，平均偏差只有1.181%∼2.302%，大大超过了最先进的方法。</p>
 <h2><span id="简介">简介</span></h2><p>​	本文共做出以下主要贡献：</p>
@@ -153,148 +157,17 @@
 
 <h2><span id="结论">结论</span></h2><p>​		为提高深度神经网络（DNN）的测试效率，我们的目标是选择一小组可以精确估计整个测试集准确性的测试输入。我们只需标注这个小集合，而不必标注整个测试集。为了实现这一目标，我们提出了PACE，一种新颖而实用的方法来选择小集合测试输入集。为了使PACE更加实用，PACE结合了聚类，将不同测试能力的测试输入聚为不同组，然后利用MMD-critic算法从每个组中选择原型，并借助自适应随机测试思想，通过考虑样本下从少数空间（即没有聚类到任何组的测试输入）选择测试输入，以构成最后的小测试输入集合。结果表明，PACE 实现了很好的准确度估计效果。</p>
 
-
-        
-
-        
-            <div class="tags">
+        </div>
+        <div class="article-tags tags">
+            
                 <a class="tag-none-link" href="/tags/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" rel="tag">论文阅读</a>
-            </div>
-        
-
+            
+        </div>
     </section>
 </article>
-  
-    <article class="post ">
 
-    
-        <h2 class="title">
-            <a href="/2021/12/07/Delving%20into%20Data%20Effectively%20Substitute%20Training%20for%20Black-box%20Attack/">
-                Delving into Data: Effectively Substitute Training for Black-box Attack
-            </a>
-        </h2>
-    
-    <time>
-        12月 7, 2021
-    </time>
-    <section class="content">
-        <img src="/2021/12/07/Delving%20into%20Data%20Effectively%20Substitute%20Training%20for%20Black-box%20Attack/封面.png" alt>
 
-<h1 id="深入研究数据：用于黑盒攻击的有效替代训练"><a href="#深入研究数据：用于黑盒攻击的有效替代训练" class="headerlink" title="深入研究数据：用于黑盒攻击的有效替代训练"></a>深入研究数据：用于黑盒攻击的有效替代训练</h1><h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>​		深度模型在处理对抗样本时显示了它们的脆弱性。对于黑盒攻击，在无法访问被攻击模型的架构和权重的情况下，大家广泛聚焦于训练对抗攻击的替代模型的方法。以往的替代训练方法主要是基于真实训练数据或合成数据来窃取目标模型的知识，而没有探索什么样的数据可以进一步提高替代模型和目标模型之间的可转移性。本文中，我们提出了一种新视角的替代训练，聚焦于设计知识窃取过程中使用的数据分布。更具体地说，我们提出了一个多样化数据生成模块来合成具有广泛分布的大规模数据。我们还引入了对抗替代训练策略，以关注分布在决策边界附近的数据。这两个模块的结合可以进一步提高替代模型和目标模型的一致性，从而大大提高了对抗攻击的有效性。大量的实验证明了我们的方法在非定向和定向攻击设置下对最先进的竞争对手的有效性。我们还提供了详细的可视化和分析，以帮助理解我们方法的优势。</p>
 
-        
-            <div class="readmore">
-                <a href="/2021/12/07/Delving%20into%20Data%20Effectively%20Substitute%20Training%20for%20Black-box%20Attack/">Read More</a>
-            </div>
-        
-
-        
-            <div class="tags">
-                <a class="tag-none-link" href="/tags/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" rel="tag">论文阅读</a>
-            </div>
-        
-
-    </section>
-</article>
-  
-    <article class="post ">
-
-    
-        <h2 class="title">
-            <a href="/2021/04/20/Prioritize%20Crowdsourced%20Test%20Reports%20via%20Deep%20Screenshot%20Understanding/">
-                Prioritize Crowdsourced Test Reports via Deep Screenshot Understanding
-            </a>
-        </h2>
-    
-    <time>
-        4月 20, 2021
-    </time>
-    <section class="content">
-        <img src="/2021/04/20/Prioritize%20Crowdsourced%20Test%20Reports%20via%20Deep%20Screenshot%20Understanding/title.png" alt>
-
-<h1 id="基于深度截图理解的众包测试报告优先级排序"><a href="#基于深度截图理解的众包测试报告优先级排序" class="headerlink" title="基于深度截图理解的众包测试报告优先级排序"></a>基于深度截图理解的众包测试报告优先级排序</h1><h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>​		众包测试在移动应用程序测试中日益占据主导地位，但对于应用开发者来说，审查数量过多的测试报告是很大的负担。已有许多学者提出基于文本和简单图片特征的测试报告处理方法。然而，在移动应用测试中，测试报告所包含的文本较为精简且信息不够充分，图片则能够提供更丰富的信息。这一趋势促使我们在深度截图理解的基础上，对众包测试报告的优先级进行排序。<br>​		本文中，我们提出了一种新的众包测试报告优先级排序方法，即DEEPPRIOR。我们首先引入一个新的特征来代表众包测试报告，即DEEPFEATURE，它基于对应用程序截图的深度分析，涵盖了所有组件（widget）及它们的文本、坐标、类型甚至是意图。DEEPFEATURE包括直接描述bug的bug特征（Bug Feature），和刻画bug完整上下文的上下文特征（Context Feature）。DEEPFEATURE的相似度用于表示测试报告的相似度，并被用于对众包测试报告进行优先级排序。我们形式上将相似度定义为DEEPSIMILARITY。我们还进行了一个实证实验，以评估所提技术在大型数据中的有效性。结果表明，DEEPPRIOR性能最佳，以不足一半的成本获得优于其它方法的结果。</p>
-<p>索引词 众包测试，移动应用测试，深度截图理解</p>
-
-        
-            <div class="readmore">
-                <a href="/2021/04/20/Prioritize%20Crowdsourced%20Test%20Reports%20via%20Deep%20Screenshot%20Understanding/">Read More</a>
-            </div>
-        
-
-        
-            <div class="tags">
-                <a class="tag-none-link" href="/tags/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" rel="tag">论文阅读</a>
-            </div>
-        
-
-    </section>
-</article>
-  
-    <article class="post ">
-
-    
-        <h2 class="title">
-            <a href="/2020/09/16/Syntactic%20Data%20Augmentation%20Increases%20Robustness%20to%20Inference%20Heuristics/">
-                Syntactic Data Augmentation Increases Robustness to Inference Heuristics
-            </a>
-        </h2>
-    
-    <time>
-        9月 16, 2020
-    </time>
-    <section class="content">
-        <img src="/2020/09/16/Syntactic%20Data%20Augmentation%20Increases%20Robustness%20to%20Inference%20Heuristics/title.png" alt>
-
-<h1 id="通过语法数据扩增提升推理启发法的鲁棒性"><a href="#通过语法数据扩增提升推理启发法的鲁棒性" class="headerlink" title="通过语法数据扩增提升推理启发法的鲁棒性"></a>通过语法数据扩增提升推理启发法的鲁棒性</h1><h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>​	诸如BERT的预训练的神经模型在微调以执行自然语言推理（NLI）时，常常在标准数据集上展现出了高度准确性，但在受控的挑战集上，它们却表现出对语序敏感度的出奇缺乏。我们假设此问题并不主要因为预训练模型的局限性引起，而是由于缺乏众包的NLI样例引起的，而这些样例可能在微调阶段传递了语法结构的重要性。我们探索了几种方法来扩增标准训练集中语法丰富的实例，这些实例是通过对MNLI语料库的句子应用语法转换而生成的。而表现最好的扩增方法，主语&#x2F;宾语倒置法，可以在不影响BERT对MNLI测试集性能的情况下，将BERT对受控实例的词序敏感度诊断从0.28提升至0.73。这种改进全面超过了用于数据扩增的特定结构，这表明了扩增可以使BERT学习到抽象语法的表现形式。</p>
-
-        
-            <div class="readmore">
-                <a href="/2020/09/16/Syntactic%20Data%20Augmentation%20Increases%20Robustness%20to%20Inference%20Heuristics/">Read More</a>
-            </div>
-        
-
-        
-            <div class="tags">
-                <a class="tag-none-link" href="/tags/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" rel="tag">论文阅读</a>
-            </div>
-        
-
-    </section>
-</article>
-  
-    <article class="post ">
-
-    
-        <h2 class="title">
-            <a href="/2020/06/19/Adversarial%20Robustness%20through%20Disentangled%20Representations/">
-                Adversarial Robustness through Disentangled Representations
-            </a>
-        </h2>
-    
-    <time>
-        6月 19, 2020
-    </time>
-    <section class="content">
-        <img src="/2020/06/19/Adversarial%20Robustness%20through%20Disentangled%20Representations/封面.png" alt>
-
-<h1 id="通过解耦表征实现对抗鲁棒性"><a href="#通过解耦表征实现对抗鲁棒性" class="headerlink" title="通过解耦表征实现对抗鲁棒性"></a>通过解耦表征实现对抗鲁棒性</h1><h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>​	尽管深度学习模型具有优秀的实证性能，但诸多研究已发现了它们对对抗样本的脆弱性。它们易对具有难以察觉的对抗扰动的输入做出易受其影响的预测。尽管最近的研究已明显提升了在对抗训练策略下模型的鲁棒性，但自然准确性与对抗鲁棒性之间的差距依旧显著。为缓解此问题，本文中，我们假设鲁棒性与非鲁棒性表征是整体表征中相互耦合的两个基本成分。为实现对抗鲁棒性，自然与对抗样本的鲁棒表征应与非鲁棒部分分离，鲁棒表征的一致化可弥补准确性与鲁棒性之间的差距。受此启发，我们提出了一种称为深度鲁棒解耦表征网络（Deep Robust Representation Disentanglement Network, DRRDN）的新防御方法。具体而言，DRRDN使用解耦器从对抗样本与自然样本中提取并一致化鲁棒表征。理论分析保证了我们的方法能在具有良好解耦与一致化性能的情况下平衡鲁棒性与准确性。在基准数据集上的实验结果证明了我们方法的实证优势。</p>
-
-        
-            <div class="readmore">
-                <a href="/2020/06/19/Adversarial%20Robustness%20through%20Disentangled%20Representations/">Read More</a>
-            </div>
-        
-
-        
-            <div class="tags">
-                <a class="tag-none-link" href="/tags/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" rel="tag">论文阅读</a>
-            </div>
-        
-
-    </section>
-</article>
-  
-</section>
 
 
         <script>setLoadingBarProgress(60);</script>
