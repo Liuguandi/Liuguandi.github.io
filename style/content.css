@@ -14,9 +14,6 @@
     padding: 0 20px;
   }
 }
-.content #article-gallery-img {
-  display: inline;
-}
 .content #pixiv-vol,
 .content #pixiv-artist-count {
   color: #ff9800;
