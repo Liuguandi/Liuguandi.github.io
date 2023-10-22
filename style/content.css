@@ -1,7 +1,3 @@
-figure.article-gallery-img {
-  display: inline;
-}
-
 .content {
   color: #464646;
   font-size: 14px;
@@ -17,6 +13,9 @@ figure.article-gallery-img {
   .content {
     padding: 0 20px;
   }
+}
+.content #article-gallery-img {
+  display: inline;
 }
 .content #pixiv-vol,
 .content #pixiv-artist-count {
