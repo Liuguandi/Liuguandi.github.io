@@ -205,7 +205,7 @@
 <meta property="og:image" content="https://values.keys.moe/2021/06/24/Understanding%20Recurrent%20Neural%20Networks%20Using%20Nonequilibrium%20Response%20Theory/clip_image212.png">
 <meta property="og:image" content="https://values.keys.moe/2021/06/24/Understanding%20Recurrent%20Neural%20Networks%20Using%20Nonequilibrium%20Response%20Theory/clip_image213.png">
 <meta property="article:published_time" content="2021-06-24T02:27:01.000Z">
-<meta property="article:modified_time" content="2023-10-22T09:50:08.125Z">
+<meta property="article:modified_time" content="2023-10-22T09:54:18.294Z">
 <meta property="article:author" content="Angelo">
 <meta property="article:tag" content="论文阅读">
 <meta name="twitter:card" content="summary">
@@ -286,7 +286,7 @@
 <p>本工作的主要目标之一是解决上述问题，以非平衡统计动力学中的非线性响应理论为出发点，针对连续时间RNN的随机版本，简称SRNN（其隐藏状态被注入了高斯白噪声）进行分析。我们的方法是跨学科的，为现有的RNN理论增加了令人耳目一新的观点。</p>
 <h2><span id="随机循环神经网络srnn">随机循环神经网络（SRNN）</span></h2><p>本文固定过滤概率空间（filtered probability space）<img src="/2021/06/24/Understanding%20Recurrent%20Neural%20Networks%20Using%20Nonequilibrium%20Response%20Theory/clip_image004.jpg" alt>，E代表对P的期望，T&gt;0。C(E, F)代表从E到F的连续映射的巴拿赫空间，其中E和F是巴拿赫空间。<img src="/2021/06/24/Understanding%20Recurrent%20Neural%20Networks%20Using%20Nonequilibrium%20Response%20Theory/clip_image005.png" alt>表示Rn上所有有界连续函数的空间。N:&#x3D;{0, 1, 2, . . . }，Z+:&#x3D;{1, 2, . . . }且R+:&#x3D; [0, ∞)。上标T表示转置，∗表示邻接。</p>
 <h3><span id="模型">模型</span></h3><p>我们对我们的SRNN考虑如下模型。所谓激活函数，是指一个非常数的、利普希茨连续且有界的实值函数。激活函数的例子包括sigmoid函数，如实践中常使用的双曲切线等。</p>
-<p><strong>定义2.1</strong>（连续时间SRNN）令t ∈ [0, T]，<img src="/2021/06/24/Understanding%20Recurrent%20Neural%20Networks%20Using%20Nonequilibrium%20Response%20Theory/clip_image007.jpg" alt>为确定的输入信号。连续时间的SRNN描述为以下空间状态的模型：</p>
+<p><strong>定义2.1</strong>（连续时间SRNN）令t ∈ [0, T]，<div><img src="/2021/06/24/Understanding%20Recurrent%20Neural%20Networks%20Using%20Nonequilibrium%20Response%20Theory/clip_image007.jpg" alt></div>为确定的输入信号。连续时间的SRNN描述为以下空间状态的模型：</p>
 <img src="/2021/06/24/Understanding%20Recurrent%20Neural%20Networks%20Using%20Nonequilibrium%20Response%20Theory/clip_image009.jpg" alt>
 
 <p>其中，公式1是隐藏状态<img src="/2021/06/24/Understanding%20Recurrent%20Neural%20Networks%20Using%20Nonequilibrium%20Response%20Theory/clip_image010.png" alt>的随机微分方程（SDE），带有漂移系数φ：<img src="/2021/06/24/Understanding%20Recurrent%20Neural%20Networks%20Using%20Nonequilibrium%20Response%20Theory/clip_image011.png" alt>、噪声系数<img src="/2021/06/24/Understanding%20Recurrent%20Neural%20Networks%20Using%20Nonequilibrium%20Response%20Theory/clip_image012.png" alt>和定义在<img src="/2021/06/24/Understanding%20Recurrent%20Neural%20Networks%20Using%20Nonequilibrium%20Response%20Theory/clip_image014.jpg" alt>上的r维维纳过程<img src="/2021/06/24/Understanding%20Recurrent%20Neural%20Networks%20Using%20Nonequilibrium%20Response%20Theory/clip_image015.png" alt>，而公式2定义了一个可观测的激活函数<img src="/2021/06/24/Understanding%20Recurrent%20Neural%20Networks%20Using%20Nonequilibrium%20Response%20Theory/clip_image016.png" alt>。</p>
