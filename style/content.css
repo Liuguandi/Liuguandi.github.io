@@ -64,6 +64,9 @@
   margin: 0;
   box-shadow: none;
 }
+.content figure.article-gallery-img {
+  display: inline;
+}
 .content p {
   margin: 20px 0;
 }
