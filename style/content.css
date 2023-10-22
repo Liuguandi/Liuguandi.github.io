@@ -58,8 +58,7 @@
   }
 }
 .content p.small-img img,
-.content div.small-img img,
-.content .small-img img {
+.content div.small-img img {
   width: auto;
   max-width: 100%;
   margin: 0;
