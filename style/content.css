@@ -65,6 +65,13 @@
   margin: 0;
   box-shadow: none;
 }
+.content img.small-img {
+  width: auto;
+  max-width: 100%;
+  margin: 0;
+  box-shadow: none;
+  display: inline;
+}
 .content figure {
   display: inline;
 }

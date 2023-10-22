@@ -205,7 +205,7 @@
 <meta property="og:image" content="https://values.keys.moe/2021/06/24/Understanding%20Recurrent%20Neural%20Networks%20Using%20Nonequilibrium%20Response%20Theory/clip_image212.png">
 <meta property="og:image" content="https://values.keys.moe/2021/06/24/Understanding%20Recurrent%20Neural%20Networks%20Using%20Nonequilibrium%20Response%20Theory/clip_image213.png">
 <meta property="article:published_time" content="2021-06-24T02:27:01.000Z">
-<meta property="article:modified_time" content="2023-10-22T10:51:15.425Z">
+<meta property="article:modified_time" content="2023-10-22T10:54:52.225Z">
 <meta property="article:author" content="Angelo">
 <meta property="article:tag" content="论文阅读">
 <meta name="twitter:card" content="summary">
@@ -284,7 +284,7 @@
 <p>Q1：随着时间推移的输入信号如何驱动RNN产生输出？</p>
 <p>Q2：它们的响应是否有一个普遍的机制？</p>
 <p>本工作的主要目标之一是解决上述问题，以非平衡统计动力学中的非线性响应理论为出发点，针对连续时间RNN的随机版本，简称SRNN（其隐藏状态被注入了高斯白噪声）进行分析。我们的方法是跨学科的，为现有的RNN理论增加了令人耳目一新的观点。</p>
-<h2><span id="随机循环神经网络srnn">随机循环神经网络（SRNN）</span></h2><p>本文固定过滤概率空间（filtered probability space）<span class="small-img"><img style="width: auto; max-width: 100%; margin: 0; box-shadow: none; display:inline;" src="/2021/06/24/Understanding%20Recurrent%20Neural%20Networks%20Using%20Nonequilibrium%20Response%20Theory/clip_image004.jpg" alt>，E代表对P的期望，T&gt;0。C(E, F)代表从E到F的连续映射的巴拿赫空间，其中E和F是巴拿赫空间。<div class="small-img"><img src="/2021/06/24/Understanding%20Recurrent%20Neural%20Networks%20Using%20Nonequilibrium%20Response%20Theory/clip_image005.png" alt></div>表示Rn上所有有界连续函数的空间。N:&#x3D;{0, 1, 2, . . . }，Z+:&#x3D;{1, 2, . . . }且R+:&#x3D; [0, ∞)。上标T表示转置，∗表示邻接。</span></p>
+<h2><span id="随机循环神经网络srnn">随机循环神经网络（SRNN）</span></h2><p>本文固定过滤概率空间（filtered probability space）<span class="small-img"><img class="small-img" src="/2021/06/24/Understanding%20Recurrent%20Neural%20Networks%20Using%20Nonequilibrium%20Response%20Theory/clip_image004.jpg" alt>，E代表对P的期望，T&gt;0。C(E, F)代表从E到F的连续映射的巴拿赫空间，其中E和F是巴拿赫空间。<div class="small-img"><img src="/2021/06/24/Understanding%20Recurrent%20Neural%20Networks%20Using%20Nonequilibrium%20Response%20Theory/clip_image005.png" alt></div>表示Rn上所有有界连续函数的空间。N:&#x3D;{0, 1, 2, . . . }，Z+:&#x3D;{1, 2, . . . }且R+:&#x3D; [0, ∞)。上标T表示转置，∗表示邻接。</span></p>
 <h3><span id="模型">模型</span></h3><p>我们对我们的SRNN考虑如下模型。所谓激活函数，是指一个非常数的、利普希茨连续且有界的实值函数。激活函数的例子包括sigmoid函数，如实践中常使用的双曲切线等。</p>
 <p><strong>定义2.1</strong>（连续时间SRNN）令t ∈ [0, T]，<div class="small-img"><div class="small-img"><img src="/2021/06/24/Understanding%20Recurrent%20Neural%20Networks%20Using%20Nonequilibrium%20Response%20Theory/clip_image007.jpg" alt></div></div>为确定的输入信号。连续时间的SRNN描述为以下空间状态的模型：</p>
 <div class="small-img"><img src="/2021/06/24/Understanding%20Recurrent%20Neural%20Networks%20Using%20Nonequilibrium%20Response%20Theory/clip_image009.jpg" alt></div>
