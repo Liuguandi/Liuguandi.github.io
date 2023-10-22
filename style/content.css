@@ -58,8 +58,13 @@
   }
 }
 .content p.small-img img,
-.content div.small-img img,
-.content span.small-img img {
+.content div.small-img img {
+  width: auto;
+  max-width: 100%;
+  margin: 0;
+  box-shadow: none;
+}
+.content span img {
   width: auto;
   max-width: 100%;
   margin: 0;
