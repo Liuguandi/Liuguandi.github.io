@@ -1283,10 +1283,6 @@ pre code {
   margin-bottom: 20px;
 }
 
-figure {
-  display: inline;
-}
-
 .content {
   color: #464646;
   font-size: 14px;
@@ -1347,12 +1343,21 @@ figure {
   }
 }
 .content p.small-img img,
-.content div.small-img img,
-.content span.small-img img {
+.content div.small-img img {
   width: auto;
   max-width: 100%;
   margin: 0;
   box-shadow: none;
+}
+.content img.small-img {
+  width: auto;
+  max-width: 100%;
+  margin: 0;
+  box-shadow: none;
+  display: inline;
+}
+.content figure {
+  display: inline;
 }
 .content p {
   margin: 20px 0;
