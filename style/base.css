@@ -228,3 +228,7 @@ pre code {
 .treat-block .adsbygoogle {
   margin: 0 auto;
 }
+
+.article-gallery-img {
+  display: inline;
+}
