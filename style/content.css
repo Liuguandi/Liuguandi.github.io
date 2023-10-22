@@ -64,7 +64,7 @@
   margin: 0;
   box-shadow: none;
 }
-.content figure {
+.content figure.article-gallery-img {
   display: inline;
 }
 .content p {
