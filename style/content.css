@@ -64,6 +64,9 @@
   margin: 0;
   box-shadow: none;
 }
+.content span figure {
+  display: inline;
+}
 .content p {
   margin: 20px 0;
 }
