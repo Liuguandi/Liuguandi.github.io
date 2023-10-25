@@ -12,12 +12,12 @@
     <meta name="google-site-verification" content=""/>
     <meta name="baidu-site-verification" content=""/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="RefineNet：用于密集预测的多路径细化网络引用Lin G, Liu F, Milan A, et al. Refinenet: Multi-path refinement networks for dense prediction[J]. IEEE transactions on pattern analysis and machine intelligence, 2019, 42(5):">
+    <meta name="description" content="RefineNet：用于密集预测的多路径细化网络引用Lin G, Liu F, Milan A, et al. Refinenet: Multi-path refinement networks for dense prediction[J]. IEEE transactions on pattern analysis and machine intelligence, 2019, 42(5)">
 <meta property="og:type" content="article">
 <meta property="og:title" content="RefineNet Multi-Path Refinement Networks">
 <meta property="og:url" content="https://values.keys.moe/2021/06/22/RefineNet%20Multi-Path%20Refinement%20Networks/index.html">
 <meta property="og:site_name" content="Angelo的代码工坊">
-<meta property="og:description" content="RefineNet：用于密集预测的多路径细化网络引用Lin G, Liu F, Milan A, et al. Refinenet: Multi-path refinement networks for dense prediction[J]. IEEE transactions on pattern analysis and machine intelligence, 2019, 42(5):">
+<meta property="og:description" content="RefineNet：用于密集预测的多路径细化网络引用Lin G, Liu F, Milan A, et al. Refinenet: Multi-path refinement networks for dense prediction[J]. IEEE transactions on pattern analysis and machine intelligence, 2019, 42(5)">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://values.keys.moe/2021/06/22/RefineNet%20Multi-Path%20Refinement%20Networks/clip_image002.jpg">
 <meta property="og:image" content="https://values.keys.moe/2021/06/22/RefineNet%20Multi-Path%20Refinement%20Networks/clip_image004.jpg">
@@ -39,7 +39,7 @@
 <meta property="og:image" content="https://values.keys.moe/2021/06/22/RefineNet%20Multi-Path%20Refinement%20Networks/clip_image032.jpg">
 <meta property="og:image" content="https://values.keys.moe/2021/06/22/RefineNet%20Multi-Path%20Refinement%20Networks/clip_image033.png">
 <meta property="article:published_time" content="2021-06-22T03:50:00.000Z">
-<meta property="article:modified_time" content="2023-10-25T15:17:52.536Z">
+<meta property="article:modified_time" content="2023-10-25T15:20:31.701Z">
 <meta property="article:author" content="Angelo">
 <meta property="article:tag" content="论文阅读">
 <meta name="twitter:card" content="summary">
@@ -105,9 +105,12 @@
     </time>
     <section class="content">
         <div class="article-entry" itemprop="articleBody">
-            <p><span><img class="small-img-inline" src="/2021/06/22/RefineNet%20Multi-Path%20Refinement%20Networks/clip_image002.jpg" alt></span></p>
+            <img src="/2021/06/22/RefineNet%20Multi-Path%20Refinement%20Networks/clip_image002.jpg" alt>
+
 <h1><span id="refinenet用于密集预测的多路径细化网络">RefineNet：用于密集预测的多路径细化网络</span></h1><h2><span id="引用">引用</span></h2><p>Lin G, Liu F, Milan A, et al. Refinenet: Multi-path refinement networks for dense prediction[J]. IEEE transactions on pattern analysis and machine intelligence, 2019, 42(5): 1228-1242.</p>
 <h2><span id="摘要">摘要</span></h2><p>近来，层数相当深的卷积神经网络（CNN）在对象识别方面表现出了出色的性能，其已成为语义分割和深度估计等预测问题的首选。然而，深层CNN中的重复子采样操作，如池化或卷积都会导致初始图像分辨率大幅下降。在此，我们提出了RefineNet，一个通用的多路径细化网络，其明确利用了下采样过程中的所有可用信息，以使用长距离残差连接实现高分辨率的预测。通过这种方式，捕捉高层语义特征的更深层可以直接利用早期卷积的细粒度特征进行细化。RefineNet的各个组成部分采用了遵循恒等映射思维的残差连接，这使得有效的端到端训练成为可能。此外，我们引入了链式残差池，其以有效的方式捕获丰富的上下文背景。我们对语义分割进行了全面的实验，其是一个密集分类问题，其在七个公共数据集上取得了良好的性能。我们进一步将我们的方法用于深度估计，并证明我们的方法在密集回归问题上的有效性。</p>
+<span id="more"></span>
+
 <h2><span id="介绍">介绍</span></h2><p>密集预测，也被称为逐像素预测问题，是计算机视觉课题的一个基本类别。这里的密集预测任务是为给定图像中的每一个像素分配一个类标签或连续值。无论是离散值还是连续值的预测，各类视觉任务都可以被表述为密集预测问题。例如，语义分割和对象解析是典型的密集分类问题，单目图像的深度估计是有代表性的密集回归问题。</p>
 <p>语义分割是图像理解的重要组成部分。此处的任务是为图像中的每一个像素分配一个独特的标签（或类别），而这被认为是一个密集分类问题。所谓的对象解析的相关问题，它们的目的是分割和识别对象的各个部分，这些问题通常可以被转换为语义分割任务。单目图像的深度估计是预测单个图像的像素级深度值（连续真实值），可以将其表述为密集回归问题。它在3D重建、视觉识别、场景理解、自动驾驶等方面有着广泛的应用。</p>
 <p>近期，深度学习方法，特别是卷积神经网络（CNN），如VGG、Residual Net，在识别任务中表现出了显著的效果。然而，当涉及到密集深度或法向量估计与语义分割等任务中的密集预测时，这些方法表现出了明显的局限性。空间池化和卷积通常将最终的输出预测在每个维度上减少32倍，从而失去了大量更精细的图像结构。如何应用最先进的CNN方法，如VGG、Residual Net，进行高分辨率的密集预测已成为一个热门话题。</p>
