@@ -33,11 +33,11 @@
 <meta property="og:image" content="https://values.keys.moe/2021/04/20/Prioritize%20Crowdsourced%20Test%20Reports%20via%20Deep%20Screenshot%20Understanding/%E5%85%AC%E5%BC%8F23.png">
 <meta property="og:image" content="https://values.keys.moe/2021/04/20/Prioritize%20Crowdsourced%20Test%20Reports%20via%20Deep%20Screenshot%20Understanding/%E8%A1%A82.png">
 <meta property="og:image" content="https://values.keys.moe/2021/04/20/Prioritize%20Crowdsourced%20Test%20Reports%20via%20Deep%20Screenshot%20Understanding/%E8%A1%A83.png">
-<meta property="og:image" content="file:///C:/Users/Angelo/AppData/Local/Temp/msohtmlclip1/01/clip_image006.png">
+<meta property="og:image" content="https://values.keys.moe/2021/04/20/Prioritize%20Crowdsourced%20Test%20Reports%20via%20Deep%20Screenshot%20Understanding/clip_image006.png">
 <meta property="og:image" content="https://values.keys.moe/2021/04/20/Prioritize%20Crowdsourced%20Test%20Reports%20via%20Deep%20Screenshot%20Understanding/%E5%85%AC%E5%BC%8F4.png">
 <meta property="og:image" content="https://values.keys.moe/2021/04/20/Prioritize%20Crowdsourced%20Test%20Reports%20via%20Deep%20Screenshot%20Understanding/%E8%A1%A84.png">
 <meta property="article:published_time" content="2021-04-20T09:24:05.000Z">
-<meta property="article:modified_time" content="2023-10-25T15:02:40.706Z">
+<meta property="article:modified_time" content="2023-10-25T15:05:16.658Z">
 <meta property="article:author" content="Angelo">
 <meta property="article:tag" content="论文阅读">
 <meta name="twitter:card" content="summary">
@@ -132,7 +132,7 @@
 <h3><span id="c-rq2文本描述分类">C. RQ2：文本描述分类</span></h3><p>​		在文本描述的处理中，我们将其分为两类：bug描述和复现步骤。不同的文本描述被认为是不同的报告特征。为了对文本描述进行分类，我们将文本描述分割成句子。然后，我们将这些句子输入到TextCNN模型中来完成任务，详细介绍参见章节III-A2。同时，为了更好地训练和评估网络，我们建立了一个大规模的文本分类数据集。该数据集包含了4340个标记的文本片段，其中包括2252个bug描述和2088个复现步骤。数据集按照7:2:1的比例分为训练集、验证集和测试集。</p>
 <p>表III 文本分类<br><span><img class="small-img-inline" src="/2021/04/20/Prioritize%20Crowdsourced%20Test%20Reports%20via%20Deep%20Screenshot%20Understanding/表3.png" alt></span></p>
 <p>​		RQ2的结论：文本分类的整体准确率达到96.65%。精确率、召回率和F值都在98%以上。这样的结果显示了DEEPPRIOR对文本描述的优秀分析能力，这也为众测报告的优先级的排序打下了坚实的基础。</p>
-<h3><span id="d-rq3众包测试报告的优先级排序">D. RQ3：众包测试报告的优先级排序</span></h3><p>​		在本研究问题中，我们评估DEEPPRIOR的测试报告优先级排序效果。我们使用的指标是APFD（Average Percentage of Fault Detected）指标[15]，Feng等人也使用该指标对众测报告进行优先级排序的评估[3]。在公式中，表示最先发现bugi的报告的索引，<img src="file:///C:/Users/Angelo/AppData/Local/Temp/msohtmlclip1/01/clip_image006.png" alt="img">n是报告总数，M是暴露的bug的总数。</p>
+<h3><span id="d-rq3众包测试报告的优先级排序">D. RQ3：众包测试报告的优先级排序</span></h3><p>​		在本研究问题中，我们评估DEEPPRIOR的测试报告优先级排序效果。我们使用的指标是APFD（Average Percentage of Fault Detected）指标[15]，Feng等人也使用该指标对众测报告进行优先级排序的评估[3]。在公式中，表示最先发现bugi的报告的索引，<span><img class="small-img-inline" src="/2021/04/20/Prioritize%20Crowdsourced%20Test%20Reports%20via%20Deep%20Screenshot%20Understanding/clip_image006.png" alt></span>n是报告总数，M是暴露的bug的总数。</p>
 <p><span><img class="small-img-inline" src="/2021/04/20/Prioritize%20Crowdsourced%20Test%20Reports%20via%20Deep%20Screenshot%20Understanding/公式4.png" alt></span></p>
 <p>​		为了更好地说明DEEPPRIOR的优势，我们将DEEPPRIOR与以下优先级策略进行比较。<br>​		* IDEAL：这种策略理论上是具有最好的优先级排序，意味着开发人员可以在最短的时间内审查所有报告中的bug。<br>​		* IMAGE：这种策略只使用DEEPPRIOR的深度图像理解结果来对测试报告进行排序，因为深度图像理解是我们研究的重要组成部分。<br>​		* BDDIV：这种策略参考了Feng等的工作[3]的算法，这也是众包测试报告优先级排序的最先进的方法。<br>​		* RANDOM：RANDOM策略指的是没有任何优先级策略的情况。<br>​		对于DEEPPRIOR和IMAGE策略，因为我们的方法很稳定，所以我们运行一次，训练后的模型不会因为不同的尝试而产生不同的结果；对于IDEAL策略，我们手动计算APFD，因为对于固定的报告簇而言，它是一个定值；对于BDDIV策略，我们运行30次，然后像原文[3]一样计算平均值；对于RANDOM策略，我们运行100次，以消除偶然情况的影响。<br>​		首先，我们将DEEPPRIOR与RANDOM策略进行比较。如表IV所示，我们发现DEEPPRIOR策略比RANDOM策略效果好了许多，从15.15%至38.93%之间不等，并且平均提升幅度达27.04%。由此可见DEEPPRIOR的优越性。</p>
 <p>表IV DEEPPRIOR报告优先级排序结果与比较<br><span><img class="small-img-inline" src="/2021/04/20/Prioritize%20Crowdsourced%20Test%20Reports%20via%20Deep%20Screenshot%20Understanding/表4.png" alt></span></p>
