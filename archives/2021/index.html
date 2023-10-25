@@ -183,6 +183,109 @@
 
     
         <h2 class="title">
+            <a href="/2021/06/22/RefineNet%20Multi-Path%20Refinement%20Networks/">
+                RefineNet Multi-Path Refinement Networks
+            </a>
+        </h2>
+    
+    <time>
+        6月 22, 2021
+    </time>
+    <section class="content">
+        <p><span><img class="small-img-inline" src="/2021/06/22/RefineNet%20Multi-Path%20Refinement%20Networks/clip_image002.jpg" alt></span></p>
+<h1><span id="refinenet用于密集预测的多路径细化网络">RefineNet：用于密集预测的多路径细化网络</span></h1><h2><span id="引用">引用</span></h2><p>Lin G, Liu F, Milan A, et al. Refinenet: Multi-path refinement networks for dense prediction[J]. IEEE transactions on pattern analysis and machine intelligence, 2019, 42(5): 1228-1242.</p>
+<h2><span id="摘要">摘要</span></h2><p>近来，层数相当深的卷积神经网络（CNN）在对象识别方面表现出了出色的性能，其已成为语义分割和深度估计等预测问题的首选。然而，深层CNN中的重复子采样操作，如池化或卷积都会导致初始图像分辨率大幅下降。在此，我们提出了RefineNet，一个通用的多路径细化网络，其明确利用了下采样过程中的所有可用信息，以使用长距离残差连接实现高分辨率的预测。通过这种方式，捕捉高层语义特征的更深层可以直接利用早期卷积的细粒度特征进行细化。RefineNet的各个组成部分采用了遵循恒等映射思维的残差连接，这使得有效的端到端训练成为可能。此外，我们引入了链式残差池，其以有效的方式捕获丰富的上下文背景。我们对语义分割进行了全面的实验，其是一个密集分类问题，其在七个公共数据集上取得了良好的性能。我们进一步将我们的方法用于深度估计，并证明我们的方法在密集回归问题上的有效性。</p>
+<h2><span id="介绍">介绍</span></h2><p>密集预测，也被称为逐像素预测问题，是计算机视觉课题的一个基本类别。这里的密集预测任务是为给定图像中的每一个像素分配一个类标签或连续值。无论是离散值还是连续值的预测，各类视觉任务都可以被表述为密集预测问题。例如，语义分割和对象解析是典型的密集分类问题，单目图像的深度估计是有代表性的密集回归问题。</p>
+<p>语义分割是图像理解的重要组成部分。此处的任务是为图像中的每一个像素分配一个独特的标签（或类别），而这被认为是一个密集分类问题。所谓的对象解析的相关问题，它们的目的是分割和识别对象的各个部分，这些问题通常可以被转换为语义分割任务。单目图像的深度估计是预测单个图像的像素级深度值（连续真实值），可以将其表述为密集回归问题。它在3D重建、视觉识别、场景理解、自动驾驶等方面有着广泛的应用。</p>
+<p>近期，深度学习方法，特别是卷积神经网络（CNN），如VGG、Residual Net，在识别任务中表现出了显著的效果。然而，当涉及到密集深度或法向量估计与语义分割等任务中的密集预测时，这些方法表现出了明显的局限性。空间池化和卷积通常将最终的输出预测在每个维度上减少32倍，从而失去了大量更精细的图像结构。如何应用最先进的CNN方法，如VGG、Residual Net，进行高分辨率的密集预测已成为一个热门话题。</p>
+<p>解决这一局限性的方法之一是学习反卷积滤波器作为上采样操作，以生成高分辨率特征图。反卷积操作无法恢复在正向卷积阶段下采样操作后丢失的低层视觉特征。因此，它们无法输出准确的高分辨率预测。低层视觉对于准确预测边界或细节而言至关重要。Chen等人最近提出的DeepLab方法采用空洞（或扩张）卷积以获得更大的感受野，而不会缩小图像。DeepLab应用广泛，代表了语义分割的最先进性能。这种策略虽然成功，但至少有两个局限性：首先，其需要对大量通常具有高维特征的详细（高分辨率）特征图进行卷积，计算量很大。尤其是在训练阶段，大量高维、高分辨率的特征图需要巨大的GPU内存资源。这阻碍了高分辨率预测的计算，且通常将输出大小限制为了原始输入的1&#x2F;8。其次，扩张卷积引入了粗略的特征子采样，这可能会导致重要细节的丢失。</p>
+<p>另一种方法利用中层特征来生成高分辨率预测。这些工作背后的直觉是，来自中间层的特征被期望描述对象部分的中层表示，同时保留空间信息。这种信息被认为是对早期卷积层特征的补充，这些特征编码低层的空间视觉信息，如边、角、圆等。其同时也是对更高层的特征的补充，这些特征编码高层语义信息，包括对象层和类别层的迹象，但其缺乏强大的空间信息。</p>
+<p>我们认为所有级别的特征都有助于语义分割。高层语义特征有助于图像区域的类别识别，而低层视觉特征有助于为高分辨率预测生成清晰、详细的边界。如何有效地利用中层特征仍是一个悬而未决的问题，值得更多关注。为此，我们提出了一种新颖的网络架构，它有效地利用了多层特征来生成高分辨率预测。图1显示了我们方法的一些密集预测示例。</p>
+<p><span><img class="small-img-inline" src="/2021/06/22/RefineNet%20Multi-Path%20Refinement%20Networks/clip_image004.jpg" alt></span></p>
+<p>图1 我们的方法在对象解析（左）和语义分割（右）任务上的示例结果。</p>
+<p>我们的主要贡献如下：</p>
+<p>\1. 我们提出了一个多路径细化网络RefineNet，它利用多层抽象的特征进行高分辨率密集预测。RefineNet 以递归的方式用细粒度的低级特征细化低分辨率（粗略的）特征以生成高分辨率特征图。我们的模型很灵活，因为它可以以各种方式级联和修改。</p>
+<p>\2. 我们的级联 RefineNet 可以有效地进行端到端的训练，这对于良好的预测性能至关重要。更具体地说，RefineNet中的所有组件都采用了基于恒等映射的残差连接，这样，梯度可以通过短距离和长距离残差连接直接传播，从而实现有效且高效的端到端训练。</p>
+<p>\3. 我们提出了一个新的网络组件，我们称之为“链式残差池化”，它能够从一个大的图像区域捕捉背景信息。它通过有效地汇集具有多个窗口大小的特征，并将它们与残差连接和可学习权重融合在一起来实现。</p>
+<p>\4. 所提出的RefineNet在PASCAL VOC 2012、PASCAL-Context、NYUDv2、SUN-RGBD、Cityscapes、ADE20K这些语义分割数据集和和对象解析Person-Parts数据集上都取得了优异的性能。</p>
+<h2><span id="提出的方法">提出的方法</span></h2><p>我们提出了一个提供多条路径的新的框架。在这些路径上，来自不同分辨率、通过潜在的长距离连接的信息被一个通用的构建块RefineNet来同化。图2显示了为实现我们的高分辨率语义分割目标而对构件的一种可能安排。</p>
+<p><span><img class="small-img-inline" src="/2021/06/22/RefineNet%20Multi-Path%20Refinement%20Networks/clip_image006.jpg" alt></span></p>
+<p>图2 在不同的卷积阶段利用各种层级的细节，并将其融合以获得高分辨率的预测，而无需维护大型中间特征图。</p>
+<h3><span id="多路径细化">多路径细化</span></h3><p>如前所述，我们的目标是利用多级特征进行具有长距离残差连接的高分辨率预测。RefineNet提供了一种通用方法来将粗略的高层语义特征与细粒度的低层特征融合以生成高分辨率的语义特征图。该设计的一个重要方面是确保梯度可以轻松地通过网络向后传播，一直到长距离残差连接的早期的低层，从而确保整个网络可以进行端到端的训练。</p>
+<p>对于我们的标准多路径架构，我们根据特征图的分辨率将预训练的ResNet（使用 ImageNet 训练）划分为4个块，并采用4个RefineNet单元的4级联架构，每个单元直接连接到一个 ResNet块的输出以及级联中前一个RefineNet块的输出上。但请注意，这样的设计并不独特。事实上，我们灵活的架构允许对不同的变体进行简单的探索。例如，一个RefineNet块可以接受来自多个ResNet块的输入。</p>
+<p>我们把RefineNet-m表示为连接到ResNet中块-m的输出的RefineNet块。在实践中，每个 ResNet 输出都通过一个卷积层来适应维度。虽然所有的RefineNet都有相同的内部结构，但它们的参数并不绑定，从而可以更灵活地适应各个层次的细节。</p>
+<p>整个网络可以进行端到端的高效训练。需要注意的是，我们在 ResNet 中的块和 RefineNet 模块之间引入了长距离残差连接。在前向传递期间，这些长距离残差连接传达了低层特征，这些特征对视觉细节进行编码，以细化粗略的高层特征图。在训练步骤中，长距离残差连接允许将梯度直接传播到早期卷积层中，这有助于有效的端到端训练。</p>
+<h3><span id="refinenet">RefineNet</span></h3><p>RefineNet 块的架构如图 3a 所示。在图2c所示的多路径概述中，RefineNet-1有一个输入路径，而所有其他RefineNet块有两个输入。但请注意，我们的结构是通用的，每个Refine块可以很容易地修改，以接受任意数量的具有任意分辨率和深度的特征图。</p>
+<p>卷积残差单元。每个RefineNet块的第一部分包括一个自适应卷积集，主要是微调我们的任务的预训练的ResNet权重。为此，每个输入路径依次通过两个卷积残差单元（RCU），这是原始ResNet中卷积单元的简化版，其中去掉了batch-normalization层。在我们的实验中，RefineNet-4的每个输入路径的过滤器数量被设置为512，其余的为256。</p>
+<p>多分辨率融合。如图3c所示，之后所有路径输入被多分辨率融合块融合成一个高分辨率的特征图。该模块首先应用卷积来适应输入，产生相同特征维度（输入中最小的维度）的特征图，然后将所有（较小的）特征图上采样到输入的最大分辨率。最后，所有特征图通过求和进行融合。此块中的输入自适应性也有助于沿着不同的路径对特征值进行适当的重新缩放，这对随后的求和融合很重要。</p>
+<p><span><img class="small-img-inline" src="/2021/06/22/RefineNet%20Multi-Path%20Refinement%20Networks/clip_image008.jpg" alt></span></p>
+<p>图3 我们的多路径细化网络架构RefineNet的各个组成部分。RefineNet中的组件采用具有恒等映射的残差连接。这样，梯度可以通过局部残差连接直接在 RefineNet 内部传播，也可以通过长距离残差连接直接传播到输入路径，从而实现对整个系统的有效端到端训练。</p>
+<p>链式残差池化。如图 3d 所示，输出的特征图会再经过链式残差池化块。所提出的链式残差池化的目的是为了从大的图像区域中获取背景信息。它能够有效地汇集具有多个窗口大小的特征，并使用可学习的权重将它们融合在一起。特别的，该组件被构建为多个池化块链，每个池化块由一个最大池化层和一个卷积层组成。一个池化块将前一个池化块的输出作为输入。因此，当前的池化块能够重用前一个池化操作的结果，从而在不使用大的池化窗口的情况下获取大区域的特征。使用更多的池化块通常会获得更好的性能。在我们的实验中，我们所报告的最佳结果是在一个链式残差池化模块中使用4个池化块。</p>
+<p><span><img class="small-img-inline" src="/2021/06/22/RefineNet%20Multi-Path%20Refinement%20Networks/clip_image009.png" alt></span></p>
+<p>图4 链式残差池化 (CRP) 的可选架构。与图3(d)中的CRP结构相比，池化层（灰色标记）和卷积层的位置是相互交换的。</p>
+<p>所有池化块的输出特征图都通过残差连接的求和与输入特征图融合在一起。需要注意的是，对该构建块，我们仍使用残差连接，这再次促进了训练中的梯度传播。在一个池化块中，每个池化操作之后都有卷积层，其作为求和融合的加权层。预计在训练过程中，这个卷积层将学会适应池化块的重要性。</p>
+<p>我们也可以考虑为我们的链式残差池化块提供其他架构。图4显示了另一种链式残差池化的架构。这个可选架构是通过交换卷积层和池化层在一个池化中的位置而对图3d所示的架构进行修改。在通过池化层之前，这个卷积层将学习适应输入特征，并适应输入特征的重要性。根据我们的观察，这种替代架构在某些数据集中的表现有时会比原始架构略好。</p>
+<p>输出卷积。每个RefineNet块的最后一步是另一个卷积残差单元（RCU）。这导致每个块之间有三个RCU的序列。为了在最后一个 RefineNet-1 块中反映这种行为，我们在最终的 softmax 预测步骤之前放置了两个额外的 RCU。此处的目标是在多路径融合特征图上采用非线性操作来生成特征以进行进一步处理或进行最终预测。经过此块后，特征维度保持不变。</p>
+<h3><span id="refinenet中的恒等映射">RefineNet中的恒等映射</span></h3><p>请注意，RefineNet 的所有卷积组件均受残差连接背后的思想启发而精心构建，并遵循恒等映射的规则。这使得梯度通过RefineNet有效地反向传播，并促进级联多路径细化网络的端到端学习。</p>
+<p>使用具有恒等映射的残差连接允许梯度从一个块直接传播到任何其他块。此观念鼓励为快捷连接（shortcut connections）保持干净的信息路径，以便这些连接不会被任何非线性层或组件“阻塞”。相反，非线性操作被置于主要信息路径的分支上。我们遵循此思想来开发 RefineNet 中的各个组件与卷积单元。正是这种特殊的策略使多级联 RefineNet 能够得到有效训练。请注意，我们在链式残差池化块中包含了一个非线性激活层 (ReLU)。我们观察到，这个ReLU对于后续池化操作的有效性非常重要，它也使模型对学习率的变化不那么敏感。我们观察到，每个RefineNet块中的单个ReLU不会明显降低梯度流的有效性。</p>
+<p>RefineNet中既有短距离残差连接，又有长距离残差连接。短距离残差连接是指在一个 RCU 或残差池化组件中的局部快捷连接，而长距离残差连接是指 RefineNet 模块和 ResNet 块之间的连接。通过远程残差连接，梯度可以直接传播到 ResNet 中的早期卷积层，从而实现所有网络组件的端到端训练。</p>
+<p>融合块融合了多条快捷路径的信息，这可以看作是对多个残差连接进行了必要的维度或分辨率调整的求和融合。在这方面，这里的多分辨率融合块的作用类似于 ResNet 中传统卷积残差单元中“求和”融合的作用。在RefineNet中，特别是在RefineNet的融合块中，有一些层执行线性特征转换操作，如线性特征降维或双线性上采样。这些层被放置在快捷路径上，而这与ResNet的情况是相似的。在ResNet中，当一个快捷连接跨越两个块时，它会在捷径路径中包括一个卷积层，用于适应线性特征维度，以确保特征维度与下一个区块中的后续求和相匹配。由于这些层中只采用了线性变换，梯度仍然可以通过这些层有效地进行传播。</p>
+<h3><span id="密集预测的refinenet">密集预测的REFINENET</span></h3><p>我们在本节中介绍了不同的密集预测任务的训练目标，即密集分类和密集回归。</p>
+<p><strong>密集分类</strong></p>
+<p>我们展示了我们用于语义分割的方法，这是密集分类的一个代表性任务。我们将<span><img class="small-img-inline" src="/2021/06/22/RefineNet%20Multi-Path%20Refinement%20Networks/clip_image011.jpg" alt></span>表示为索引为(i,j)的像素的真实标签，Zijk为第k个通道和索引为(i,j)的像素在softmax层之前的输出。C是语义类别的总数。使用softmax 损失来计算密集分类任务：</p>
+<p><span><img class="small-img-inline" src="/2021/06/22/RefineNet%20Multi-Path%20Refinement%20Networks/clip_image013.jpg" alt></span></p>
+<p>其中，l(·) 是一个指示函数，当输入语句为真时输出 1，否则输出 0。</p>
+<p><strong>密集回归</strong></p>
+<p>单目图像的深度估计是从单个 RGB 图像推断像素级深度值。我们在这里使用 RefineNet 进行深度估计，以证明我们的方法对预测连续值的密集回归问题的能力。</p>
+<p>我们提出的RefineNet可以很容易地适用于连续密集预测任务。其只需要做最小的修改，即把softmax层改为回归层即可。我们在这里应用最常用的最小二乘损失，即最小化预测图 Y 和真实<span><img class="small-img-inline" src="/2021/06/22/RefineNet%20Multi-Path%20Refinement%20Networks/clip_image014.png" alt></span>之间的欧几里得距离。</p>
+<p>在语义分割的情况下，这里一个像素的输出是一维深度值而不是 C-维概率。</p>
+<h2><span id="实验">实验</span></h2><p>为了展示我们方法的有效性，我们对七个公共数据集进行了综合实验，其中包括六个流行的室内外场景语义分割数据集（NYUDv2、PASCAL VOC 2012、SUN-RGBD、PASCAL-Context、Cityscapes、ADE20K MIT)，以及一个称为 Person-Part 的对象解析数据集。我们还在 NYUDv2 数据集上演示了深度估计。分割质量通过所有类别的交并比（IoU）分数、像素准确度和所有类别的平均准确度来衡量。正如文献中通常所做的那样，我们在训练期间应用简单的数据扩增。如果没有进一步说明，我们应用测试时多尺度评估，这是分割方法中的常见做法。对于多尺度评估，我们对同一图像在不同尺度上的预测结果求平均，以得到最终的预测结果。预训练ResNet的batch-normalization层中的均值和方差参数被冻结，因此不会在我们的RefineNet的训练过程中更新。我们还提供了一个消融研究来检查我们模型的各种组件和可选架构的影响。我们的系统建立在MatConvNet上。</p>
+<h3><span id="消融研究">消融研究</span></h3><h3><span id="refinenet组件分析">RefineNet组件分析</span></h3><p><span><img class="small-img-inline" src="/2021/06/22/RefineNet%20Multi-Path%20Refinement%20Networks/clip_image016.jpg" alt></span></p>
+<p>表1 RefineNet在NYUDv2上进行的消融实验</p>
+<p>表1展示了我们提出的消融实验结果，该消融实验被设计以量化以下组件的影响：网络深度、链式残差池化和多尺度评估 (Msc Eva)。实验表明，这三个因素中的每一个都能持续改善由IoU衡量的性能。我们的链式池化显著提高了性能，基本上，使用更多池化块有助于获得更好的结果。最好的结果是通过在我们的链式残差池化模块中使用 4 个池化块来实现的。在随后的实验中，我们将此设置表示为“Pool4”。 而对于4 个池化块的设置，我们使用图 4 中链式池化的架构。一般来说，更深的初始化网络，如ResNet-101和ResNet-152，会带来更好的性能。</p>
+<p><span><img class="small-img-inline" src="/2021/06/22/RefineNet%20Multi-Path%20Refinement%20Networks/clip_image018.jpg" alt></span></p>
+<p>图5 我们网络结构的三个变体的说明。(a) 单个RefineNet；（b）2级联的RefineNet；（c）4级联的RefineNet与2尺度的ResNet。请注意，我们提出的RefineNet模块可以在无需任何修改的情况下无缝处理任意分辨率和尺寸的不同数量的输入。</p>
+<h3><span id="级联refinenet的变体">级联RefineNet的变体</span></h3><p>如前所述，我们的RefineNet是灵活的，因为它可以以各种方式级联产生各种架构。在此，我们讨论了我们的RefineNet的几种变体。具体来说，我们介绍了使用单一的RefineNet、2级联的RefineNet和4级联的RefineNet与2尺度的ResNet的架构。图5显示了所有三种变体的架构。本实验中采用了2个池化块的链式池化。</p>
+<p>单一的RefineNet模型是我们网络的最简单的变体。它只由一个单一的RefineNet模块组成，它从ResNet的四个模块中获取所有四个输入，并在单一流程中融合所有分辨率的特征图。2级联版本采用了两个RefineNet模块。底部的RefineNet-2有两个来自ResNet块3和4的输入，另一个有三个输入，两个来自其余的ResNet块，一个来自RefineNet-2。对于图5c中的2尺度模型，我们用2个尺度的图像作为输入，并分别使用2个ResNet来生成特征图；输入图像被缩放1.2和0.6倍，并输入到2个独立的ResNet中。</p>
+<p>这些变体在 NYUD 数据集上的评估结果如表 2 所示。这个实验表明，4级联的版本比2级联和1级联的版本性能更好，使用2个ResNet的2尺度的图像输入比使用1级联的输入要好。这是符合预期的，因为网络的容量更大。然而，这也会导致更长的训练时间。因此，我们在所有的实验中采用单尺度4级联版本作为标准架构。</p>
+<p><span><img class="small-img-inline" src="/2021/06/22/RefineNet%20Multi-Path%20Refinement%20Networks/clip_image020.jpg" alt></span></p>
+<p>表2 对级联式RefineNet的4种变体进行评估。在NYUDv2数据集上的单级联RefineNet、2级联RefineNet、4级联RefineNet、4级联RefineNet与2尺度ResNet。</p>
+<p>内存与计算分析</p>
+<p>不同方法下的内存与计算分析如表3所示。</p>
+<p><span><img class="small-img-inline" src="/2021/06/22/RefineNet%20Multi-Path%20Refinement%20Networks/clip_image022.jpg" alt></span></p>
+<p>表3 内存与计算分析</p>
+<p>此外，我们的RefineNet的内存使用和计算成本的细节见表4。输入图像大小为512 x 512。这表明，我们的RefineNet的内存消耗和计算成本是恒定的，它们与基础网络的选择无关。因此，我们的RefineNet在与非常深的基础网络结合进行高分辨率预测时，比基于扩张（trous）卷积的方法要有效得多。</p>
+<p><span><img class="small-img-inline" src="/2021/06/22/RefineNet%20Multi-Path%20Refinement%20Networks/clip_image024.jpg" alt></span></p>
+<p>表4 RefineNet的内存使用和计算成本的细节</p>
+<h3><span id="对象解析">对象解析</span></h3><p>在本节中，我们展示了对象解析任务的结果，该任务包括识别和分割对象部分。我们在 Person-Part 数据集进行了实验。我们将我们的结果与表 5 中列出的一些最先进的方法进行了比较。结果清楚地证明了我们的方法的进步。我们在该数据集上解析对象的定性样本如图6所示。</p>
+<p><span><img class="small-img-inline" src="/2021/06/22/RefineNet%20Multi-Path%20Refinement%20Networks/clip_image025.png" alt></span></p>
+<p>表5 Person-Part 数据集上的对象解析结果</p>
+<p><span><img class="small-img-inline" src="/2021/06/22/RefineNet%20Multi-Path%20Refinement%20Networks/clip_image026.png" alt></span></p>
+<p>图6 在Person-Parts数据集上的我们的预测示例</p>
+<h3><span id="语义分割">语义分割</span></h3><p>本节通过描述了我们的方法在六个公共基准上的密集语义标签集（NYUDv2、PASCAL VOC 2012、PASCAL VOC 2012、SUN-RGBD、ADE20K MIT、Cityscapes）上的实验效果，证明了我们的RefineNet在所有数据集上都优于以前的方法。</p>
+<h3><span id="深度估计">深度估计</span></h3><p>本节通过在NYUDv2数据集进行实验，证明了我们的方法对单目图像深度估计的功效。过程中，采用如下几种方式进行定量评估：</p>
+<p>平均相对误差（rel）：<span><img class="small-img-inline" src="/2021/06/22/RefineNet%20Multi-Path%20Refinement%20Networks/clip_image028.jpg" alt></span></p>
+<p>均方根误差（rms）：<span><img class="small-img-inline" src="/2021/06/22/RefineNet%20Multi-Path%20Refinement%20Networks/clip_image030.jpg" alt></span></p>
+<p>平均log10误差（log10）：<span><img class="small-img-inline" src="/2021/06/22/RefineNet%20Multi-Path%20Refinement%20Networks/clip_image032.jpg" alt></span></p>
+<p>阈值thr的准确性：当<span><img class="small-img-inline" src="/2021/06/22/RefineNet%20Multi-Path%20Refinement%20Networks/clip_image033.png" alt></span>时， dp的百分比。</p>
+<h2><span id="结论">结论</span></h2><p>我们提出了RefineNet，一个用于高分辨率密集预测的新型多路径细化网络。级联结构能够有效地将高层的抽象与低层的特征结合起来，产生高分辨率的像素级预测图。我们的设计选择受到恒等映射思想的启发，它有助于长连接的梯度传播，从而实现有效的端到端学习。我们专注于具有代表性的离散和连续密集预测问题的语义分割和单目图像深度估计任务。大量实验表明，我们的RefineNet在多个公共基准测试中的表现优于之前的大多数作品，其为语义标记的最新技术水平树立了新的标杆。请注意，我们的方法也可以应用于其他密集预测任务，如低层视觉任务，包括图像去噪、超分辨率、边缘检测等。这可以在未来的工作中探索。</p>
+
+
+        
+
+        
+            <div class="tags">
+                <a class="tag-none-link" href="/tags/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" rel="tag">论文阅读</a>
+            </div>
+        
+
+    </section>
+</article>
+  
+    <article class="post ">
+
+    
+        <h2 class="title">
             <a href="/2021/06/21/%E6%96%B0%E7%9A%84%E6%95%85%E4%BA%8B%E4%B8%8E%E6%97%A7%E7%9A%84%E5%9B%9E%E5%BF%86%20%E2%80%94%E2%80%94%202017~2021%20%E6%88%91%E7%9A%84%E6%9C%AC%E7%A7%91%E5%9B%9B%E5%B9%B4/">
                 新的故事与旧的回忆 —— 2017~2021 我的本科四年
             </a>
@@ -378,21 +481,21 @@
                     
                       <li class="category-list-container">
                         <a href="javascript:;">Category</a>
-                        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Ubuntu/">Ubuntu</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E8%B0%88/">杂谈</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%A0%91%E8%8E%93%E6%B4%BE/">树莓派</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/">论文阅读</a><span class="category-list-count">6</span></li></ul>
+                        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Ubuntu/">Ubuntu</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E8%B0%88/">杂谈</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%A0%91%E8%8E%93%E6%B4%BE/">树莓派</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/">论文阅读</a><span class="category-list-count">7</span></li></ul>
                       </li>
                     
                   
                     
                       <li class="tag-list-container">
                         <a href="javascript:;">Tag</a>
-                        <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu/" rel="tag">Ubuntu</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82%E8%B0%88/" rel="tag">杂谈</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/" rel="tag">树莓派</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" rel="tag">论文阅读</a><span class="tag-list-count">6</span></li></ul>
+                        <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu/" rel="tag">Ubuntu</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82%E8%B0%88/" rel="tag">杂谈</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/" rel="tag">树莓派</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" rel="tag">论文阅读</a><span class="tag-list-count">7</span></li></ul>
                       </li>
                     
                   
                     
                       <li class="archive-list-container">
                         <a href="javascript:;">Archive</a>
-                        <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/">2019</a><span class="archive-list-count">8</span></li></ul>
+                        <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/">2019</a><span class="archive-list-count">8</span></li></ul>
                       </li>
                     
                   
