@@ -32,7 +32,7 @@
 <meta property="og:image" content="https://values.keys.moe/2021/12/26/Practical%20Accuracy%20Estimation%20for%20Efficient%20Deep%20Neural/formula5.2.png">
 <meta property="og:image" content="https://values.keys.moe/2021/12/26/Practical%20Accuracy%20Estimation%20for%20Efficient%20Deep%20Neural/algo1.png">
 <meta property="article:published_time" content="2021-12-25T23:04:01.000Z">
-<meta property="article:modified_time" content="2023-10-22T09:28:57.956Z">
+<meta property="article:modified_time" content="2023-10-25T14:52:55.951Z">
 <meta property="article:author" content="Angelo">
 <meta property="article:tag" content="论文阅读">
 <meta name="twitter:card" content="summary">
@@ -149,11 +149,9 @@
 
 <p>​		传统的自适应随机测试随机选择第一个样本，但PACE确定性地选择第一个测试输入，使其更具实用性和可解释性。更具体地说，PACE选择具有最独特测试能力的测试输入作为第一个样本，其与所有组的距离最大。特别的，该测试输入是通过基于HDBSCAN聚类算法提供的outlier_scores（测量与所有组的距离）值来对少数空间中的测试输入进行排名后，处于Top-1位置所对应的输入。</p>
 <h2><span id="pace的使用">PACE的使用</span></h2><p>​		本小节中，我们介绍PACE用法，算法1是PACE的高级伪代码。PACE的输入包括一个表示为D的被测试的DNN，一个表示为T的完整测试集，其大小表示为st，以及表示所选测试输入小集合大小，表示为n。为了构建可以精确估计整个测试输入的准确度的小集合，PACE首先通过提取特征（如ORI或FL）将每个测试输入转换为特征向量（如算法1的2-4行所示）。然后，PACE对向量集进行包括归一化或降维的预处理，并通过聚类将其分为m组和少数空间（算法1中的第5行和第6行）。再次，我们表示第i个组的大小为si，少数空间的大小为sm，其中：</p>
-<img src="/2021/12/26/Practical%20Accuracy%20Estimation%20for%20Efficient%20Deep%20Neural/formula5.1.png" alt>
-
+<p><span><img class="small-img-inline" src="/2021/12/26/Practical%20Accuracy%20Estimation%20for%20Efficient%20Deep%20Neural/formula5.1.png" alt></span></p>
 <p>​		选定的小集合测试输入应包含来自每个组的测试输入和来自少数空间的测试输入。在这里，我们定义了一个阈值α来确定他们的比例分布。也就是说，从组中选择的测试输入数量是α·n，而从少数空间中选择测试输入的数量是(1-α)·n（小于sm）。此外，PACE根据不同组大小的比例从每个组中选择测试输入，以保持测试能力的相似分布。即从第k组中选择的测试输入的数量是：</p>
-<img src="/2021/12/26/Practical%20Accuracy%20Estimation%20for%20Efficient%20Deep%20Neural/formula5.2.png" alt>
-
+<p><span><img class="small-img-inline" src="/2021/12/26/Practical%20Accuracy%20Estimation%20for%20Efficient%20Deep%20Neural/formula5.2.png" alt></span></p>
 <p>​		在确定每个组或少数空间中选择的测试输入数量后，PACE根据基于MMD-critic的原型选择方法（算法1中的第7-11行）或自适应随机选择方法（第12-14行）来选择构建一小组测试输入，即PACE的输出（算法1中的第15行）。开发人员只需标注这一小组测试输入即可在实践中估计整个测试集的准确性。</p>
 <img src="/2021/12/26/Practical%20Accuracy%20Estimation%20for%20Efficient%20Deep%20Neural/algo1.png" alt>
 
