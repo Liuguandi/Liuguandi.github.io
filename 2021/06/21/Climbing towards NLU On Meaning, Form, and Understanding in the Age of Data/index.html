@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>Climbing towards NLU On Meaning, Form, and Understanding in the Age of Data | Angelo的代码工坊</title>
+    <meta name="description" content="Angelo's blog."/>
+    <meta name="keywords" content="hexo,theme,otakism,otaku"/>
+    <meta name="HandheldFriendly" content="True"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="google-site-verification" content=""/>
+    <meta name="baidu-site-verification" content=""/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="迈向NLU：关于数据时代的含义、形式和理解引用Bender E M, Koller A. Climbing towards NLU: On meaning, form, and understanding in the age of data[C]&#x2F;&#x2F;Proceedings of the 58th Annual Meeting of the Association for">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Climbing towards NLU On Meaning, Form, and Understanding in the Age of Data">
+<meta property="og:url" content="https://values.keys.moe/2021/06/21/Climbing%20towards%20NLU%20On%20Meaning,%20Form,%20and%20Understanding%20in%20the%20Age%20of%20Data/index.html">
+<meta property="og:site_name" content="Angelo的代码工坊">
+<meta property="og:description" content="迈向NLU：关于数据时代的含义、形式和理解引用Bender E M, Koller A. Climbing towards NLU: On meaning, form, and understanding in the age of data[C]&#x2F;&#x2F;Proceedings of the 58th Annual Meeting of the Association for">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://values.keys.moe/2021/06/21/Climbing%20towards%20NLU%20On%20Meaning,%20Form,%20and%20Understanding%20in%20the%20Age%20of%20Data/clip_image002.jpg">
+<meta property="og:image" content="https://values.keys.moe/2021/06/21/Climbing%20towards%20NLU%20On%20Meaning,%20Form,%20and%20Understanding%20in%20the%20Age%20of%20Data/clip_image003.png">
+<meta property="article:published_time" content="2021-06-20T18:42:24.000Z">
+<meta property="article:modified_time" content="2023-10-25T16:07:32.037Z">
+<meta property="article:author" content="Angelo">
+<meta property="article:tag" content="论文阅读">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://values.keys.moe/2021/06/21/Climbing%20towards%20NLU%20On%20Meaning,%20Form,%20and%20Understanding%20in%20the%20Age%20of%20Data/clip_image002.jpg">
+    
+        <link rel="alternative" href="/atom.xml" title="Angelo的代码工坊" type="application/atom+xml">
+    
+
+    <!-- Favicon -->
+    
+
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata|Roboto:300,400,700" rel="stylesheet">
+
+    
+<link rel="stylesheet" href="/style.css">
+
+    <script>
+      function setLoadingBarProgress(num) {
+        document.getElementById('loading-bar').style.width = num + "%";
+      }
+    </script>
+
+    
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+
+<div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+
+<script>setLoadingBarProgress(20)</script>
+
+<div id="site-wrapper">
+
+    <header id="header">
+    <div id="header-wrapper" class="clearfix">
+        <a id="logo" href="/">
+            <img src="/img/logo.png"/>
+            <span id="site-desc">
+                I shut my eyes in order to see.
+            </span>
+        </a>
+        <button id="site-nav-switch">
+            <span class="icon icon-menu"></span>
+        </button>
+    </div>
+</header>
+    <script>setLoadingBarProgress(40);</script>
+
+    <main id="main" role="main">
+        <article id="post-Climbing towards NLU On Meaning, Form, and Understanding in the Age of Data"
+         class="post article white-box article-type-post"
+         itemscope itemprop="blogPost">
+    <h2 class="title">
+        <a href="/2021/06/21/Climbing%20towards%20NLU%20On%20Meaning,%20Form,%20and%20Understanding%20in%20the%20Age%20of%20Data/">
+            Climbing towards NLU On Meaning, Form, and Understanding in the Age of Data
+        </a>
+    </h2>
+    <time>
+        6月 21, 2021
+    </time>
+    <section class="content">
+        <div class="article-entry" itemprop="articleBody">
+            <img src="/2021/06/21/Climbing%20towards%20NLU%20On%20Meaning,%20Form,%20and%20Understanding%20in%20the%20Age%20of%20Data/clip_image002.jpg" alt>
+
+<h1><span id="迈向nlu关于数据时代的含义-形式和理解">迈向NLU：关于数据时代的含义、形式和理解</span></h1><h2><span id="引用">引用</span></h2><p>Bender E M, Koller A. Climbing towards NLU: On meaning, form, and understanding in the age of data[C]&#x2F;&#x2F;Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics. 2020: 5185-5198.</p>
+<h2><span id="摘要">摘要</span></h2><p>大型神经语言模型在许多NLP任务上的成功令人激动。然而我们发现，这些成功有时是就像是在炒作，它们将模型描述成“理解”语言或捕捉“含义”。在本文立场中，我们认为仅在形式上训练的系统先验地无法学习含义。与ACL 2020的主题“通观现状与展望未来”一致，我们认为，清楚地理解形式和含义之间的区别，将有助于推进围绕自然语言理解的科学进步。</p>
+<span id="more"></span>
+
+<h2><span id="介绍">介绍</span></h2><p>自然语言处理领域当前的一大研究热点是大型神经语言模型（LMs），如BERT或GPT-2模型。它们在许多任务中取得了巨大的进展，包括那些表面上对含义敏感的任务。这导致了在学术和流行刊物上存在这样的说法：模型能“理解”或“领悟”自然语言或学习其“含义”。从我们的角度来看，这些都是对语言形式和含义之间的关系的误解所导致的夸大其词。</p>
+<p>我们认为，由于语言建模任务只使用形式作为训练数据，原则上其不能产生含义的学习。我们认为语言模型这一术语指的是任何对字符串预测任务进行训练的系统（不管其是在字符、词语还是句子上操作，也不管是否按序操作）。我们认为语言的含义是指语言形式和交际意图之间的关系。</p>
+<p>我们的目标是倡导人们的主张应该与方法保持一致：人类模拟自然语言理解（NLU）是人工智能的一项巨大挑战，其涉及对语言结构和使用的掌握，以及将其融入世界的能力。尽管大型神经LMs很可能最终成为人类模拟自然语言理解的全面解决方案的重要组成部分，但它们并不是解决这一重大挑战的近乎完善的方案。本文我们认为，我们领域的真正进步——爬上正确的山，而不仅仅是我们当前所在的山——取决于在任务设计与实验结果报告中保持对含义和理解等大局概念的清晰。</p>
+<h2><span id="大型lms炒作与分析">大型LMs：炒作与分析</span></h2><p>在讨论大型LMs应用于含义敏感任务的相关论文中，往往会使用一些术语来描述模型，而如果只按表面意思来解释，则会产生误导。</p>
+<p>而如果强调的术语是为了描述人类对事实知识的类比理解、领悟与回想等，那么它们都有严重的夸张。相反，如果它们是作为技术术语，那就更应该被明确定义。</p>
+<p>在我们学术讨论中不谨慎地使用术语亦导致了大众媒体对AI的炒作。</p>
+<p>总之，从我们的学术文献来看，并不清楚是否所有的作者都清楚形式和含义之间的区别，但很明显的是，我们谈论神经LMs所做之事的方式是对公众的误导。</p>
+<p>这种使用模糊语言的部分原因可能是我们尚未完全理解大型LMs 所隐含表示的语言到底是什么。</p>
+<p>一些学者仔细地研究了大型LMs在明显含义敏感的任务的成功，发现在事实上，它们远没有完成表面上要求的“推理”任务，相反，它们只是比以前的方法更有效地利用数据中的信息。</p>
+<p><strong>什么是含义？</strong></p>
+<p>首先定义两个关键术语。</p>
+<p>“<strong>形式</strong>”是语言的任何可观察的实现，如页面上的标记、数字化文本表征中的像素或字节、发音器的运动等。</p>
+<p>“含义”是形式与语言之外的事物之间的关系。</p>
+<p><strong>含义与交际意图</strong></p>
+<p>人类使用语言是有目的的，我们说话不是为了使发音器官快乐的振动，而是为了达到一些交际意图。交际意图有很多种：可能是为了向对方传递一些信息，抑或是要求对方做某件事，也可能只是为了社交。我们认为含义是M⊆E×I的关系，它包含（e，i）对，其中e为自然语言表达式，i为它们可以用来唤起的交际意图。鉴于此含义的定义，我们现在可以用“理解”来指代给定e检索i的过程。</p>
+<p>交际意图也可以是关于抽象世界的，如银行账户、计算机文件系统，或者是说话人心中的一个纯粹的虚拟世界。</p>
+<p>语言学家将交际意图与常规含义区分开来，对于一个单词、短语或句子的表达，其常规含义在所有可能的使用语境中是不变的。给定语言系统，常规含义是一个抽象的对象，它代表了一种形式的交际潜力。每个语言系统（比如英语）都提供了一个关系C⊆E×S，其中包含(e,s)对，其中e为表达式，s为它们的常规含义。我们假设常规含义一定有理解方式。因此，就像含义关系M一样，C将语言与语言之外的对象联系起来。</p>
+<p>回到上面的含义关系M，它应被理解为两个对话者之间共享语言系统由关系C充当媒介。说话者有一定的交际意图i，并选择了一个适合在当前交际情况下表达意图i的、具有确定含义s的表达e。听到e后，听者会重构s并使用它们对交际情景的了解以及他们对说话者的心理状态和意图的假设，尝试推断出意图i。</p>
+<p>总而言之，当我们努力理解NLU任务和这些任务上的系统性能与构建人类模拟自然语言理解系统的大目标之间的关系时，将形式、常规含义和交际意图明确区分开是非常有用的。此外，我们应该注意不要把交际意图和关于世界的基本事实混为一谈，因为说话者当然会犯错，也会有意地掩饰等。</p>
+<p>我们认为纯粹根据形式训练的自然语言模型不会学习含义：如果训练数据只有形式，就没有足够的信号来学习该形式与使用语言的人的非语言意图之间的关系 M , 也没有语言系统所赋予的每个形式的形式与常规含义之间的关系C。</p>
+<p><strong>含义与智慧</strong></p>
+<p>长期以来，含义和理解被视为智能的关键。正如图灵提出的那样，如果一个机器在与人类进行任意的书面对话后，人们无法分辨出他是人还是机器，就可以说机器是会思考的。 然而，即使他们知道它们是人造的，人们还是很快就会把含义甚至是智慧归结到“人工智能”上。</p>
+<p>这意味着我们在设计对机器理解的评价时必须格外小心，正如Searle在他的“中文房间”实验中所阐述的那样：他开发了一个“系统”作为隐喻，在这个系统中，一个不会说中文的人在其中按照预定的规则查阅中文书库，回答中文问题。从外界看，这个系统似乎“理解”了中文，但实际系统内部根本没有真正的理解。</p>
+<p>Searle 的思想实验基于如下前提：系统可以较好地操控形式，使其与能理解形式含义、原因并做出适当反应的系统无法区分。我们观察到，最近在NLP方面的许多工作都声称要构建系统，但这些系统均只能访问形式。但是，语言是用来交流说话者的真实（物理、社会与心理）世界的，因此，产生有含义的反应背后的推理必须将感知输入的含义与有关该世界的信息联系起来。这反过来意味着，人类或机器要学习一种语言，就必须解决Harnad所说的符号基础问题。Harnad 对该问题如此概括：不会说中文的人不可能仅从中文字典的定义中学习中文单词的含义。</p>
+<p>我们在这里的目的是更深入地研究，即使在现代硬件和技术背景下，连接主义模型可以扩展到接受大量数据的程度，为什么含义仍不能仅从语言形式中学习。我们认为，不管通过图灵测试是否意味着一个系统是智能的，一个只在形式上进行训练的系统将无法通过足够敏感的测试，因为它缺乏将其话语与世界联系起来的能力。</p>
+<p><strong>章鱼测试</strong></p>
+<p>为了说明试图仅从形式上学习含义的挑战，我们提出一个具体的场景。假设A和B都是流利的英语使用者，独立滞留于两个无人岛上。他们很快发现，以前来过这些岛屿的人留下了电报，他们可以通过水下电缆互相交流。A和B开始愉快地和对方交互信息。</p>
+<p>与此同时，一只无法访问或观察这两个岛屿的超智能深海章鱼O，通过窃听水下电缆，监听A和B的对话。O最初对英语一无所知，但却非常擅长检测统计模式。随着时间的推移，O学会非常准确地预测B将如何回应A的每一句话。O还观察到某些单词倾向于出现在相似的上下文中，并且可能它已学会了通过假设其可以在某种程度上互换来泛化词汇形式。尽管如此，O从未观察过这些对象，因此当出现一组（现实）替代方案时，O将无法分辨出词的所指对象。</p>
+<p>有时，O感到孤独。它切断了水下电缆，将自己插入对话中，假装成B，回复A的信息。O能成功地冒充B而不使A起疑吗？这构成了图灵测试的一种弱形式（弱是因为A没有理由怀疑她是在和一个非人类交谈）；有趣的问题是，O没有通过测试是否是因为他没有学到含义关系，而只看到了A和B的话语形式？</p>
+<p>O能在多大程度上骗过A，取决于任务——也就是说，取决于A要谈的是什么。A和B已经花了很多时间来交换关于他们日常生活的琐事，以使岛上漫长的夜晚更加愉快。O似乎有可能生成B曾经发送的那种新句子，基本上充当了一个聊天机器人。这是因为这种对话中的话语主要具有社会功能，不需要以对话者的实际真实情况或关于现实世界的任何其他具体内容为基础。产生内部连贯的文本就足够了。</p>
+<p>现在假设 A 发明了一种新设备，比如椰子弹射器。她兴高采烈地把制作椰子弹射器的详细说明发给B，询问B的经验和改进建议。即使O有办法在水下建造弹射器，他也不知道皮筋和椰子等词指的是什么，因此无法在物理上重现实验。他只能求助于先前关于 B 如何回应类似措辞的言论的观察。或许 O 可以将有关芒果和指甲的话语识别为“措辞相似”，因为这些词出现在与椰子和皮筋相似的上下文中。所以 O 决定简单地说“好主意，干得好！”，因为当 A 谈论绳索和钉子时，B 说了很多这句话。完全可以想象，A 接受这个回复是有含义的——但这只是因为 A将含义归因于O的回答。这并不是因为O理解了A的指示的含义，甚至这都不是他自己的回答。</p>
+<p>最后，A面临一个紧急情况。她突然被一只愤怒的熊追赶。她抓起几根棍子，疯狂地请求B想一个办法，做一个武器来保护她。当然，O不知道A的“含义”。解决这样的任务，需要有在文字和现实世界实体之间准确映射的能力（以及推理和创造性思维）。就此而言，如果A没有在注意到欺骗行为之前被熊吃掉，那么O将无法通过图灵测试。</p>
+<p>由于只有形式可以作为训练数据，O并未学习到含义。A和B交流的语言是他们交际意图通过含义关系投射到语言形式中。如果无法获得假设和测试潜在交流意图的手段，仅从形式上重建它们是希望渺茫的。O的语言使用最终会与能将语言建立在连贯的交际意图上的正常人的语言使用相背离。</p>
+<p>本思想实验亦说明了我们关于听众在交流中的积极作用的观点。当O假装成B向A发送信号时，他利用了形式上的统计规律性，即他观察到的语言形式的分布。无论O学到什么，都是对A和B的交际意图和含义关系的反应。但再现这种分布不足以实现有含义的交流。O只是愚弄了A，让他相信自己是B，因为A是一个积极的听众。由于产生英文句子的人通常有交际意图，所以A假设O也有，因此她按英语常规含义对O的话语进行理解。因为她假设O是B，所以她用这个常规含义和她对B的心理和目标的其他猜测来归因交际意图。这并不是说O的话语有含义，而是说A能够理解这些话语。</p>
+<p><strong>更多受限的思想实验</strong></p>
+<p>章鱼的故事不仅考虑了学习包括关系M和C的完整交际系统的问题，而且还考虑了提出既连贯又对现实世界有帮助的答案所需的推理。在这里，我们提供了两个更有约束性的思想实验，以更严格地关注自然语言和编程语言中学习含义关系的问题。</p>
+<p>由于编程语言被设计成明确的，且对执行环境相对不敏感的语言，因此与自然语言相比，常规含义与说话者含义的区别不那么重要。当Java程序e在Java虚拟机上编译执行时，可以解释为函数i，其将程序输入映射到程序输出。我们取Java的含义关系J⊆E×I来包含所有这样的(e,i)对。</p>
+<p><strong>Java</strong>。想象一下，我们要在Github上发布的所有格式良好的Java代码上训练一个LM。输入仅为代码。它不与字节码、编译器或任何特定程序的样本输入与输出配对。我们可以使用我们喜欢的任何类型的LM，并根据需要对其进行训练。然后我们让模型执行一个样例程序，并期望正确的程序输出。</p>
+<p><strong>英语</strong>。作为第二个例子，想象一下，在英语文本上训练一个LM（同样是任何类型的），同样没有相关的说话者的意图指示。该系统还可以访问大量未标记的照片，但文本和照片之间没有任何联系。对于文本数据，训练任务纯粹是预测形式。对于图像数据，训练任务可以是涉及图像的任何东西。在测试时，我们向模型提供由一句话和一张照片组成的输入，如，“图片上有多少只狗在跳？”或“Kim看到这张照片后说‘好可爱的狗！’”以及图1中的照片，其中适当的答案分别是数字或是照片的一个区域。</p>
+<p><span><img class="small-img-inline" src="/2021/06/21/Climbing%20towards%20NLU%20On%20Meaning,%20Form,%20and%20Understanding%20in%20the%20Age%20of%20Data/clip_image003.png" alt></span></p>
+<p>图1 照片激励1（左）和2（右）</p>
+<p><strong>反思</strong>。在这两种情况下，这些测试皆是荒谬的。考虑到模型的训练内容，要求其执行这些测试显然是不公平的。但这恰恰是我们想要表达的观点：一个已经学会了某种编程语言的含义（语义）的系统知道如何执行该语言的代码。而一个学会了人类语言含义的系统可以做一些事情，如回答用该语言提出的关于世界上（或在某种情况下，在图片中的）的事物问题。</p>
+<p>换而言之，这里有趣的并不是任务是不可能的，而是它们不可能的原因：训练数据中缺少了什么。对于一个没有观察过这些程序的输入和输出的系统来说，Java程序的形式并不包括如何执行它们的信息。同样，英语句子的形式，对于一个没有机会获得英语的含义关系C的系统来说，在没有任何交流意图的信号情况下，不包括任何关于说话者所指语言的外部实体信息。因此，一个只对Java或英语的形式进行训练的系统没有办法学习它们各自的含义关系。</p>
+<p><strong>人类语言习得</strong></p>
+<p>认为LMs 可能学习了含义的常见原因是人类儿童可以通过听语言来获得语言能力的主张。然而这并没有得到有关语言习得的学术工作的支持：相反，我们发现人类语言学习不仅植根于我们周围的物理世界，而且还立足于与这个世界上与其他人的互动。</p>
+<p>同时，语言学习的关键不仅仅是互动，而是真正的共同关注，即孩子和看护人都在关注同一件事并且都意识到这一事实的情况。</p>
+<p>总而言之，习得人类语言的过程，就像一般的人类交流一样，依赖于共同关注和主体间性：意识到另一个人在关注什么并猜测他们打算交流什么的能力。人类的孩子不会仅仅从形式上学习含义，我们也不应该期望机器也能这样做。</p>
+<p><strong>分布式语义</strong></p>
+<p>分布式语义学家早就意识到，将分布式表征建立在现实世界中是困难的。在文本上训练的分布式模型所学习到的词汇相似性关系本身并不能将这些词汇与世界联系起来，且词汇的分布可能与世界上事物的分布不一致。</p>
+<p>从各类文献中，我们常见“含义即使用”的口号，其指的不是”在文本语料库中的分布”的”使用”，而是指语言在现实世界中被用来向真实的人传达交际意图。说话者将他们过去的语言使用经验提炼成我们这里所说的”含义”，并在此基础上产生新的语言使用尝试；如果听者正确推断出说话者的交际意图，这种尝试就是成功的。因此，随着时间的推移，常规含义会随着说话人的不同经验而演变，这种变化的反应可以在不断变化的文本分布中观察到。</p>
+<p><strong>攀登正确的山峰</strong></p>
+<p>那么，那些在非语言建模的任务上进行训练的（例如，语义分析或阅读理解测试）、使用来自BERT或其他大型LM的词嵌入作为组成部分的系统又怎么样呢？过去几年的大量论文表明，使用这种预训练的嵌入可以大幅提高下游系统的准确性，即使是与含义明显相关的任务也是如此。</p>
+<p>我们认为当前有一个相当基本的问题要问：我们是否爬对了山？</p>
+<p><strong>自上而下和自下而上的理论构建</strong></p>
+<p>人们可以从两个不同的角度来看待一个领域的进展。</p>
+<p>从自下而上的角度看，科学界的努力是通过确定具体的研究挑战来推动的。如果一项科学成果至少部分地解决了具体的挑战，那么就算得上是成功。只要这种成功经常出现并令人满意，就会形成持续进步的总体氛围。</p>
+<p>从自上而下的角度看，人们关注的是“为整个领域提供完整、统一的理论”这一遥远的终极目标。这种观点使人对尚未完全解释的所有现象感到焦虑，并提出“自下而上的进展是否能将我们引向正确方向”的问题。</p>
+<p>毫无疑问，NLP正处于快速爬山的过程中。每年，许多NLP任务的技术水平都在显著提高—通常是通过使用更好的预训练LMs—而不久前似乎还不可能完成的任务如今已成为旧闻。因此，当我们采取自下而上的观点时，一切都很好。但从自上而下的角度来看，我们爬得这么快的山是否是正确的山是一个大问题。我们并不知道今天任务的渐进式进展是否会带我们达到最终目标，无论是”通用语言智能”，还是通过图灵测试的系统，亦或是让语言学家满意的英语、阿拉帕霍语、泰语或豪萨语的含义捕捉系统。</p>
+<p><strong>爬山诊断</strong></p>
+<p>我们只有在事后才能确切地知道我们是否爬对了山，但我们提出一些最佳做法，以减少登山时的错误。</p>
+<p>首先，最重要的是，培养对语言的谦逊态度，并提出自上而下的问题。神经方法不是NLP中第一个自下而上的成功，它们可能也不会是最后一个。</p>
+<p>第二，要意识到任务的局限性。</p>
+<p>第三，重视和支持精心创造新任务的工作。</p>
+<p>第四，跨任务的评估含义模型。</p>
+<p>最后，对错误和成功都进行彻底的分析。</p>
+<h2><span id="总结">总结</span></h2><p>在本文中，我们认为，与目前的一些炒作相反，含义不能仅仅从形式中学习。这意味着，即使是像BERT这样的大型语言模型也不能学习“含义”；它们学习的是含义在语言形式中的一些反映，这在应用中非常有用。 我们就如何对建立在这些LM上的研究保持健康但不夸张的乐观态度提出了一些想法。特别的，本文可以被看作在是呼吁在谈论当前模型的成功时使用精确的语言，并呼吁在处理自然语言时保持谦逊。我们希望以此来鼓励人们从自上而下的角度来看待我们的领域，我们认为这将有助于我们爬上正确的山，向人类模拟NLU攀登。</p>
+
+        </div>
+        <div class="article-tags tags">
+            
+                <a class="tag-none-link" href="/tags/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" rel="tag">论文阅读</a>
+            
+        </div>
+    </section>
+</article>
+
+
+
+
+
+        <script>setLoadingBarProgress(60);</script>
+    </main>
+
+    <footer id="footer" class="clearfix">
+
+    
+
+    <div class="social-wrapper">
+        
+            
+                <a href="liuguandi@126.com" class="social email"
+                   target="_blank" rel="external">
+                    <span class="icon icon-email"></span>
+                </a>
+            
+                <a href="https://github.com/Liuguandi" class="social github"
+                   target="_blank" rel="external">
+                    <span class="icon icon-github"></span>
+                </a>
+            
+                <a href="/atom.xml" class="social rss"
+                   target="_blank" rel="external">
+                    <span class="icon icon-rss"></span>
+                </a>
+            
+        
+    </div>
+
+    <div class="theme-by">Theme <span class="codename">Memory</span> designed by <a href="https://artifact.me/"
+                                                                                    target="_blank">Art Chen</a>, modified by <a href="https://values.keys.moe/"
+                                                                                    target="_blank">Angelo</a>.
+    </div>
+    <div>&copy; <a href="/">Angelo的代码工坊</a></div>
+
+</footer>
+
+
+    <script>setLoadingBarProgress(80);</script>
+    <div class="overlay"></div>
+</div>
+
+<div class="site-sidebar" id="site-sidebar">
+
+    
+
+    <div class="sidebar-switch clearfix "
+         style="display: none">
+        <a class="dark-btn active" data-toggle="toc">
+            <span class="icon icon-list"></span>
+            <span class="text">Index</span>
+        </a>
+        <a class="dark-btn" data-toggle="bio">
+            <span class="icon icon-person"></span>
+            <span class="text">Bio</span>
+        </a>
+    </div>
+
+    <div class="site-toc "
+         style="display: none">
+        
+            <div class="no-index">No Index</div>
+        
+    </div>
+
+    <div class="site-bio show"
+         style="display: block">
+
+        <div class="about-me clearfix">
+
+            <div class="title"><a href="/">Angelo的代码工坊</a></div>
+            
+            <p class="subtitle">
+                I shut my eyes in order to see.
+            </p>
+            
+
+            <div class="info">
+                <!-- <a class="name dark-btn" href="/about"> -->
+                    <!-- Angelo -->
+                <!-- </a> -->
+                <div class="item desc" style="padding-right:20px">
+                    <div class="description">
+                        身处寒夜，把握星光。
+                    </div>
+                    <div class="author">
+                        Angelo
+                    </div>
+                </div>
+
+                <div class="avatar">
+                    <a href="/About">
+                        <img src="/img/avatar.png"/>
+                    </a>
+                </div>
+            </div>
+                
+
+            
+    
+        </div>
+
+        <!-- <div class="menu section">
+            <ul class="clearfix">
+                
+                    <li class="left">
+                        <a href="/About"
+                           onfocus="this.blur();"
+                           class="nav-about dark-btn block">
+                            About
+                        </a>
+                    </li>
+                
+                    <li class="right">
+                        <a href="/archives"
+                           onfocus="this.blur();"
+                           class="nav-archives dark-btn block">
+                            Archives
+                        </a>
+                    </li>
+                
+            </ul>
+        </div> -->
+
+
+        <div class="body">
+            
+              
+                <ul class="nav">
+                  
+                    
+                      <li class="category-list-container">
+                        <a href="javascript:;">Category</a>
+                        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Ubuntu/">Ubuntu</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E8%B0%88/">杂谈</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%A0%91%E8%8E%93%E6%B4%BE/">树莓派</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/">论文阅读</a><span class="category-list-count">12</span></li></ul>
+                      </li>
+                    
+                  
+                    
+                      <li class="tag-list-container">
+                        <a href="javascript:;">Tag</a>
+                        <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu/" rel="tag">Ubuntu</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82%E8%B0%88/" rel="tag">杂谈</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/" rel="tag">树莓派</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" rel="tag">论文阅读</a><span class="tag-list-count">12</span></li></ul>
+                      </li>
+                    
+                  
+                    
+                      <li class="archive-list-container">
+                        <a href="javascript:;">Archive</a>
+                        <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/">2019</a><span class="archive-list-count">8</span></li></ul>
+                      </li>
+                    
+                  
+                </ul>
+              
+                <ul class="nav">
+                  
+                    
+                      <li>
+                        <a href="/" title="Blog" external="false">Blog</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="/archives" title="By Year" external="false">By Year</a>
+                      </li>
+                    
+                  
+                </ul>
+              
+                <ul class="nav">
+                  
+                    
+                      <li>
+                        <a href="https://github.com/Liuguandi" title="Github" target="_blank" rel="noopener">Github</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="/atom.xml" title="RSS" external="false">RSS</a>
+                      </li>
+                    
+                  
+                </ul>
+              
+                <ul class="nav">
+                  
+                    
+                      <li>
+                        <a href="https://keys.moe/" title="Home" target="_blank" rel="noopener">Home</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="https://values.keys.moe/About/" title="About" target="_blank" rel="noopener">About</a>
+                      </li>
+                    
+                  
+                </ul>
+              
+            
+          </div>
+
+    </div>
+
+    <div class="shortcuts">
+        <a href="#header" class="top window-nav dark-btn" id="go-top">
+            <span class="icon icon-chevron-thin-up"></span>
+        </a>
+        <a class="close dark-btn" id="sidebar-close">
+            <span class="icon icon-close"></span>
+        </a>
+        <a href="#footer" class="top window-nav dark-btn" id="go-bottom">
+            <span class="icon icon-chevron-thin-down"></span>
+        </a>
+    </div>
+
+</div>
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script>window.jQuery || document.write('<script src="/js/jquery.min.js"><\/script>')</script>
+
+
+<script src="/js/jquery.fitvids.js"></script>
+
+<script>
+  var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+  var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+  var ALGOLIA_API_KEY = "";
+  var ALGOLIA_APP_ID = "";
+  var ALGOLIA_INDEX_NAME = "";
+  var AZURE_SERVICE_NAME = "";
+  var AZURE_INDEX_NAME = "";
+  var AZURE_QUERY_KEY = "";
+  var SEARCH_SERVICE = "";
+  var universalSearchConfig = {};
+  if (SEARCH_SERVICE === 'google') {
+    universalSearchConfig = {
+      searchService: SEARCH_SERVICE,
+      apiKey: GOOGLE_CUSTOM_SEARCH_API_KEY,
+      engineId: GOOGLE_CUSTOM_SEARCH_ENGINE_ID,
+      imagePath: "/img/"
+    };
+  } else if (SEARCH_SERVICE === 'algolia') {
+    universalSearchConfig = {
+      searchService: SEARCH_SERVICE,
+      apiKey: ALGOLIA_API_KEY,
+      appId: ALGOLIA_APP_ID,
+      indexName: ALGOLIA_INDEX_NAME,
+      imagePath: "/img/"
+    };
+  } else if (SEARCH_SERVICE === 'azure') {
+    universalSearchConfig = {
+      searchService: SEARCH_SERVICE,
+      serviceName: AZURE_SERVICE_NAME,
+      indexName: AZURE_INDEX_NAME,
+      apiKey: AZURE_QUERY_KEY,
+      imagePath: "/img/"
+    };
+  }
+</script>
+
+<script src="/js/app.js"></script>
+
+
+<script src="/js/search.js"></script>
+
+
+
+
+
+<script src="/scripts/main.js"></script>
+
+<script>setLoadingBarProgress(100);</script>
+
+</body>
+</html>

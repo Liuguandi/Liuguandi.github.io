@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>Debugging Tests for Model Explanations | Angelo的代码工坊</title>
+    <meta name="description" content="Angelo's blog."/>
+    <meta name="keywords" content="hexo,theme,otakism,otaku"/>
+    <meta name="HandheldFriendly" content="True"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="google-site-verification" content=""/>
+    <meta name="baidu-site-verification" content=""/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="模型解释的调试测试引用Adebayo J , Muelly M , Liccardi I , et al. Debugging Tests for Model Explanations[J]. 2020. 摘要我们研究了事后模型解释对于诊断模型错误（即模型调试）是否是有效的。为了应对解释模型预测的挑战，人们提出了大量解释方法。尽管人们越来越多地使用这些方法，但仍不清楚它们是否有效。首先，我们根">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Debugging Tests for Model Explanations">
+<meta property="og:url" content="https://values.keys.moe/2021/06/20/Debugging%20Tests%20for%20Model%20Explanations/index.html">
+<meta property="og:site_name" content="Angelo的代码工坊">
+<meta property="og:description" content="模型解释的调试测试引用Adebayo J , Muelly M , Liccardi I , et al. Debugging Tests for Model Explanations[J]. 2020. 摘要我们研究了事后模型解释对于诊断模型错误（即模型调试）是否是有效的。为了应对解释模型预测的挑战，人们提出了大量解释方法。尽管人们越来越多地使用这些方法，但仍不清楚它们是否有效。首先，我们根">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://values.keys.moe/2021/06/20/Debugging%20Tests%20for%20Model%20Explanations/clip_image002.jpg">
+<meta property="og:image" content="https://values.keys.moe/2021/06/20/Debugging%20Tests%20for%20Model%20Explanations/clip_image004.jpg">
+<meta property="og:image" content="https://values.keys.moe/2021/06/20/Debugging%20Tests%20for%20Model%20Explanations/clip_image005.png">
+<meta property="og:image" content="https://values.keys.moe/2021/06/20/Debugging%20Tests%20for%20Model%20Explanations/clip_image007.jpg">
+<meta property="og:image" content="https://values.keys.moe/2021/06/20/Debugging%20Tests%20for%20Model%20Explanations/clip_image009.jpg">
+<meta property="og:image" content="https://values.keys.moe/2021/06/20/Debugging%20Tests%20for%20Model%20Explanations/clip_image011.png">
+<meta property="og:image" content="https://values.keys.moe/2021/06/20/Debugging%20Tests%20for%20Model%20Explanations/clip_image015.png">
+<meta property="og:image" content="https://values.keys.moe/2021/06/20/Debugging%20Tests%20for%20Model%20Explanations/clip_image017.jpg">
+<meta property="og:image" content="https://values.keys.moe/2021/06/20/Debugging%20Tests%20for%20Model%20Explanations/clip_image019.jpg">
+<meta property="og:image" content="https://values.keys.moe/2021/06/20/Debugging%20Tests%20for%20Model%20Explanations/clip_image021.jpg">
+<meta property="og:image" content="https://values.keys.moe/2021/06/20/Debugging%20Tests%20for%20Model%20Explanations/clip_image023.jpg">
+<meta property="og:image" content="https://values.keys.moe/2021/06/20/Debugging%20Tests%20for%20Model%20Explanations/clip_image025.jpg">
+<meta property="og:image" content="https://values.keys.moe/2021/06/20/Debugging%20Tests%20for%20Model%20Explanations/clip_image027.jpg">
+<meta property="og:image" content="https://values.keys.moe/2021/06/20/Debugging%20Tests%20for%20Model%20Explanations/clip_image029.jpg">
+<meta property="article:published_time" content="2021-06-19T19:51:15.000Z">
+<meta property="article:modified_time" content="2023-10-25T16:08:00.844Z">
+<meta property="article:author" content="Angelo">
+<meta property="article:tag" content="论文阅读">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://values.keys.moe/2021/06/20/Debugging%20Tests%20for%20Model%20Explanations/clip_image002.jpg">
+    
+        <link rel="alternative" href="/atom.xml" title="Angelo的代码工坊" type="application/atom+xml">
+    
+
+    <!-- Favicon -->
+    
+
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata|Roboto:300,400,700" rel="stylesheet">
+
+    
+<link rel="stylesheet" href="/style.css">
+
+    <script>
+      function setLoadingBarProgress(num) {
+        document.getElementById('loading-bar').style.width = num + "%";
+      }
+    </script>
+
+    
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+
+<div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+
+<script>setLoadingBarProgress(20)</script>
+
+<div id="site-wrapper">
+
+    <header id="header">
+    <div id="header-wrapper" class="clearfix">
+        <a id="logo" href="/">
+            <img src="/img/logo.png"/>
+            <span id="site-desc">
+                I shut my eyes in order to see.
+            </span>
+        </a>
+        <button id="site-nav-switch">
+            <span class="icon icon-menu"></span>
+        </button>
+    </div>
+</header>
+    <script>setLoadingBarProgress(40);</script>
+
+    <main id="main" role="main">
+        <article id="post-Debugging Tests for Model Explanations"
+         class="post article white-box article-type-post"
+         itemscope itemprop="blogPost">
+    <h2 class="title">
+        <a href="/2021/06/20/Debugging%20Tests%20for%20Model%20Explanations/">
+            Debugging Tests for Model Explanations
+        </a>
+    </h2>
+    <time>
+        6月 20, 2021
+    </time>
+    <section class="content">
+        <div class="article-entry" itemprop="articleBody">
+            <img src="/2021/06/20/Debugging%20Tests%20for%20Model%20Explanations/clip_image002.jpg" alt>
+
+<h1><span id="模型解释的调试测试">模型解释的调试测试</span></h1><h2><span id="引用">引用</span></h2><p>Adebayo J , Muelly M , Liccardi I , et al. Debugging Tests for Model Explanations[J]. 2020.</p>
+<h2><span id="摘要">摘要</span></h2><p>我们研究了事后模型解释对于诊断模型错误（即模型调试）是否是有效的。为了应对解释模型预测的挑战，人们提出了大量解释方法。尽管人们越来越多地使用这些方法，但仍不清楚它们是否有效。首先，我们根据bug的来源，将其分为：数据、模型和测试时污染bug。对于几个解释方法，我们评估了它们的能力：检测虚假的关系产物（数据污染），诊断错误标注的训练样本（数据污染），区分（部分）重新初始化的模型和训练好的模型（模型污染），以及检测分布外的输入（测试时污染）。我们发现，所测试的方法能诊断出一个虚假的背景错误，但并不能确凿地识别错误标注的训练样本。此外，一类修改的反向传播算法的方法对深度网络的高层参数没有影响；因此，其对诊断模型污染无效。我们进行了一项人群受试者研究来补充我们的分析，我们发现受试者未能根据归因来识别有缺陷的模型，而主要依赖于模型预测。综上，我们的结果为从业者和研究者提供了在模型测试时将解释作为工具的指导。</p>
+<span id="more"></span>
+
+<h2><span id="1介绍">1.介绍</span></h2><p>诊断与修复模型错误（即模型调试）仍是机器学习的长期挑战。模型调试越来越重要，因为带有学习组件的自动化系统正在高风险设置中测试，不经意的错误可能会导致破坏性的后果。越来越多的解释——源于训练好的模型的产物，其主要目的是向用户提供模型分析的见解——作为模型的调试工具被用于诸多专业领域中。尽管已有大量的解释方法被广泛地应用于调试中，但尚未有对方法有效性的指南。例如，一个解释对于诊断错误标注的训练样本和检测虚假的关系产物是否应该同样有效？对模型参数敏感的解释是否在检测域迁移后也同样有效？因此，我们提出并解决如下问题：</p>
+<p>哪种解释方法对哪种模型错误有效？</p>
+<p>为了解决此问题，我们做出如下贡献：</p>
+<p>\1. <strong>错误分类</strong>。根据导致错误的缺陷来源，我们将监督学习流程中的错误分类（如图1）分为三类：数据、模型和测试时污染。这些污染类别捕捉训练数据缺陷、模型结构与参数缺陷与测试时输入缺陷。</p>
+<p><span><img class="small-img-inline" src="/2021/06/20/Debugging%20Tests%20for%20Model%20Explanations/clip_image004.jpg" alt></span></p>
+<p>图1 标准监督学习流程的调试框架。标准监督学习流程的示意图和流程每个阶段可能发生的错误样例。这样的分类捕捉到了可能发生在训练数据、模型与测试时的错误。我们称这些为：数据、模型与测试时污染测试。</p>
+<p>\2. <strong>经验性评估</strong>。我们进行了全面的控制实验，以评估几种特征归因方法对四种错误的影响：“虚假的关系产物”，错误标注的训练样本，重新初始化的权重和外分布（OOD）迁移。</p>
+<p>\3. <strong>见解</strong>。我们发现，测试的特征归因方法可以识别虚假背景错误，但不能确凿地区分正常和错误标注的训练样本。此外，通过“正向聚合”修改的反向传播计算得出相关性的归因方法对于深度神经网络（DNN）模型的高层参数是不变的。最后，我们发现，在特定设置中，分布外的样本的归因在视觉上与“域内”模型的样本相似，这表明了仅基于视觉检查的调试可能产生误导。</p>
+<p>\4. <strong>人群受试者研究</strong>。我们进行了一项54人的IRB批准的研究，以评估终端用户是否能通过归因识别有缺陷的模型。我们发现，即使在有归因的情况下，用户仍主要依靠模型预测来确定一个模型是否是有缺陷的。</p>
+<h2><span id="2错误特征-解释方法与用户研究">2.错误特征、解释方法与用户研究</span></h2><h3><span id="21确定模型错误">2.1确定模型错误</span></h3><p>我们将模型错误定义为学习和&#x2F;或预测流程中的污染，导致模型产生错误的预测或导致模型学习错误的关系。我们将注意力集中在标准监督学习设置上，并根据其来源对错误进行分类。给定输入标签{xi,yi}i n，其中x∈X、y∈Y，分类器的目标是学习泛化函数fθ：X→Y。fθ被用于预测测试样本，xtest∈X，则ytest&#x3D;fθ(xtest)。给定一个损失函数L和模型参数θ，则对于一系列模型，我们提供了错误的分类，即模型、数据与测试时污染：</p>
+<p><span><img class="small-img-inline" src="/2021/06/20/Debugging%20Tests%20for%20Model%20Explanations/clip_image005.png" alt></span></p>
+<p><strong>数据污染错误</strong>是由训练数据中的缺陷引起的，要么是输入特征，要么是标签，要么两者皆有。例如，一些不正确的标签会导致模型学习到错误的关系。另一个错误是虚假的关系训练信号。例如，在一个物体分类任务中，所有的鸟都出现在蓝天背景下。在这个数据集上训练的模型会将蓝天背景与鸟类相关联；这样的数据集偏差在实践中常常发生。</p>
+<p><strong>模型污染错误</strong>是由模型参数的缺陷引起的。例如，代码中的错误可以导致模型权重的意外初始化。</p>
+<p><strong>测试时污染的错误</strong>是由测试输入的缺陷引起的，如测试时的域迁移或不匹配的预处理。</p>
+<p>上述错误分类使我们能针对具体错误类别评估解释，并能让我们阐述解释方法何时能对特定错误类别有效。如表1所示，我们评估了一系列应用于具有每个错误特定实例的模型的解释方法。</p>
+<p><span><img class="small-img-inline" src="/2021/06/20/Debugging%20Tests%20for%20Model%20Explanations/clip_image007.jpg" alt></span></p>
+<p>表1 我们为每个错误类别测试的错误样本及它们的公式化描述</p>
+<h3><span id="22解释方法">2.2解释方法</span></h3><p>我们着力于为模型输出的对应输入维度提供“相关性”分数的特征归因方法。对于在图像数据上训练的深度神经网络（DNN），可以将特征相关性可视化为热力图，如图2所示。</p>
+<p><span><img class="small-img-inline" src="/2021/06/20/Debugging%20Tests%20for%20Model%20Explanations/clip_image009.jpg" alt></span></p>
+<p>图2 考虑的归因方法。图中展示了为了区分鸟和狗而训练的CNN模型的两个输入的特征归因。</p>
+<p>归因函数<span><img class="small-img-inline" src="/2021/06/20/Debugging%20Tests%20for%20Model%20Explanations/clip_image011.png" alt></span>、输出Fk(x)映射到归因图Mxi∈Rd上。</p>
+<p><strong>梯度（Grad）与变量</strong>。我们考虑1）Gtadient(Grad)图，|▽xiFi(xi)|；2）SmoothGrad（SGrad），<span><img class="small-img-inline" src="/2021/06/20/Debugging%20Tests%20for%20Model%20Explanations/clip_image015.png" alt></span>；7）Expected Gradients（EGrad），其计算IntGrad，但其有一个对训练集期望的基线输入。</p>
+<p><strong>替代方法</strong>。LIME和SHAP使用一个简单函数g对xi周围的F进行局部近似。SHAP提供了一个对Shapley值的可行近似。</p>
+<p><strong>修改的反向传播</strong>。这类方法给输出分配“相关性”分数，对每个输入维度使用反向传播。DConvNet和Guided Back-propagation（GBP）修改ReLU单元的梯度。Layer-wise relevance propagation （LRP）方法指定了修改反向传播的“相关性”规则。我们考虑LRPEPS和LRP sequential preset-a-flat （LRP-SPAF）。PatternNet（PNet） 和Pattern Attribution （PAttribution）将输入分解为信号和噪声部分，并反向传播信号部分的相关性。</p>
+<p><strong>归因比较</strong>。我们分别用结构相似性指数（SSIM）和Spearman等级相关度指标来衡量视觉和特征排名相似度。</p>
+<h3><span id="23人群受试者研究概述">2.3人群受试者研究概述</span></h3><p><strong>任务与设置</strong>。我们设计了一项研究，其用以测量终端用户使用特征归因来评估分类模型可靠性的能力。参与者被要求作为一家销售动物分类模型的假定企业的质保（QA）测试员，并每次向他们展示原始图像、模型预测和4个狗品种的归因图。然后，他们用5点里克特量表对他们向外部客户推荐销售该模型的可能性进行评分，并说明他们决定的理由。参与者从4个预先创建的答案中选择（图5-b），或填写一个自由格式的答案。参与者自我报告了他们的机器学习专业知识水平，这一点通过3个问题得到了验证。</p>
+<p><strong>方法</strong>。我们将重点放在研究一个有代表性的方法子集上：Gradient、Integrated Gradients、SmoothGrad。</p>
+<p><strong>错误</strong>。我们在没有错误的模型上测试了表1中描述的错误。</p>
+<h2><span id="3调试数据污染">3.调试数据污染</span></h2><p><strong>概述</strong>。我们评估了特征归因是否能检测出虚假的训练产物和错误标注的训练样本。虚假的产物是指在训练集中编码或受其标签影响的信号，但它们不能为数据生成过程提供有意义的联系。我们在输入背景中诱发一个虚假的关系，并测试特征归因能否诊断出这种影响。我们发现，所考虑的方法确实将重要性归因于具有虚假信号的输入图像背景。然而，尽管归因中有可视化证据，但人群受试者研究中的参与者不确定虚假模型条件下模型的可靠性。因此，参与者并未完全否定该模型。</p>
+<p><span><img class="small-img-inline" src="/2021/06/20/Debugging%20Tests%20for%20Model%20Explanations/clip_image017.jpg" alt></span></p>
+<p>图3 虚假关系错误的特征归因。图中显示了在虚假数据上训练的BVD-CNN的4个输入的归因。A和B显示了两个狗的样本，C和D是鸟的样本。第一行显示了带有虚假背景的输入（狗或鸟）的归因。第二行显示的是只有虚假背景的归因。值得注意的是，我们观察到特征归因方法都强调了背景。衡量标准见表2。</p>
+<p>对于错误标注的样本，我们比较来自以下训练输入的归因：1）训练时输入具有正确标签的模型；2）相同的模型设置，但使用错误的标签进行训练。如果这两种设置下的归因相似，那么这种方法不太可能用于识别错误标注的样本。我们观察到，所有方法中错误标注样本的归因都显示出视觉相似性。</p>
+<p><strong>数据与模型设置</strong>。我们考虑了一个鸟与狗的二元分类任务。我们使用来自Cats-v-Dogs数据集的狗与来自Caltech-UCSD数据集的鸟。在此数据集上，我们训练了一个具有5个卷积层和3个全连接层的CNN（从这里开始我们把这个架构称为BVD-CNN），其使用ReLU函数，但最后一层是sigmoid。该模型达到了94%的测试准确度。</p>
+<h3><span id="31虚假关系训练产物">3.1虚假关系训练产物</span></h3><p><strong>虚假错误实现</strong>。我们通过将所有的鸟放在地点数据集中的一个天空背景上，并将所有的狗放在竹林背景上（见图3）来引入虚假相关性。对这些数据进行训练的BVD-CNN在天空与竹林测试集（没有鸟或狗）上达到了97%的准确率，表明该模型确实学习到了虚假关系。</p>
+<p><strong>结果</strong>。为了定量地衡量归隐方法是否反应了虚假的背景，我们将归因与两个准确标注的遮罩（GT-1和GT-2）进行比较。如图4所示，我们考虑一个理想的遮罩，其将所有的相关性都分配给了背景，而不分配给物体部分。接下来，我们考虑一个宽松的版本，其通过没有对象的虚假背景归因来加权准确标注的遮罩。在表2中，我们报告了所有方法对这两种准确标注的遮罩的SSIM比较得分。对于GT-2，分数范围从最低的0.78到最高的0.98；这提供证据表明归因识别了虚假的背景信号。我们为GT-1找到了类似的证据。</p>
+<p><strong>来自人群受试者研究的启示</strong>：用户是不确定的。图5展示了人群受试者研究的结果，我们评估了终端用户可靠地使用归因来识别依赖虚假训练集信号的模型的能力。对于一个正常的模型，Gradient、SmoothGrad和Integrated Gradients的李克特分数中值分别为4、4、3。选择1的李克特分数表示用户“肯定不会”推荐这个模型，而5意味着用户“肯定”推荐这个模型。因此，用户对一个正常的模型有充分的评价。此外，对于对Gradient和SmoothGrad，分别有30%和40%的参与者（见图5-右）表示，正常模型的归因“突出了他们希望它关注的图像部分”。</p>
+<p><span><img class="small-img-inline" src="/2021/06/20/Debugging%20Tests%20for%20Model%20Explanations/clip_image019.jpg" alt></span></p>
+<p>表2 具有虚假背景的输入和真实遮罩的输入两者的归因遮罩之间的相似性。SSIM-GT1测量理想虚假输入遮罩和GT-1之间的视觉相似性，如图4所示。SSIM-GT2测量GT-2的视觉相似性。我们亦涵盖了每个指标的平均值标准误差（SEM），这是跨190个输入计算的。为了校准该指标，随机采样的高斯归因和虚假归因之间的平均SSIM为3e-06。</p>
+<p><span><img class="small-img-inline" src="/2021/06/20/Debugging%20Tests%20for%20Model%20Explanations/clip_image021.jpg" alt></span></p>
+<p>图5 A：用户研究中参与者的反应。参与者对3种归因方法（Gradient, SmoothGrad, and Integrated Gradients）的反应箱线图和测试的5个模型条件。纵轴上是李克特量表，从1（肯定不），到5（肯定）。参与者被告知，如果他们认为狗与鸟的分类模型可以被出售给客户，则选择“肯定”。B：选择的动机。参与者选择推荐的动机（%）。如图例所示，用户可以从4个选项中选择一个，或插入一个开放式的回答。</p>
+<p>对于“虚假模型”，李克特分数显示的数据分布范围更广。虽然Gradient、SmoothGrad和Integrated Gradients的中位数分别为2、2、3，但一些终端用户仍然推荐这种模式。对于每一种归因类型，大多数终端用户表示，归因“没有突出我期望它关注的图像部分”。尽管如此，终端用户并没有像对其他错误条件那样直接否定虚假模型。这些结果表明，归因方法诊断虚假相关性的能力可能无法用于可靠决策中。</p>
+<h3><span id="32错误标注的训练样本">3.2错误标注的训练样本</span></h3><p><strong>错误实现</strong>。我们在鸟类和狗类的数据集上训练了一个BVD-CNN模型，其中10%的训练样本标签被交换。该模型在训练、验证和测试集上达到了93.2%、91.7%和88%的准确率。</p>
+<p><strong>结论</strong>。我们发现，对于一个有缺陷的模型而言，来自错误标注的样本的归因在视觉上与来自正确输入标签的这些相同样本的归因相似（如图6中的样本）。我们发现，在所有测试方法中，正确标注的实例和相应错误标注的实例之间的SSIM都在0.73-0.99之间。这些结果表明，所测试的归因方法对于识别错误标注的样本可能是无效的。</p>
+<p><strong>来自人群受试者研究的启示</strong>：用户使用预测标签，而非归因方法。与虚假设置相反，参与者否定了错误标注的样本，对Gradient、SmoothGrad和Integrated Gradients的李克特评分中位数分别为1、2和1。然而，我们发现，这些参与者绝大多数都是依靠模型的预测来做出决定。</p>
+<p><span><img class="small-img-inline" src="/2021/06/20/Debugging%20Tests%20for%20Model%20Explanations/clip_image023.jpg" alt></span></p>
+<p>图6 诊断错误标注的训练样本。该图显示了两个训练输入以及每种方法的特征归因。正确标签行对应于基于正确标签的训练集训练的模型所得出的特征归因。错误标签行显示了使用带有错误标签的训练集训练的模型所得出的特征归因。我们看到，两种设置下的归因在视觉上看是相似的。</p>
+<h2><span id="4调试模型污染">4.调试模型污染</span></h2><p>我们接下来评估与模型参数有关的错误。具体而言，我们考虑的是模型权重在预测前被意外重新初始化的情况。我们发现，修改过的反向传播算法，如Guided Back-Propapagtion （GBP）、DConvNet和LRP相关变体，包括Pattern Net（PNet）和Pattern Attribution（PAttribution），对深度网络的更高层权重是不变的。</p>
+<p><strong>错误实现</strong>。我们在ImageNet上的预训练的VGG-16模型上实例化了这个错误。我们从顶层开始重新初始化模型权重，直到第一层。然后，我们将这些部分重新初始化的模型的归因与原始模型得出的归因进行比较。</p>
+<p><span><img class="small-img-inline" src="/2021/06/20/Debugging%20Tests%20for%20Model%20Explanations/clip_image025.jpg" alt></span></p>
+<p>图7 在ImageNet上训练的VGG-16模型的连续权重更新的重新初始化对应的模型归因的演变。定性结果（左）与定量结果（右）。定性结果的最后一列对应完全重新初始化权重的网络。</p>
+<p><strong>结论</strong>：修改的反向传播方法是参数不变的。从图7可以看出，包括Guided BackProp、Deconvnet、DeepTaylor、PatternNet、Pattern Attribution和LRP-SPAF在内的一类修改的反向传播方法在视觉上和数量上对VGG-16模型的高层参数都是不变的。</p>
+<p><strong>来自人群受试者研究的启示</strong>：用户使用预测标签，而非归因方法。我们观察到，参与者断然否定一个顶层已被重新初始化的模型，而该判断大多纯粹基于分类标签，而很少基于错误的归因（图5）。</p>
+<h2><span id="5调试测试时污染">5.调试测试时污染</span></h2><p>当输入的分布特征与训练集不同时，模型可能提供错误的预测。为了评估特征归因，诊断域迁移的能力，对于给定输入，我们比较了从域内模型和从域外模型得出的归因。例如，我们分别在MNIST上训练的模型、Fashion MNIST上训练的模型、ImageNet上训练的模型和鸟-狗分类模型上，比较了同一个MNIST数字所得出的归因。我们发现在某些情况下有视觉上的相似性：如相同的Fashion MNIST输入样本，从ImageNet上训练的VGG-16模型得出的特征归因与在Fashion MNIST上训练的模型得出的特征归因在视觉上相似。然而，输入维度的定量排名却大不相同。</p>
+<p><span><img class="small-img-inline" src="/2021/06/20/Debugging%20Tests%20for%20Model%20Explanations/clip_image027.jpg" alt></span></p>
+<p>图8 在多个模型上的Fashion MNIST OOD。第一行显示了在Fashion MNIST上训练的模型的特征归因。在接下来几行中，我们展示了同一输入在MNIST模型上的特征归因、在鸟-狗分类上训练的BVD-CNN模型的特征归因以及在ImageNet上预训练的VGG-16模型的特征归因。</p>
+<p><span><img class="small-img-inline" src="/2021/06/20/Debugging%20Tests%20for%20Model%20Explanations/clip_image029.jpg" alt></span></p>
+<p>表3 测试时解释相似度度量。我们可以观察到视觉上的相似度，但无排名上的相似度。我们将每个指标与对190个样本计算出的平均值的标准误差一起展示。FMNIST-&gt;MNIST模型是指对一个FMNIST模型的FMNIST归因与从MNIST模型得到的FMNIST归因的比较。我们同时展示了SSIM和Rank的相关度量。</p>
+<p><strong>错误实现</strong>。我们考虑了4个数据集-模型对：在MNIST上训练的BVD-CNN、Fashion MNIST、鸟-狗数据集和在ImageNet上训练的VGG-16模型。</p>
+<p><strong>结论</strong>。如图8所示，我们观察到域内Fashion MNIST归因，以及这些样本在其他模型上的归因之间的视觉相似性。如表3所示，我们观察到视觉上的相似性，尤其是ImageNet上的VGG-16模型，但在特征排名上基本不相关。</p>
+<p><strong>来自人群受试者研究的启示</strong>：用户使用预测标签，而非归因。对于域迁移的研究，我们向参与者展示了在训练过程中没有使用的狗的归因，每个训练好的模型对其品种的预测皆不同。我们发现，在这种情况下，由于错误的预测标签，用户不会推荐该模型（图5）。</p>
+<h2><span id="6讨论与结论">6.讨论与结论</span></h2><p>调试机器学习模型仍然是一项具有挑战性的工作，而模型解释可能是这项探索中的一个有用工具。尽管从业者和研究者可能可以使用很多解释方法，但仍不清楚哪些方法对什么类型的错误有用。本工作旨在解决此问题，首先，将模型错误分为：数据、模型和测试时污染错误，然后针对每种错误类型测试特征归因方法。总的来说，我们发现特征归因方法能诊断测试出空间的虚假关系错误，但不能确凿地区分错误标注样本与正常样本。在模型污染的情况下，我们发现某些使用正向聚合的修改后的反向传播的计算特征归因方法，对深层模型的高层参数是不变的。这表明，这些方法可能对诊断模型污染的错误并不有效。我们还发现，域外输入的归因与域内模型上这些输入的归因相似，这表明在视觉上检查这些解释时要谨慎，尤其是对于图像任务。我们还进行了人群受试者研究，以评估终端用户能多好地使用归因来评估模型可靠性。在此，我们发现最终用户主要靠模型预测来诊断模型错误。</p>
+<p>我们的发现有一定的局限性与注意事项。所提出的错误描述仅覆盖了标准的监督学习流程，可能无法完整地捕捉到各类因素组合而成的错误。我们仅关注特征归因：然而，其他方法，如基于“概念”激活、模型表征剖析、训练点排序等方法可能更适合这里研究的调试任务。对于人群受试者研究，我们发现参与者大多依赖标签而不是特征归因，这可能是狗品种分类任务的结果。对于那些他们没有专业知识或先验知识的任务，参与者是否还会依赖模型的预测目前尚不清楚。</p>
+<p>本工作的目的是为研究人员和从业者提供在模型调试时使用特征归因的指导。希望我们的发现可以作为第一步，为评估解释方法的效用提供更为严格的方法。</p>
+
+        </div>
+        <div class="article-tags tags">
+            
+                <a class="tag-none-link" href="/tags/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" rel="tag">论文阅读</a>
+            
+        </div>
+    </section>
+</article>
+
+
+
+
+
+        <script>setLoadingBarProgress(60);</script>
+    </main>
+
+    <footer id="footer" class="clearfix">
+
+    
+
+    <div class="social-wrapper">
+        
+            
+                <a href="liuguandi@126.com" class="social email"
+                   target="_blank" rel="external">
+                    <span class="icon icon-email"></span>
+                </a>
+            
+                <a href="https://github.com/Liuguandi" class="social github"
+                   target="_blank" rel="external">
+                    <span class="icon icon-github"></span>
+                </a>
+            
+                <a href="/atom.xml" class="social rss"
+                   target="_blank" rel="external">
+                    <span class="icon icon-rss"></span>
+                </a>
+            
+        
+    </div>
+
+    <div class="theme-by">Theme <span class="codename">Memory</span> designed by <a href="https://artifact.me/"
+                                                                                    target="_blank">Art Chen</a>, modified by <a href="https://values.keys.moe/"
+                                                                                    target="_blank">Angelo</a>.
+    </div>
+    <div>&copy; <a href="/">Angelo的代码工坊</a></div>
+
+</footer>
+
+
+    <script>setLoadingBarProgress(80);</script>
+    <div class="overlay"></div>
+</div>
+
+<div class="site-sidebar" id="site-sidebar">
+
+    
+
+    <div class="sidebar-switch clearfix "
+         style="display: none">
+        <a class="dark-btn active" data-toggle="toc">
+            <span class="icon icon-list"></span>
+            <span class="text">Index</span>
+        </a>
+        <a class="dark-btn" data-toggle="bio">
+            <span class="icon icon-person"></span>
+            <span class="text">Bio</span>
+        </a>
+    </div>
+
+    <div class="site-toc "
+         style="display: none">
+        
+            <div class="no-index">No Index</div>
+        
+    </div>
+
+    <div class="site-bio show"
+         style="display: block">
+
+        <div class="about-me clearfix">
+
+            <div class="title"><a href="/">Angelo的代码工坊</a></div>
+            
+            <p class="subtitle">
+                I shut my eyes in order to see.
+            </p>
+            
+
+            <div class="info">
+                <!-- <a class="name dark-btn" href="/about"> -->
+                    <!-- Angelo -->
+                <!-- </a> -->
+                <div class="item desc" style="padding-right:20px">
+                    <div class="description">
+                        身处寒夜，把握星光。
+                    </div>
+                    <div class="author">
+                        Angelo
+                    </div>
+                </div>
+
+                <div class="avatar">
+                    <a href="/About">
+                        <img src="/img/avatar.png"/>
+                    </a>
+                </div>
+            </div>
+                
+
+            
+    
+        </div>
+
+        <!-- <div class="menu section">
+            <ul class="clearfix">
+                
+                    <li class="left">
+                        <a href="/About"
+                           onfocus="this.blur();"
+                           class="nav-about dark-btn block">
+                            About
+                        </a>
+                    </li>
+                
+                    <li class="right">
+                        <a href="/archives"
+                           onfocus="this.blur();"
+                           class="nav-archives dark-btn block">
+                            Archives
+                        </a>
+                    </li>
+                
+            </ul>
+        </div> -->
+
+
+        <div class="body">
+            
+              
+                <ul class="nav">
+                  
+                    
+                      <li class="category-list-container">
+                        <a href="javascript:;">Category</a>
+                        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Ubuntu/">Ubuntu</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E8%B0%88/">杂谈</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%A0%91%E8%8E%93%E6%B4%BE/">树莓派</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/">论文阅读</a><span class="category-list-count">12</span></li></ul>
+                      </li>
+                    
+                  
+                    
+                      <li class="tag-list-container">
+                        <a href="javascript:;">Tag</a>
+                        <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu/" rel="tag">Ubuntu</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82%E8%B0%88/" rel="tag">杂谈</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/" rel="tag">树莓派</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" rel="tag">论文阅读</a><span class="tag-list-count">12</span></li></ul>
+                      </li>
+                    
+                  
+                    
+                      <li class="archive-list-container">
+                        <a href="javascript:;">Archive</a>
+                        <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/">2019</a><span class="archive-list-count">8</span></li></ul>
+                      </li>
+                    
+                  
+                </ul>
+              
+                <ul class="nav">
+                  
+                    
+                      <li>
+                        <a href="/" title="Blog" external="false">Blog</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="/archives" title="By Year" external="false">By Year</a>
+                      </li>
+                    
+                  
+                </ul>
+              
+                <ul class="nav">
+                  
+                    
+                      <li>
+                        <a href="https://github.com/Liuguandi" title="Github" target="_blank" rel="noopener">Github</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="/atom.xml" title="RSS" external="false">RSS</a>
+                      </li>
+                    
+                  
+                </ul>
+              
+                <ul class="nav">
+                  
+                    
+                      <li>
+                        <a href="https://keys.moe/" title="Home" target="_blank" rel="noopener">Home</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="https://values.keys.moe/About/" title="About" target="_blank" rel="noopener">About</a>
+                      </li>
+                    
+                  
+                </ul>
+              
+            
+          </div>
+
+    </div>
+
+    <div class="shortcuts">
+        <a href="#header" class="top window-nav dark-btn" id="go-top">
+            <span class="icon icon-chevron-thin-up"></span>
+        </a>
+        <a class="close dark-btn" id="sidebar-close">
+            <span class="icon icon-close"></span>
+        </a>
+        <a href="#footer" class="top window-nav dark-btn" id="go-bottom">
+            <span class="icon icon-chevron-thin-down"></span>
+        </a>
+    </div>
+
+</div>
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script>window.jQuery || document.write('<script src="/js/jquery.min.js"><\/script>')</script>
+
+
+<script src="/js/jquery.fitvids.js"></script>
+
+<script>
+  var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+  var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+  var ALGOLIA_API_KEY = "";
+  var ALGOLIA_APP_ID = "";
+  var ALGOLIA_INDEX_NAME = "";
+  var AZURE_SERVICE_NAME = "";
+  var AZURE_INDEX_NAME = "";
+  var AZURE_QUERY_KEY = "";
+  var SEARCH_SERVICE = "";
+  var universalSearchConfig = {};
+  if (SEARCH_SERVICE === 'google') {
+    universalSearchConfig = {
+      searchService: SEARCH_SERVICE,
+      apiKey: GOOGLE_CUSTOM_SEARCH_API_KEY,
+      engineId: GOOGLE_CUSTOM_SEARCH_ENGINE_ID,
+      imagePath: "/img/"
+    };
+  } else if (SEARCH_SERVICE === 'algolia') {
+    universalSearchConfig = {
+      searchService: SEARCH_SERVICE,
+      apiKey: ALGOLIA_API_KEY,
+      appId: ALGOLIA_APP_ID,
+      indexName: ALGOLIA_INDEX_NAME,
+      imagePath: "/img/"
+    };
+  } else if (SEARCH_SERVICE === 'azure') {
+    universalSearchConfig = {
+      searchService: SEARCH_SERVICE,
+      serviceName: AZURE_SERVICE_NAME,
+      indexName: AZURE_INDEX_NAME,
+      apiKey: AZURE_QUERY_KEY,
+      imagePath: "/img/"
+    };
+  }
+</script>
+
+<script src="/js/app.js"></script>
+
+
+<script src="/js/search.js"></script>
+
+
+
+
+
+<script src="/scripts/main.js"></script>
+
+<script>setLoadingBarProgress(100);</script>
+
+</body>
+</html>

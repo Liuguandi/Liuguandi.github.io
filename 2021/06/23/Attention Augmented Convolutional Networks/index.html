@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>Attention Augmented Convolutional Networks | Angelo的代码工坊</title>
+    <meta name="description" content="Angelo's blog."/>
+    <meta name="keywords" content="hexo,theme,otakism,otaku"/>
+    <meta name="HandheldFriendly" content="True"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="google-site-verification" content=""/>
+    <meta name="baidu-site-verification" content=""/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="注意力增强的卷积网络引用Bello I, Zoph B, Vaswani A, et al. Attention augmented convolutional networks[C]&#x2F;&#x2F;Proceedings of the IEEE&#x2F;CVF International Conference on Computer Vision. 2019: 3286-3295.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Attention Augmented Convolutional Networks">
+<meta property="og:url" content="https://values.keys.moe/2021/06/23/Attention%20Augmented%20Convolutional%20Networks/index.html">
+<meta property="og:site_name" content="Angelo的代码工坊">
+<meta property="og:description" content="注意力增强的卷积网络引用Bello I, Zoph B, Vaswani A, et al. Attention augmented convolutional networks[C]&#x2F;&#x2F;Proceedings of the IEEE&#x2F;CVF International Conference on Computer Vision. 2019: 3286-3295.">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://values.keys.moe/2021/06/23/Attention%20Augmented%20Convolutional%20Networks/image-20231025235603474.png">
+<meta property="og:image" content="https://values.keys.moe/2021/06/23/Attention%20Augmented%20Convolutional%20Networks/image-20231025235608913.png">
+<meta property="og:image" content="https://values.keys.moe/2021/06/23/Attention%20Augmented%20Convolutional%20Networks/image-20231025235612402.png">
+<meta property="og:image" content="https://values.keys.moe/2021/06/23/Attention%20Augmented%20Convolutional%20Networks/image-20231025235629738.png">
+<meta property="og:image" content="https://values.keys.moe/2021/06/23/Attention%20Augmented%20Convolutional%20Networks/image-20231025235642710.png">
+<meta property="og:image" content="https://values.keys.moe/2021/06/23/Attention%20Augmented%20Convolutional%20Networks/image-20231025235649868.png">
+<meta property="og:image" content="https://values.keys.moe/2021/06/23/Attention%20Augmented%20Convolutional%20Networks/image-20231025235659635.png">
+<meta property="og:image" content="https://values.keys.moe/2021/06/23/Attention%20Augmented%20Convolutional%20Networks/image-20231025235702831.png">
+<meta property="og:image" content="https://values.keys.moe/2021/06/23/Attention%20Augmented%20Convolutional%20Networks/image-20231025235719388.png">
+<meta property="og:image" content="https://values.keys.moe/2021/06/23/Attention%20Augmented%20Convolutional%20Networks/image-20231025235723053.png">
+<meta property="og:image" content="https://values.keys.moe/2021/06/23/Attention%20Augmented%20Convolutional%20Networks/image-20231025235728637.png">
+<meta property="og:image" content="https://values.keys.moe/2021/06/23/Attention%20Augmented%20Convolutional%20Networks/image-20231025235748934.png">
+<meta property="og:image" content="https://values.keys.moe/2021/06/23/Attention%20Augmented%20Convolutional%20Networks/image-20231025235733687.png">
+<meta property="og:image" content="https://values.keys.moe/2021/06/23/Attention%20Augmented%20Convolutional%20Networks/image-20231025235754707.png">
+<meta property="og:image" content="https://values.keys.moe/2021/06/23/Attention%20Augmented%20Convolutional%20Networks/image-20231025235812726.png">
+<meta property="og:image" content="https://values.keys.moe/2021/06/23/Attention%20Augmented%20Convolutional%20Networks/image-20231025235818266.png">
+<meta property="og:image" content="https://values.keys.moe/2021/06/23/Attention%20Augmented%20Convolutional%20Networks/image-20231025235830009.png">
+<meta property="og:image" content="https://values.keys.moe/2021/06/23/Attention%20Augmented%20Convolutional%20Networks/image-20231025235848508.png">
+<meta property="og:image" content="https://values.keys.moe/2021/06/23/Attention%20Augmented%20Convolutional%20Networks/image-20231025235852510.png">
+<meta property="og:image" content="https://values.keys.moe/2021/06/23/Attention%20Augmented%20Convolutional%20Networks/image-20231025235859414.png">
+<meta property="og:image" content="https://values.keys.moe/2021/06/23/Attention%20Augmented%20Convolutional%20Networks/image-20231025235906130.png">
+<meta property="og:image" content="https://values.keys.moe/2021/06/23/Attention%20Augmented%20Convolutional%20Networks/image-20231025235912892.png">
+<meta property="og:image" content="https://values.keys.moe/2021/06/23/Attention%20Augmented%20Convolutional%20Networks/image-20231025235917065.png">
+<meta property="og:image" content="https://values.keys.moe/2021/06/23/Attention%20Augmented%20Convolutional%20Networks/image-20231025235924343.png">
+<meta property="og:image" content="https://values.keys.moe/2021/06/23/Attention%20Augmented%20Convolutional%20Networks/image-20231025235927049.png">
+<meta property="og:image" content="https://values.keys.moe/2021/06/23/Attention%20Augmented%20Convolutional%20Networks/image-20231025235931837.png">
+<meta property="og:image" content="https://values.keys.moe/2021/06/23/Attention%20Augmented%20Convolutional%20Networks/image-20231025235936792.png">
+<meta property="og:image" content="https://values.keys.moe/2021/06/23/Attention%20Augmented%20Convolutional%20Networks/image-20231025235941152.png">
+<meta property="og:image" content="https://values.keys.moe/2021/06/23/Attention%20Augmented%20Convolutional%20Networks/image-20231025235945792.png">
+<meta property="og:image" content="https://values.keys.moe/2021/06/23/Attention%20Augmented%20Convolutional%20Networks/image-20231025235949368.png">
+<meta property="article:published_time" content="2021-06-22T17:45:45.000Z">
+<meta property="article:modified_time" content="2023-10-25T16:08:09.001Z">
+<meta property="article:author" content="Angelo">
+<meta property="article:tag" content="论文阅读">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://values.keys.moe/2021/06/23/Attention%20Augmented%20Convolutional%20Networks/image-20231025235603474.png">
+    
+        <link rel="alternative" href="/atom.xml" title="Angelo的代码工坊" type="application/atom+xml">
+    
+
+    <!-- Favicon -->
+    
+
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata|Roboto:300,400,700" rel="stylesheet">
+
+    
+<link rel="stylesheet" href="/style.css">
+
+    <script>
+      function setLoadingBarProgress(num) {
+        document.getElementById('loading-bar').style.width = num + "%";
+      }
+    </script>
+
+    
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+
+<div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+
+<script>setLoadingBarProgress(20)</script>
+
+<div id="site-wrapper">
+
+    <header id="header">
+    <div id="header-wrapper" class="clearfix">
+        <a id="logo" href="/">
+            <img src="/img/logo.png"/>
+            <span id="site-desc">
+                I shut my eyes in order to see.
+            </span>
+        </a>
+        <button id="site-nav-switch">
+            <span class="icon icon-menu"></span>
+        </button>
+    </div>
+</header>
+    <script>setLoadingBarProgress(40);</script>
+
+    <main id="main" role="main">
+        <article id="post-Attention Augmented Convolutional Networks"
+         class="post article white-box article-type-post"
+         itemscope itemprop="blogPost">
+    <h2 class="title">
+        <a href="/2021/06/23/Attention%20Augmented%20Convolutional%20Networks/">
+            Attention Augmented Convolutional Networks
+        </a>
+    </h2>
+    <time>
+        6月 23, 2021
+    </time>
+    <section class="content">
+        <div class="article-entry" itemprop="articleBody">
+            <img src="/2021/06/23/Attention%20Augmented%20Convolutional%20Networks/image-20231025235603474.png" alt>
+
+<h1><span id="注意力增强的卷积网络">注意力增强的卷积网络</span></h1><h2><span id="引用">引用</span></h2><p>Bello I, Zoph B, Vaswani A, et al. Attention augmented convolutional networks[C]&#x2F;&#x2F;Proceedings of the IEEE&#x2F;CVF International Conference on Computer Vision. 2019: 3286-3295.</p>
+<h2><span id="摘要">摘要</span></h2><p>卷积网络一直是许多计算机视觉应用中的首选范式。然而，卷积操作存在一个明显的弱点，即它只对局部邻域进行操作，因此缺少全局信息。另一方面，自注意力已经成为捕捉长距离相互作用的方法，但大多被应用于序列建模和生成式建模任务。本文中，我们考虑将自注意力用于判别视觉任务，将其作为卷积的替代方法。我们引入了一种新颖的二维相对自注意力机制，该机制被证明在取代卷积作为图像分类的独立计算单元方面具有竞争力。我们在控制实验中发现，把卷积和自注意力结合起来时可以得到最好的效果。因此，我们建议使用这种自注意力机制来增强卷积算子，将卷积特征图与通过自注意力产生的一组特征图连接起来。广泛的实验表明，注意力增强可在参数个数保持基本相似的情况下，使ImageNet上的图像分类和COCO上的物体检测在许多不同的模型和规模上有一致的效果提升，其中也包括了ResNets和最先进的移动受限网络。特别的，我们的方法在ImageNet分类上比ResNet50基线提高了1.3%的top-1准确率，并超过了其他图像的注意力机制，如Squeeze-and-Excitation。在COCO物体检测中，其相较RetinaNet基线上取得了1.4mAP的提升。</p>
+<span id="more"></span>
+
+<h2><span id="介绍">介绍</span></h2><p>卷积神经网络在许多计算机视觉应用中取得了巨大的成功，特别是在图像分类方面。卷积层的设计规定1）通过有限感受野实现局部性；2）通过权重共享实现转换的等变性。在设计对图像进行操作的模型时，这些特征被证明是至关重要的归纳偏置。然而，卷积核的局部性使其无法捕捉到图像中的全局背景，而这往往是更好地识别图片中物体所必需的。</p>
+<p>另一方面，自注意力是最近出现的一种捕捉长距离相互作用的进步技术，但其大多都被应用于序列建模和生成式建模任务。自注意力的关键思想是产生一个由隐藏单元计算出的数值的加权平均值。与池化或卷积运算不同，加权平均计算中使用的权重是通过隐藏单元之间的相似度函数动态产生的。因此，输入信号之间的相互作用取决于信号本身，而非像卷积那样由它们的相对位置预先确定。特别的，这使得自注意力能够在不增加参数数量的情况下捕捉长距离的相互作用。</p>
+<p> <span><img class="small-img-inline" src="/2021/06/23/Attention%20Augmented%20Convolutional%20Networks/image-20231025235608913.png" alt></span></p>
+<p>图1 注意力增强系统地改善了各种不同规模的网络的图像分类。ImageNet与基线模型（ResNet）、逐通道式注意力增强模型（SE-ResNet）和我们提出的架构（AA-ResNet）的参数数量与分类准确率的比较。</p>
+<p>本文中，我们考虑将自注意力应用于判别视觉任务中，将其作为卷积的替代方法。我们开发了一种新颖的二维相对自注意力机制，该机制在保持平移等变性的同时注入了相对位置信息，使其很适合于图像。我们的自注意力机制被证明在完全取代卷积方面具有竞争力，但我们在对照实验中发现，最好的结果是结合两者使用时获得的。因此，我们并没有完全放弃卷积的想法，而是建议用这种自注意力机制来增强卷积。这是通过将卷积特征图（其可加强局部性）与能对长范围依赖关系进行建模的自注意力特征图连接起来而实现的（参见图2）。</p>
+<p> <span><img class="small-img-inline" src="/2021/06/23/Attention%20Augmented%20Convolutional%20Networks/image-20231025235612402.png" alt></span></p>
+<p>图2 注意力增强卷积：对于每个空间位置 (h, w)，图像的Nh注意力图从检索和键计算而得。这些注意力图用于计算值V的Nh加权平均值。在这之后，将结果拼接起来，重构矩阵形状以匹配原始体积的空间维度，并与逐点卷积混合。多头注意力与标准卷积操作并行应用，并且输出是连接在一起的。</p>
+<p>我们在CIFAR-100和ImageNet分类、COCO对象检测任务上测试我们的方法，其涵盖了大量不同计算力的架构，包括了最先进的资源受限架构。</p>
+<p>注意力增强以最小额外计算代价产生了系统性的改进，并且在所有实验中明显优于流行的Squeeze-and-Excitation逐通道注意力方法。特别的，在ResNet50基线的基础上，注意力增强实现了ImageNet 1.3%的top-1准确率的提升，在RetinaNet基线的基础上实现了1.4 mAP 的 COCO 对象检测提升。令人惊讶的是，实验还表明，完全自注意力模型（注意力增强的一种特殊情况）在ImageNet上的表现只比完全卷积模型稍差，这表明自注意力是一个强大且独立的图像分类计算单元。</p>
+<h2><span id="方法">方法</span></h2><p>我们使用以下命名约定：H、W 和 Fin 指的是激活图的输入过滤器的高度、宽度和数量。Nh、dv和dk分别表示多头注意力（MHA）中的头数、值的深度以及查询和键的深度。我们进一步假设Nh将dv和dk平均划分，并使用<span><img class="small-img-inline" src="/2021/06/23/Attention%20Augmented%20Convolutional%20Networks/image-20231025235629738.png" alt></span>表示值的深度和每个注意力头的检索&#x2F;键深度。</p>
+<p><strong>图像上的自注意力</strong></p>
+<p>给定形状为(H,W,Fin)的输入张量，我们将其展平为矩阵<span><img class="small-img-inline" src="/2021/06/23/Attention%20Augmented%20Convolutional%20Networks/image-20231025235642710.png" alt></span>，并按照Transformer架构中的建议使用多头注意力方法。单个头h的自注意力机制的输出可以表示为：</p>
+<p> <span><img class="small-img-inline" src="/2021/06/23/Attention%20Augmented%20Convolutional%20Networks/image-20231025235649868.png" alt></span></p>
+<p>其中<span><img class="small-img-inline" src="/2021/06/23/Attention%20Augmented%20Convolutional%20Networks/image-20231025235659635.png" alt></span>是所学习的线性变换，其映射输入X到检索Q&#x3D;XWq，键K&#x3D;XWk和值V&#x3D;XWv上。然后将所有头的输出连接并再次投影，如下所示：</p>
+<p> <span><img class="small-img-inline" src="/2021/06/23/Attention%20Augmented%20Convolutional%20Networks/image-20231025235702831.png" alt></span></p>
+<p>其中，<span><img class="small-img-inline" src="/2021/06/23/Attention%20Augmented%20Convolutional%20Networks/image-20231025235719388.png" alt></span>的内存成本，因为它需要为每个头存储注意力图。</p>
+<p><strong>二维位置嵌入</strong></p>
+<p>在没有关于位置的明确信息的情况下，自注意力是置换等变的：</p>
+<p> <span><img class="small-img-inline" src="/2021/06/23/Attention%20Augmented%20Convolutional%20Networks/image-20231025235723053.png" alt></span></p>
+<p>对于像素位置的任何排列π，其无法对高度结构化的数据（例如图像）进行建模。为了缓解相关问题，人们提出了多种位置编码，用明确的空间信息增强激活图。特别的，Image Transformer将最初的Transformer中引入正弦波，以扩展二维输入，CoordConv将位置通道连接到激活图中。</p>
+<p>然而，这些编码对我们的图像分类和目标检测实验并无帮助。我们假设这是因为这样的位置编码虽然不是置换等变的，但其亦不满足平移等变（其是处理图像时的理想属性）。作为一种解决方案，我们建议将相对位置编码的使用扩展到二维，并提出基于Music Transformer的内存高效实现。</p>
+<p>相对位置嵌入：相对自注意力通过相对位置嵌入增强了自注意力，并在防止置换等变的同时实现转换等变。我们通过独立添加相对高度信息和相对宽度信息来实现二维的相对自注意力。有多少像素i&#x3D;(ix,iy)关注像素j&#x3D;(jx,jy)的注意力对数计算如下：</p>
+<p> <span><img class="small-img-inline" src="/2021/06/23/Attention%20Augmented%20Convolutional%20Networks/image-20231025235728637.png" alt></span></p>
+<p>其中qi是像素i的检索向量（Q的第i行），kj是像素j的键向量（K的第j行），<span><img class="small-img-inline" src="/2021/06/23/Attention%20Augmented%20Convolutional%20Networks/image-20231025235748934.png" alt></span>分别是相对宽度jx−ix和相对高度jy−iy的学习嵌入。现在头h的输出变为：</p>
+<p> <span><img class="small-img-inline" src="/2021/06/23/Attention%20Augmented%20Convolutional%20Networks/image-20231025235733687.png" alt></span></p>
+<p>其中  是沿高度和宽度维度的相对位置对数矩阵，满足<img src="/2021/06/23/Attention%20Augmented%20Convolutional%20Networks/image-20231025235754707.png" alt="image-20231025235754707" style="zoom:67%;">。</p>
+<p>我们将之前的研究者所提出的高效内存的相对遮罩注意力算法扩展到二维输入的无遮罩相对自注意力上。我们实现的内存占用最终为<span><img class="small-img-inline" src="/2021/06/23/Attention%20Augmented%20Convolutional%20Networks/image-20231025235812726.png" alt></span>参数来模拟沿高度和宽度的相对距离。</p>
+<p><strong>注意力增强卷积</strong></p>
+<p>多个先前提出的对图像的注意力机制表明，卷积算子受到其局部性和缺乏对全局背景的理解的限制。这些方法通过重新校准卷积特征图来捕捉长距离的依赖关系。与前人方法相比，我们1）使用一种注意力机制，可以共同关注空间和特征子空间（每个头对应一个特征子空间）；2）引入额外的特征图而不是细化它们。图2总结了我们提出的增强卷积。</p>
+<p>连接卷积和注意力特征图：考虑核大小为k、输入过滤器为Fin、核输出过滤器为Fout的卷积算子。相应的注意力增强卷积可以写成：</p>
+<p> <span><img class="small-img-inline" src="/2021/06/23/Attention%20Augmented%20Convolutional%20Networks/image-20231025235818266.png" alt></span></p>
+<p>我们用<span><img class="small-img-inline" src="/2021/06/23/Attention%20Augmented%20Convolutional%20Networks/image-20231025235830009.png" alt></span>表示键深度与原始输出过滤器数量的比例。与卷积类似，所提出的注意力增强卷积1）与平移等变；2)易对不同空间维度的输入进行操作。</p>
+<p>对参数数量的影响：多头注意力引入了一个带有 Fin 输入过滤器和<span><img class="small-img-inline" src="/2021/06/23/Attention%20Augmented%20Convolutional%20Networks/image-20231025235848508.png" alt></span>输入和输出过滤器，以混合不同头的贡献。考虑到卷积部分过滤器的减少，这会导致参数发生以下变化：</p>
+<p> <span><img class="small-img-inline" src="/2021/06/23/Attention%20Augmented%20Convolutional%20Networks/image-20231025235852510.png" alt></span></p>
+<p>其中，为了简单起见，我们忽略了相对位置嵌入所引入的参数，因为这些参数可以忽略不计。在实践中，取代3x3卷积时，会导致参数的轻微减少，而取代1x1卷积时，参数会轻微增加。有趣的是，我们在实验中发现，注意力增强的网络仍然明显优于完全卷积的对应网络，而使用的参数更少。</p>
+<p>注意力增强卷积架构：在我们所有的实验中，增强卷积之后是一个批量归一化层，它可以学习缩放卷积特征图和注意力特征图的贡献。我们对每个残差块应用一次增强卷积，并在内存允许的情况下沿整个架构应用。</p>
+<p>由于内存成本<span><img class="small-img-inline" src="/2021/06/23/Attention%20Augmented%20Convolutional%20Networks/image-20231025235859414.png" alt></span>对于大空间维度可能过高，我们从最后一层（具有最小空间维度）开始使用注意力增强卷积，直到我们遇到内存限制。为了减少增强网络的内存占用，我们通常采用较小的批处理规模，有时还对应用最大空间维度的层中的自注意力的输入进行下采样。下采样是通过应用步长为2的3x3平均池化来进行的，而之后的上采样（连接所需)是通过双线性插值获得的。</p>
+<h2><span id="实验">实验</span></h2><p>我们在CIFAR100、ImageNet和COCO数据集上测试了标准计算机视觉架构，例如ResNets和MnasNet的注意力增强。我们的实验表明，注意力增强可以在广泛的体系结构和计算需求中对图像分类和对象检测任务进行系统改进。我们验证了所提出的二维相对注意力机制在消融实验中的实用性。在所有实验中，我们用自注意力特征图代替卷积特征图，因为它可以更容易地与基线模型进行比较。除非另有说明，所有结果都对应于我们的二维相对自注意力机制。</p>
+<p><strong>CIFAR-100 图像分类</strong></p>
+<p>我们首先使用 Wide ResNet架构研究注意力增强如何在CIFAR-100（低分辨率图像的标准基准）上执行。表1展示了注意力增强在相似的参数和复杂性成本下提高了基线网络和Squeeze-and-Excitation的性能。</p>
+<p> <span><img class="small-img-inline" src="/2021/06/23/Attention%20Augmented%20Convolutional%20Networks/image-20231025235906130.png" alt></span></p>
+<p>表1 使用 Wide-ResNet 28-10架构在CIFAR-100数据集上进行图像分类。</p>
+<p><strong>使用 ResNet 进行ImageNet图像分类</strong></p>
+<p>表 2 在 ResNet50 架构上对通道和空间注意力机制 BAM、CBAM和 GALA的注意力增强进行基准测试，通道缩减率 σ &#x3D; 16。与先前提出的注意力机制相比，注意力增强提供了具有竞争力的准确性&#x2F;计算权衡。表3比较了不同网络规模的非增强网络和 Squeeze-and-Excitation (SE)。在所有实验中，注意力增强显着提高了非增强基线的性能，并且明显优于 Squeeze-and-Excitation。值得注意的是，我们的 AA-ResNet-50 与基线 ResNet-101 的表现相当，我们的 AA-ResNet-101 优于基线 ResNet-152。这些结果表明，注意力增强比简单地把网络做得更深而言更可取。</p>
+<p> <span><img class="small-img-inline" src="/2021/06/23/Attention%20Augmented%20Convolutional%20Networks/image-20231025235912892.png" alt></span></p>
+<p>表2 不同注意力机制在 ImageNet 数据集上的图像分类性能。 ∆指的是在单个Tesla V100 GPU上使用Tensorflow的批处理量为128时的ResNet50相比，所增加的延迟时间。为了公平比较，我们还包含了 top-1 结果（在括号中），该结果是在ResNet50为基线、放缩网络宽度以匹配~25.6M的参数的情况下得到的。</p>
+<p> <span><img class="small-img-inline" src="/2021/06/23/Attention%20Augmented%20Convolutional%20Networks/image-20231025235917065.png" alt></span></p>
+<p>表3 ImageNet数据集在一系列ResNet架构上的图像分类结果：ResNet-34、ResNet-50、Resnet-101和ResNet-152。</p>
+<p><strong>使用 MnasNet 进行 ImageNet 分类</strong></p>
+<p>在表 4 中，我们报告了基线MnasNet及其在不同宽度倍数下的注意力增强变体的ImageNet准确率。我们的实验表明，注意力增强在所有宽度倍数下都能提高准确性。使用相对自注意力增强MnasNet会导致参数略有增加，但是我们在图3中验证了准确率的提高不仅仅可以通过参数增加来解释。此外，我们注意到MnasNet架构在通过架构搜索最佳选择的位置时采用了 Squeeze-and-Excitation，这进一步表明了我们方法的好处。</p>
+<p> <span><img class="small-img-inline" src="/2021/06/23/Attention%20Augmented%20Convolutional%20Networks/image-20231025235924343.png" alt></span></p>
+<p>表4 基线和注意力增强的MnasNet准确率，宽度倍数为0.75、1.0、1.25 和 1.4。</p>
+<p> <span><img class="small-img-inline" src="/2021/06/23/Attention%20Augmented%20Convolutional%20Networks/image-20231025235927049.png" alt></span></p>
+<p>图3 在宽度倍数为0.75、1.0、1.25和1.4的情况下，MnasNet（黑色）和注意力增强MnasNet（红色）的ImageNet top-1准确率和参数数量的关系。</p>
+<p><strong>使用 COCO 数据集进行目标检测</strong></p>
+<p>如表 5 所示，我们的相对自注意力机制提高了RetinaNet在ResNet-50和ResNet101上的性能。此外，我们的实验表明，尽管在压缩率σ∈{4，8，16}上进行了网格搜索，在 RetinaNet 的骨干网络中添加 Squeeze-and-Excitation 算子会显著损害性能。</p>
+<p> <span><img class="small-img-inline" src="/2021/06/23/Attention%20Augmented%20Convolutional%20Networks/image-20231025235931837.png" alt></span></p>
+<p>表5 使用具有不同主干结构的RetinaNet架构在 COCO 数据集上进行对象检测。我们报告了三个不同 IoU 值的平均准确率。</p>
+<p><strong>消融研究</strong></p>
+<p>全注意力视觉模型：本节中，我们研究了注意力增强的性能与注意力通道的比例的关系。当我们把这个比例增加到100%时，我们开始用一个全注意力模型来取代ConvNet。表6列出了ResNet-50架构上注意力增强在不同比率κ&#x3D;υ∈{0.25, 0.5, 0.75, 1.0}下的性能。结果表明，大部分情况下，采用注意力通道是很有竞争力的。</p>
+<p> <span><img class="small-img-inline" src="/2021/06/23/Attention%20Augmented%20Convolutional%20Networks/image-20231025235936792.png" alt></span></p>
+<p>表6 具有不同注意力通道比例的注意力增强 ResNet-50。</p>
+<p>这些实验还表明，我们提出的自注意力机制是一个强大的、独立的图像分类计算单元，且全注意力模型对于分辨性视觉任务是可行的。</p>
+<p>位置编码的重要性：图4中，我们展示了提出的二维相对位置编码作为注意力通道分数的函数的效果。实验表明，随着架构采用更多注意力通道，我们的相对位置编码变得越来越重要。</p>
+<p> <span><img class="small-img-inline" src="/2021/06/23/Attention%20Augmented%20Convolutional%20Networks/image-20231025235941152.png" alt></span></p>
+<p>图4 在我们的注意力增强的ResNet50上，随着注意力通道比例的增加，相对位置嵌入的效果。</p>
+<p>我们另外将我们提出的二维相对位置编码与其他位置编码方案进行了比较。在表7和表8中，我们分别展示了各位置编码方案在ImageNet分类和COCO物体检测任务的结果。在这两项任务中，没有位置编码的注意力增强已经超越了完全卷积的非增强变体。我们的实验还表明，正弦编码和坐标卷积并不会提升对位置无感知版本的注意力增强效果。当使用我们的二维相对注意力时，我们获得了额外的提升，这证明了其可在防止置换等变的同时保留转换等变的效用。</p>
+<p> <span><img class="small-img-inline" src="/2021/06/23/Attention%20Augmented%20Convolutional%20Networks/image-20231025235945792.png" alt></span></p>
+<p>表7 注意力增强中不同位置编码对ImageNet分类的影响。</p>
+<p> <span><img class="small-img-inline" src="/2021/06/23/Attention%20Augmented%20Convolutional%20Networks/image-20231025235949368.png" alt></span></p>
+<p>表8 注意力增强中不同位置编码对使用RetinaNet AA-ResNet-50 骨架的COCO物体检测任务的影响。</p>
+<h2><span id="讨论与今后工作">讨论与今后工作</span></h2><p>本项工作中，我们考虑把自注意力用于视觉模型，将其作为卷积的替代。我们为图像引入了一种新颖的二维相对自注意力机制，首次实现了在图像分类上训练有竞争力的完全自注意力的视觉模型。我们建议用这种自注意力机制来增强卷积算子，并验证了这种方法比其他注意力方案的优越性。广泛的实验表明，在各类的架构和计算环境下，注意力增强能提升图像分类和物体检测任务的系统效果。</p>
+<p>这项工作还存在几个未解决问题。在未来的工作中，我们将专注于完全注意力制度，并探索不同的注意力机制是如何在计算效率与表示能力之间进行权衡的。此外，在使用自注意力机制时，完全依赖卷积的架构设计选择似乎是次优的，因此，尝试在自动架构搜索中使用注意力增强作为单元，以尝试找到比以前更好的图像分类、对象检测、图像分割等领域的模型是非常有趣的。最后，人们可以问：在视觉任务中，完全注意力模型在多大程度上能取代卷积网络？</p>
+
+        </div>
+        <div class="article-tags tags">
+            
+                <a class="tag-none-link" href="/tags/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" rel="tag">论文阅读</a>
+            
+        </div>
+    </section>
+</article>
+
+
+
+
+
+        <script>setLoadingBarProgress(60);</script>
+    </main>
+
+    <footer id="footer" class="clearfix">
+
+    
+
+    <div class="social-wrapper">
+        
+            
+                <a href="liuguandi@126.com" class="social email"
+                   target="_blank" rel="external">
+                    <span class="icon icon-email"></span>
+                </a>
+            
+                <a href="https://github.com/Liuguandi" class="social github"
+                   target="_blank" rel="external">
+                    <span class="icon icon-github"></span>
+                </a>
+            
+                <a href="/atom.xml" class="social rss"
+                   target="_blank" rel="external">
+                    <span class="icon icon-rss"></span>
+                </a>
+            
+        
+    </div>
+
+    <div class="theme-by">Theme <span class="codename">Memory</span> designed by <a href="https://artifact.me/"
+                                                                                    target="_blank">Art Chen</a>, modified by <a href="https://values.keys.moe/"
+                                                                                    target="_blank">Angelo</a>.
+    </div>
+    <div>&copy; <a href="/">Angelo的代码工坊</a></div>
+
+</footer>
+
+
+    <script>setLoadingBarProgress(80);</script>
+    <div class="overlay"></div>
+</div>
+
+<div class="site-sidebar" id="site-sidebar">
+
+    
+
+    <div class="sidebar-switch clearfix "
+         style="display: none">
+        <a class="dark-btn active" data-toggle="toc">
+            <span class="icon icon-list"></span>
+            <span class="text">Index</span>
+        </a>
+        <a class="dark-btn" data-toggle="bio">
+            <span class="icon icon-person"></span>
+            <span class="text">Bio</span>
+        </a>
+    </div>
+
+    <div class="site-toc "
+         style="display: none">
+        
+            <div class="no-index">No Index</div>
+        
+    </div>
+
+    <div class="site-bio show"
+         style="display: block">
+
+        <div class="about-me clearfix">
+
+            <div class="title"><a href="/">Angelo的代码工坊</a></div>
+            
+            <p class="subtitle">
+                I shut my eyes in order to see.
+            </p>
+            
+
+            <div class="info">
+                <!-- <a class="name dark-btn" href="/about"> -->
+                    <!-- Angelo -->
+                <!-- </a> -->
+                <div class="item desc" style="padding-right:20px">
+                    <div class="description">
+                        身处寒夜，把握星光。
+                    </div>
+                    <div class="author">
+                        Angelo
+                    </div>
+                </div>
+
+                <div class="avatar">
+                    <a href="/About">
+                        <img src="/img/avatar.png"/>
+                    </a>
+                </div>
+            </div>
+                
+
+            
+    
+        </div>
+
+        <!-- <div class="menu section">
+            <ul class="clearfix">
+                
+                    <li class="left">
+                        <a href="/About"
+                           onfocus="this.blur();"
+                           class="nav-about dark-btn block">
+                            About
+                        </a>
+                    </li>
+                
+                    <li class="right">
+                        <a href="/archives"
+                           onfocus="this.blur();"
+                           class="nav-archives dark-btn block">
+                            Archives
+                        </a>
+                    </li>
+                
+            </ul>
+        </div> -->
+
+
+        <div class="body">
+            
+              
+                <ul class="nav">
+                  
+                    
+                      <li class="category-list-container">
+                        <a href="javascript:;">Category</a>
+                        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Ubuntu/">Ubuntu</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E8%B0%88/">杂谈</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%A0%91%E8%8E%93%E6%B4%BE/">树莓派</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/">论文阅读</a><span class="category-list-count">12</span></li></ul>
+                      </li>
+                    
+                  
+                    
+                      <li class="tag-list-container">
+                        <a href="javascript:;">Tag</a>
+                        <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu/" rel="tag">Ubuntu</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82%E8%B0%88/" rel="tag">杂谈</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/" rel="tag">树莓派</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" rel="tag">论文阅读</a><span class="tag-list-count">12</span></li></ul>
+                      </li>
+                    
+                  
+                    
+                      <li class="archive-list-container">
+                        <a href="javascript:;">Archive</a>
+                        <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/">2019</a><span class="archive-list-count">8</span></li></ul>
+                      </li>
+                    
+                  
+                </ul>
+              
+                <ul class="nav">
+                  
+                    
+                      <li>
+                        <a href="/" title="Blog" external="false">Blog</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="/archives" title="By Year" external="false">By Year</a>
+                      </li>
+                    
+                  
+                </ul>
+              
+                <ul class="nav">
+                  
+                    
+                      <li>
+                        <a href="https://github.com/Liuguandi" title="Github" target="_blank" rel="noopener">Github</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="/atom.xml" title="RSS" external="false">RSS</a>
+                      </li>
+                    
+                  
+                </ul>
+              
+                <ul class="nav">
+                  
+                    
+                      <li>
+                        <a href="https://keys.moe/" title="Home" target="_blank" rel="noopener">Home</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="https://values.keys.moe/About/" title="About" target="_blank" rel="noopener">About</a>
+                      </li>
+                    
+                  
+                </ul>
+              
+            
+          </div>
+
+    </div>
+
+    <div class="shortcuts">
+        <a href="#header" class="top window-nav dark-btn" id="go-top">
+            <span class="icon icon-chevron-thin-up"></span>
+        </a>
+        <a class="close dark-btn" id="sidebar-close">
+            <span class="icon icon-close"></span>
+        </a>
+        <a href="#footer" class="top window-nav dark-btn" id="go-bottom">
+            <span class="icon icon-chevron-thin-down"></span>
+        </a>
+    </div>
+
+</div>
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script>window.jQuery || document.write('<script src="/js/jquery.min.js"><\/script>')</script>
+
+
+<script src="/js/jquery.fitvids.js"></script>
+
+<script>
+  var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+  var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+  var ALGOLIA_API_KEY = "";
+  var ALGOLIA_APP_ID = "";
+  var ALGOLIA_INDEX_NAME = "";
+  var AZURE_SERVICE_NAME = "";
+  var AZURE_INDEX_NAME = "";
+  var AZURE_QUERY_KEY = "";
+  var SEARCH_SERVICE = "";
+  var universalSearchConfig = {};
+  if (SEARCH_SERVICE === 'google') {
+    universalSearchConfig = {
+      searchService: SEARCH_SERVICE,
+      apiKey: GOOGLE_CUSTOM_SEARCH_API_KEY,
+      engineId: GOOGLE_CUSTOM_SEARCH_ENGINE_ID,
+      imagePath: "/img/"
+    };
+  } else if (SEARCH_SERVICE === 'algolia') {
+    universalSearchConfig = {
+      searchService: SEARCH_SERVICE,
+      apiKey: ALGOLIA_API_KEY,
+      appId: ALGOLIA_APP_ID,
+      indexName: ALGOLIA_INDEX_NAME,
+      imagePath: "/img/"
+    };
+  } else if (SEARCH_SERVICE === 'azure') {
+    universalSearchConfig = {
+      searchService: SEARCH_SERVICE,
+      serviceName: AZURE_SERVICE_NAME,
+      indexName: AZURE_INDEX_NAME,
+      apiKey: AZURE_QUERY_KEY,
+      imagePath: "/img/"
+    };
+  }
+</script>
+
+<script src="/js/app.js"></script>
+
+
+<script src="/js/search.js"></script>
+
+
+
+
+
+<script src="/scripts/main.js"></script>
+
+<script>setLoadingBarProgress(100);</script>
+
+</body>
+</html>
