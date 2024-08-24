@@ -6,7 +6,7 @@
   <link href="https://values.keys.moe/atom.xml" rel="self"/>
   
   <link href="https://values.keys.moe/"/>
-  <updated>2023-10-25T14:52:55.951Z</updated>
+  <updated>2024-08-24T10:03:25.459Z</updated>
   <id>https://values.keys.moe/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>阻止一心求死的人自杀 是不是一种伪善？</title>
+    <link href="https://values.keys.moe/2024/08/24/%E9%98%BB%E6%AD%A2%E4%B8%80%E4%B8%AA%E4%B8%80%E5%BF%83%E6%B1%82%E6%AD%BB%E7%9A%84%E4%BA%BA%E8%87%AA%E6%9D%80%20%E6%98%AF%E4%B8%8D%E6%98%AF%E4%B8%80%E7%A7%8D%E4%BC%AA%E5%96%84%EF%BC%9F/"/>
+    <id>https://values.keys.moe/2024/08/24/%E9%98%BB%E6%AD%A2%E4%B8%80%E4%B8%AA%E4%B8%80%E5%BF%83%E6%B1%82%E6%AD%BB%E7%9A%84%E4%BA%BA%E8%87%AA%E6%9D%80%20%E6%98%AF%E4%B8%8D%E6%98%AF%E4%B8%80%E7%A7%8D%E4%BC%AA%E5%96%84%EF%BC%9F/</id>
+    <published>2024-08-24T09:31:56.000Z</published>
+    <updated>2024-08-24T10:03:25.459Z</updated>
+    
+    <content type="html"><![CDATA[<img src="/2024/08/24/%E9%98%BB%E6%AD%A2%E4%B8%80%E4%B8%AA%E4%B8%80%E5%BF%83%E6%B1%82%E6%AD%BB%E7%9A%84%E4%BA%BA%E8%87%AA%E6%9D%80%20%E6%98%AF%E4%B8%8D%E6%98%AF%E4%B8%80%E7%A7%8D%E4%BC%AA%E5%96%84%EF%BC%9F/title.jpg" alt><p>”阻止一个一心求死的人自杀，是不是一种伪善？“</p><p>此类涉及伦理、哲学的话题在网上总有持续的热度。之前不久，我也在公司内网内看到过与之类似的帖子。帖子内容大致是。公司与警方通力合作，找到并挽救了在平台上发送寻死信息的青年。而帖子评论下，部分同事都在争论，到底应不应该救寻死者。那时我的答案很明确，”当然，而且必须阻止“。那时我想，如果对他人的生死都熟视无睹，未免有点过于冷血了。</p><p>而当我真正亲历这样的事后，却反而看不到这个问题的答案了。</p><p>让我说说我遇到的故事吧。</p><span id="more"></span><h1><span id="摸鱼时刷到的朋友圈">摸鱼时刷到的朋友圈</span></h1>]]></content>
+    
+    
+    <summary type="html">&lt;img src=&quot;/2024/08/24/%E9%98%BB%E6%AD%A2%E4%B8%80%E4%B8%AA%E4%B8%80%E5%BF%83%E6%B1%82%E6%AD%BB%E7%9A%84%E4%BA%BA%E8%87%AA%E6%9D%80%20%E6%98%AF%E4%B8%8D%E6%98%AF%E4%B8%80%E7%A7%8D%E4%BC%AA%E5%96%84%EF%BC%9F/title.jpg&quot; alt&gt;
+
+
+
+&lt;p&gt;”阻止一个一心求死的人自杀，是不是一种伪善？“&lt;/p&gt;
+&lt;p&gt;此类涉及伦理、哲学的话题在网上总有持续的热度。之前不久，我也在公司内网内看到过与之类似的帖子。帖子内容大致是。公司与警方通力合作，找到并挽救了在平台上发送寻死信息的青年。而帖子评论下，部分同事都在争论，到底应不应该救寻死者。那时我的答案很明确，”当然，而且必须阻止“。那时我想，如果对他人的生死都熟视无睹，未免有点过于冷血了。&lt;/p&gt;
+&lt;p&gt;而当我真正亲历这样的事后，却反而看不到这个问题的答案了。&lt;/p&gt;
+&lt;p&gt;让我说说我遇到的故事吧。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="杂谈" scheme="https://values.keys.moe/categories/%E6%9D%82%E8%B0%88/"/>
+    
+    
+    <category term="杂谈" scheme="https://values.keys.moe/tags/%E6%9D%82%E8%B0%88/"/>
+    
+    <category term="人间观察" scheme="https://values.keys.moe/tags/%E4%BA%BA%E9%97%B4%E8%A7%82%E5%AF%9F/"/>
+    
+  </entry>
   
   <entry>
     <title>Practical Accuracy Estimation for Efficient Deep Neural</title>
@@ -441,29 +471,6 @@
     
     
     <summary type="html">入门介绍</summary>
-    
-    
-    
-    <category term="树莓派" scheme="https://values.keys.moe/categories/%E6%A0%91%E8%8E%93%E6%B4%BE/"/>
-    
-    
-    <category term="树莓派" scheme="https://values.keys.moe/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/"/>
-    
-    <category term="Python" scheme="https://values.keys.moe/tags/Python/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>树莓派GPIO控制的初级应用-多色二极管的亮度调节与颜色变化</title>
-    <link href="https://values.keys.moe/2019/03/02/%E6%A0%91%E8%8E%93%E6%B4%BEGPIO%E6%8E%A7%E5%88%B6%E7%9A%84%E5%88%9D%E7%BA%A7%E5%BA%94%E7%94%A8-%E5%A4%9A%E8%89%B2%E4%BA%8C%E6%9E%81%E7%AE%A1%E7%9A%84%E4%BA%AE%E5%BA%A6%E8%B0%83%E8%8A%82%E4%B8%8E%E9%A2%9C%E8%89%B2%E5%8F%98%E5%8C%96/"/>
-    <id>https://values.keys.moe/2019/03/02/%E6%A0%91%E8%8E%93%E6%B4%BEGPIO%E6%8E%A7%E5%88%B6%E7%9A%84%E5%88%9D%E7%BA%A7%E5%BA%94%E7%94%A8-%E5%A4%9A%E8%89%B2%E4%BA%8C%E6%9E%81%E7%AE%A1%E7%9A%84%E4%BA%AE%E5%BA%A6%E8%B0%83%E8%8A%82%E4%B8%8E%E9%A2%9C%E8%89%B2%E5%8F%98%E5%8C%96/</id>
-    <published>2019-03-02T01:16:06.000Z</published>
-    <updated>2022-09-28T05:55:12.340Z</updated>
-    
-    <content type="html"><![CDATA[<img src="/2019/03/02/%E6%A0%91%E8%8E%93%E6%B4%BEGPIO%E6%8E%A7%E5%88%B6%E7%9A%84%E5%88%9D%E7%BA%A7%E5%BA%94%E7%94%A8-%E5%A4%9A%E8%89%B2%E4%BA%8C%E6%9E%81%E7%AE%A1%E7%9A%84%E4%BA%AE%E5%BA%A6%E8%B0%83%E8%8A%82%E4%B8%8E%E9%A2%9C%E8%89%B2%E5%8F%98%E5%8C%96/多色二极管.png" alt><span id="more"></span><p>引脚R：控制红色二极管亮&#x2F;灭<br>引脚G：控制绿色二极管亮&#x2F;灭<br>引脚B：控制蓝色二极管亮&#x2F;灭<br>GND：接地</p><p>在这里我们令各个引脚：</p><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">R=<span class="number">13</span> </span><br><span class="line">G=<span class="number">26</span> </span><br><span class="line">B=<span class="number">16</span></span><br></pre></td></tr></table></figure><p>初始化各个引脚</p><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">RPi.GPIO.setup(R,RPi.GPIO.OUT)</span><br><span class="line">RPi.GPIO.setup(G,RPi.GPIO.OUT)</span><br><span class="line">RPi.GPIO.setup(B,RPi.GPIO.OUT)</span><br></pre></td></tr></table></figure><p>初始化脉宽调制为最大并启动</p><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">pwmR = RPi.GPIO.PWM(R,<span class="number">100</span>)</span><br><span class="line">pwmG = RPi.GPIO.PWM(G,<span class="number">100</span>)</span><br><span class="line">pwmB = RPi.GPIO.PWM(B,<span class="number">100</span>)</span><br><span class="line">pwmR.start(<span class="number">0</span>)</span><br><span class="line">pwmG.start(<span class="number">0</span>)</span><br><span class="line">pwmB.start(<span class="number">0</span>)</span><br></pre></td></tr></table></figure><p>以红色灯为例</p><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">红灯亮：RPi.GPIO.output(R,<span class="literal">True</span>)</span><br><span class="line">红灯灭：RPi.GPIO.output(R,<span class="literal">False</span>)</span><br></pre></td></tr></table></figure><p>亮度调节：</p><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">红灯<span class="number">1</span>级亮度：pwmR.ChangeDutyCycle(blightness[count1])  <span class="comment"># blightness[count1]=1</span></span><br><span class="line">红灯<span class="number">2</span>级亮度：pwmR.ChangeDutyCycle(blightness[count1])  <span class="comment"># blightness[count1]=20</span></span><br><span class="line">红灯<span class="number">3</span>级亮度：pwmR.ChangeDutyCycle(blightness[count1])  <span class="comment"># blightness[count1]=50</span></span><br><span class="line">红灯<span class="number">4</span>级亮度：pwmR.ChangeDutyCycle(blightness[count1])  <span class="comment"># blightness[count1]=100</span></span><br></pre></td></tr></table></figure><p>颜色调节：</p><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">红灯：红色二极管亮</span><br><span class="line">蓝灯：蓝色二极管亮</span><br><span class="line">绿灯：绿色二极管亮</span><br><span class="line">黄色灯：红色、绿色二极管同时亮</span><br><span class="line">白色灯：红色、蓝色、绿色灯同时亮</span><br></pre></td></tr></table></figure><p>同时控制亮度和颜色方法：</p><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">当接收到红外信号时，内部计数器+<span class="number">1</span> 并对<span class="number">25</span>求余</span><br><span class="line">当计数器为<span class="number">4</span> <span class="number">9</span> <span class="number">14</span> <span class="number">19</span> <span class="number">24</span>时，表示灯熄灭</span><br><span class="line"><span class="number">0</span>~<span class="number">3</span>时表示红灯，具体计数器数值表示亮度对应的字典下标</span><br><span class="line"><span class="number">5</span>~<span class="number">8</span>时表示绿灯，具体计数器数值表示亮度对应的字典下标</span><br><span class="line"><span class="number">10</span>~<span class="number">13</span>时表示蓝灯，具体计数器数值表示亮度对应的字典下标</span><br><span class="line"><span class="number">15</span>~<span class="number">18</span>时表示黄灯，具体计数器数值表示红灯和绿灯亮度对应的字典下标</span><br><span class="line"><span class="number">20</span>~<span class="number">23</span>时表示白灯，具体计数器数值表示红灯、绿灯和蓝灯亮度对应的字典下标</span><br></pre></td></tr></table></figure>]]></content>
-    
-    
-    <summary type="html">基于树莓派GPIO控制的介绍</summary>
     
     
     
